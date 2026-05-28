@@ -1,0 +1,22 @@
+# Netlify _redirects — D'Amico & Partners
+# Mantiene gli alias storici e URL puliti (senza .html)
+
+# Alias storici dai vecchi siti
+/area-di-attivita/*    /servizi.html         301
+/aree-di-attivita/*    /servizi.html         301
+/chi-siamo/*           /chi-siamo.html       301
+/contatti/*            /contatti.html        301
+/profilo-societario    /chi-siamo.html       301
+/news/*                /                     302
+
+# URL puliti -> file .html
+/chi-siamo             /chi-siamo.html       200
+/servizi               /servizi.html         200
+/advisory              /advisory.html        200
+/contatti              /contatti.html        200
+/privacy               /privacy.html         200
+/cookie                /cookie.html          200
+/note-legali           /note-legali.html     200
+
+# 404 personalizzata
+/*                     /404.html             404

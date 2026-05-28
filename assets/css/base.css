@@ -1,0 +1,219 @@
+/* Base styles — D'Amico & Partners
+   Typography, links, layout primitives, utility classes. */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-weight: 400;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  line-height: var(--lh-tight);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--fs-3xl); }
+h2 { font-size: var(--fs-2xl); }
+h3 { font-size: var(--fs-xl); }
+h4 { font-size: var(--fs-lg); }
+h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-ink);
+  line-height: var(--lh-snug);
+}
+h5 { font-size: var(--fs-md); }
+h6 { font-size: var(--fs-base); text-transform: uppercase; letter-spacing: 0.05em; }
+
+p { max-width: 65ch; }
+.lead {
+  font-size: var(--fs-md);
+  color: var(--color-muted);
+  max-width: 60ch;
+}
+
+/* Links */
+a {
+  color: var(--color-cyan-600);
+  text-underline-offset: 2px;
+  transition: color var(--dur) var(--ease);
+}
+a:hover { color: var(--color-cyan); text-decoration: underline; }
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-cyan);
+  color: #fff;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 12px;
+  background: var(--color-charcoal);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  z-index: var(--z-modal);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top var(--dur) var(--ease);
+}
+.skip-link:focus { top: 12px; color: #fff; }
+
+/* Layout — container */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+.container--narrow { max-width: var(--container-narrow); }
+.container--wide   { max-width: var(--container-wide); }
+
+/* Section spacing — mobile compatto, scala con il viewport */
+.section {
+  padding-block: var(--space-6);
+}
+@media (min-width: 768px) {
+  .section { padding-block: var(--space-8); }
+}
+@media (min-width: 1024px) {
+  .section { padding-block: var(--space-9); }
+}
+.section--soft { background: var(--color-bg-soft); }
+.section--dark { background: var(--color-charcoal); color: #E6E8EC; }
+.section--dark h1, .section--dark h2, .section--dark h3 { color: #fff; }
+.section--dark .lead { color: #BAC0C9; }
+
+/* Utility */
+.text-center { text-align: center; }
+.text-balance { text-wrap: balance; }
+.text-muted { color: var(--color-muted); }
+.text-cyan { color: var(--color-cyan); }
+.text-sm { font-size: var(--fs-sm); }
+.text-md { font-size: var(--fs-md); }
+.fw-600 { font-weight: 600; }
+
+.mt-0 { margin-top: 0; }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-5 { margin-top: var(--space-5); }
+.mt-6 { margin-top: var(--space-6); }
+.mt-7 { margin-top: var(--space-7); }
+.mt-8 { margin-top: var(--space-8); }
+
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-5 { margin-bottom: var(--space-5); }
+.mb-6 { margin-bottom: var(--space-6); }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-5 { gap: var(--space-5); }
+
+.hidden { display: none !important; }
+
+/* Visibility responsive (mobile-first).
+   Le classi --to-md / --from-md seguono i breakpoint definiti in tokens.css. */
+.hide-from-md  { /* visibile sotto 768px */ }
+.hide-from-lg  { /* visibile sotto 1024px */ }
+.show-from-md  { display: none !important; }
+.show-from-lg  { display: none !important; }
+@media (min-width: 768px) {
+  .hide-from-md { display: none !important; }
+  .show-from-md { display: revert !important; }
+}
+@media (min-width: 1024px) {
+  .hide-from-lg { display: none !important; }
+  .show-from-lg { display: revert !important; }
+}
+
+/* Stack fluido: contenuto su mobile in colonna, su desktop in riga.
+   Usare per coppie di pulsanti, info inline, ecc. */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.cluster--center { justify-content: center; }
+
+/* Word wrap difensivo per stringhe lunghe (URL, email, P.IVA…) */
+.break-word { overflow-wrap: anywhere; word-break: break-word; }
+
+/* Sr-only */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Main content offset for sticky header */
+main { min-height: calc(100vh - var(--header-h)); }
+
+/* Eyebrow (small uppercase label sopra i titoli di sezione) */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-cyan-600);
+  margin-bottom: var(--space-3);
+}
+
+/* Section header (titolo + sottotitolo centrali) */
+.section-header {
+  text-align: center;
+  margin-inline: auto;
+  margin-bottom: var(--space-6);
+  max-width: 720px;
+}
+@media (min-width: 768px) {
+  .section-header { margin-bottom: var(--space-7); }
+}
+.section-header h2 { margin-bottom: var(--space-3); }
+.section-header .lead { margin-inline: auto; }
+.section-header .eyebrow { margin-bottom: var(--space-2); }
+
+/* Reveal on scroll (handled by reveal.js) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
