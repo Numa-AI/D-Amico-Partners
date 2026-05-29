@@ -1292,7 +1292,10 @@ body.is-menu-open { overflow: hidden; }
 }
 .location-section__cta {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  gap: var(--space-3) var(--space-5);
   margin-top: var(--space-6);
 }
 
