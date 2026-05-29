@@ -1373,6 +1373,11 @@ body.is-menu-open { overflow: hidden; }
 }
 
 /* ============ Location hero (Dove siamo — mappa in evidenza) ============ */
+/* Padding compatto: la prima schermata deve stare nella viewport anche su laptop */
+.location-hero { padding-block: var(--space-5); }
+@media (min-width: 768px)  { .location-hero { padding-block: var(--space-6); } }
+@media (min-width: 1024px) { .location-hero { padding-block: var(--space-7); } }
+
 .location-hero__grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1400,7 +1405,7 @@ body.is-menu-open { overflow: hidden; }
 @media (min-width: 1024px) {
   .location-hero__map {
     aspect-ratio: auto;   /* riempie l'altezza del pannello affiancato */
-    min-height: 460px;
+    min-height: 360px;
   }
 }
 .location-hero__map iframe {
@@ -1417,17 +1422,17 @@ body.is-menu-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 .location-hero__title {
   font-family: var(--font-display);
-  font-size: var(--fs-3xl);
+  font-size: var(--fs-2xl);
   line-height: var(--lh-tight);
   color: var(--color-ink);
   margin: var(--space-1) 0 0;
 }
 .location-hero__lead {
-  font-size: var(--fs-md);
+  font-size: var(--fs-base);
   line-height: var(--lh-base);
   color: var(--color-muted);
   max-width: 46ch;
@@ -1437,11 +1442,11 @@ body.is-menu-open { overflow: hidden; }
 /* Lista dettagli (indirizzo / orari) con icone */
 .location-detail {
   list-style: none;
-  margin: var(--space-2) 0 0;
+  margin: var(--space-1) 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 .location-detail__item {
   display: flex;
@@ -1453,8 +1458,8 @@ body.is-menu-open { overflow: hidden; }
 }
 .location-detail__icon {
   flex: 0 0 auto;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
   border-radius: var(--radius-md);
