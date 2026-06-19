@@ -207,13 +207,32 @@ main { min-height: calc(100vh - var(--header-h)); }
 .section-header .lead { margin-inline: auto; }
 .section-header .eyebrow { margin-bottom: var(--space-2); }
 
-/* Reveal on scroll (handled by reveal.js) */
+/* ============ Reveal on scroll (handled by reveal.js) ============
+   Funziona su qualsiasi dispositivo (touch incluso): l'animazione è guidata
+   da IntersectionObserver, non dall'hover. Lo stagger fra elementi adiacenti
+   è impostato da reveal.js via --reveal-delay. Variante direzionale via data-reveal.
+   Usa solo opacity + transform (GPU, niente reflow/CLS) ed ease-out in entrata. */
 .reveal {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
 }
+.reveal[data-reveal="left"]  { transform: translateX(-28px); }
+.reveal[data-reveal="right"] { transform: translateX(28px); }
+.reveal[data-reveal="scale"] { transform: scale(0.92); }
+.reveal[data-reveal="fade"]  { transform: none; }
+
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+  will-change: auto;
+}
+
+/* Sicurezza: senza JS o con reduced-motion il contenuto resta sempre visibile. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
 }

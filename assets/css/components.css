@@ -1483,3 +1483,24 @@ body.is-menu-open { overflow: hidden; }
   gap: var(--space-3) var(--space-5);
   margin-top: var(--space-3);
 }
+
+/* ============ Feedback tattile al tap (dispositivi touch) ============
+   Sui dispositivi senza puntatore fine gli stati :hover non si attivano:
+   diamo un feedback immediato al tocco con un leggero scale-down.
+   Solo transform → nessun reflow, nessun layout shift; release morbida. */
+@media (hover: none) {
+  .location-card { transition: transform var(--dur) var(--ease); }
+
+  .card:active,
+  .audience:active,
+  .step:active,
+  .contact-link:active,
+  .location-card:active,
+  .trust-strip__item:active,
+  .btn:active,
+  .site-nav__link:active,
+  .mobile-menu__link:active {
+    transform: scale(0.975);
+    transition-duration: var(--dur-fast);
+  }
+}
