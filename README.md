@@ -8,24 +8,31 @@ Il sito è una **single-page** dal tema scuro (antracite + accento azzurro `#29A
 
 ```text
 sito/
-├── index.html            Home (single-page: tutte le sezioni)
-├── privacy.html          Informativa privacy (GDPR)
-├── cookie.html           Cookie policy
-├── note-legali.html      Note legali & dati societari
-├── 404.html              Pagina di errore
-├── style.css             Token, reset, base, topbar, hero
-├── sections.css          Componenti delle sezioni + pagine legali
-├── main.js               State machine dell'hero video (+ audio sintetizzato)
-├── site.js               Nav, accordion, tabs, form Web3Forms, reveal, sticky bar
-├── logo-chiaro-trasparente.png
-├── hero.mp4 · hero-poster.jpg · hero-fine.jpg
-├── chi-siamo-brescia.avif
-├── sitemap.xml · robots.txt
-└── .nojekyll             Disattiva Jekyll (deploy GitHub Pages)
+├── index.html             Home (single-page: tutte le sezioni)
+├── index-vaso2.html       Variante hero con il video "Vaso 2" (noindex, anteprima)
+├── privacy.html           Informativa privacy (GDPR)
+├── cookie.html            Cookie policy
+├── note-legali.html       Note legali & dati societari
+├── 404.html               Pagina di errore
+├── favicon-light.png · favicon-dark.png    Favicon adattive al tema
+├── sitemap.xml · robots.txt · .nojekyll    Meta + deploy GitHub Pages
+└── assets/
+    ├── css/
+    │   ├── style.css       Token, reset, base, topbar, hero
+    │   └── sections.css    Componenti delle sezioni + pagine legali
+    ├── js/
+    │   ├── main.js         State machine dell'hero video (+ audio sintetizzato)
+    │   └── site.js         Nav, accordion, tabs, form Web3Forms, reveal, sticky bar
+    ├── fonts/              inter.woff2 · playfair.woff2 (self-hosted, GDPR-clean)
+    ├── img/                logo · hero-poster · hero-fine · chi-siamo-brescia · poster video · div-start
+    └── video/              hero.mp4 · hero-vaso2.mp4 · bilancio-crescita.mp4
 ```
 
-> `main.js` è dedicato all'hero e viene incluso **solo** in `index.html`; le pagine
-> legali e la 404 caricano soltanto `site.js` (che è null-safe).
+> Tutti gli asset (CSS, JS, font, immagini, video) vivono sotto `assets/`; solo le
+> pagine `.html`, i favicon e i file di meta/deploy restano nella root (necessario per
+> le URL pubbliche e GitHub Pages). `main.js` è dedicato all'hero e viene incluso **solo**
+> in `index.html` e `index-vaso2.html`; le pagine legali e la 404 caricano soltanto
+> `site.js` (null-safe).
 
 ## Anteprima locale
 

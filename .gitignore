@@ -19,6 +19,6 @@ npm-debug.log*
 # Local server output
 .playwright-cli/
 
-# Video grezzi / esperimenti AI (non asset del sito: l'hero usa hero.mp4)
+# Video grezzi / esperimenti AI non pubblicati.
+# Gli hero ufficiali sono in assets/video/ (hero.mp4, hero-vaso2.mp4): quelli restano tracciati.
 Firefly*.mp4
-Vaso*.mp4

@@ -20,14 +20,14 @@
   font-style: normal;
   font-weight: 100 900;      /* variabile: copre tutti i pesi */
   font-display: swap;
-  src: url('fonts/inter.woff2') format('woff2');
+  src: url('../fonts/inter.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Playfair Display';
   font-style: normal;
   font-weight: 400 900;      /* variabile: copre tutti i pesi */
   font-display: swap;
-  src: url('fonts/playfair.woff2') format('woff2');
+  src: url('../fonts/playfair.woff2') format('woff2');
 }
 
 :root {
@@ -476,7 +476,7 @@ main { padding-top: var(--header-h); }
 
 /* fallback statico: nascosto finché non serve */
 .hero-still {
-  background: url("hero-fine.jpg") center / contain no-repeat;
+  background: url("../img/hero-fine.jpg") center / contain no-repeat;
   opacity: 0;
   pointer-events: none;
   transition: opacity .5s ease;
