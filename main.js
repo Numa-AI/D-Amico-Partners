@@ -61,6 +61,24 @@
     o.stop(t0 + dur + 0.05);
   }
 
+  // tono d'ambiente: fade-in lento + coda lunghissima. Non un colpo, ma un
+  // "respiro" che si gonfia e si dissolve. Ritorna l'oscillatore per poterne
+  // modulare la frequenza (portamento) dall'esterno.
+  function swell(t0, freq, peak, attack, dur, type) {
+    var o = actx.createOscillator();
+    o.type = type || 'sine';
+    o.frequency.value = freq;
+    var g = actx.createGain();
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(peak, t0 + attack);   // salita lenta
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);    // dissolvenza lunga
+    g.connect(actx.destination);
+    o.connect(g);
+    o.start(t0);
+    o.stop(t0 + dur + 0.05);
+    return o;
+  }
+
   var sounds = {
     // rottura: botta di rumore "ceramica" + tonfo basso + clink di schegge
     shatter: function () {
@@ -81,19 +99,27 @@
              0.09 + Math.random() * 0.15);
       }
     },
-    // convergenza: carillon sommesso — poche note dolci in scala pentatonica
-    // che salgono piano verso l'incastro
+    // ricomposizione: non più note percosse, ma un respiro risonante. Un accordo
+    // caldo (Do maggiore aperto) le cui voci entrano scaglionate in dissolvenza
+    // lenta — come i cocci che si attraggono — mentre una voce sale in portamento
+    // verso l'incastro; poi lunga coda dorata che si spegne oltre la fine (kintsugi)
     assemble: function () {
       var t0 = actx.currentTime;
-      var DUR = 1.3;
-      // C5 D5 E5 G5 A5 C6 D6 E6: pentatonica, nessuna dissonanza possibile
-      var NOTES = [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.7, 1318.5];
-      for (var i = 0; i < NOTES.length; i++) {
-        var p = i / (NOTES.length - 1);                 // 0 → 1
-        var when = t0 + p * DUR + Math.random() * 0.04;
-        var vol = 0.018 + p * 0.032;                    // crescendo appena accennato
-        ping(when, NOTES[i], vol, 0.55 + Math.random() * 0.25);
+      // C4 E4 G4 C5 E5: accordo spalmato su due ottave, nessuna dissonanza
+      var CHORD = [261.63, 329.63, 392.0, 523.25, 659.25];
+      for (var i = 0; i < CHORD.length; i++) {
+        var attack = 0.8 + i * 0.16;                    // le voci si accendono a scaglioni
+        var peak = 0.013 + i * 0.003;                   // tenui e crescenti verso l'acuto
+        swell(t0 + i * 0.06, CHORD[i], peak, attack, 4.6 + i * 0.15);
+        // gemella disaccordata di pochi cent: leggero battimento "vivo", non piatto
+        swell(t0 + i * 0.06, CHORD[i] * 1.004, peak * 0.6, attack, 4.4 + i * 0.15);
       }
+      // voce centrale che sale piano G4 → C5: senso di convergenza e risoluzione
+      var glide = swell(t0, 392.0, 0.012, 1.0, 4.2);
+      glide.frequency.setValueAtTime(392.0, t0);
+      glide.frequency.exponentialRampToValueAtTime(523.25, t0 + 2.1);
+      // velo cristallino appena percettibile che svanisce dopo l'incastro
+      swell(t0 + 0.5, 1046.5, 0.0035, 1.4, 4.4);
     }
   };
 
@@ -141,6 +167,20 @@
     hero.classList.add('ended');
   }
 
+  // ricomincia il video dall'inizio. enableSound=true (replay esplicito) sblocca
+  // l'audio; su false (replay automatico da scroll) il suono parte solo se
+  // l'utente lo aveva già attivato in precedenza.
+  function replay(enableSound) {
+    hero.classList.remove('ended', 'static');
+    if (enableSound) { ensureAudio(); }
+    resetCues(0);
+    try { video.currentTime = 0; } catch (e) { /* niente */ }
+    var p = video.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(showStatic);
+    }
+  }
+
   if (reducedMotion) {
     // niente animazioni (e niente suoni): subito lo stato finale statico
     showStatic();
@@ -168,19 +208,29 @@
 
     // rete lenta / file mancante: non lasciare la hero vuota
     video.addEventListener('error', showStatic, true);
+
+    // scroll fuori dalla hero e ritorno: il video riparte dall'inizio.
+    // Isteresi: consideriamo la hero "uscita" quando è quasi fuori schermo
+    // (≤15% visibile) e la facciamo ripartire solo quando torna ben visibile
+    // (≥75%), così piccoli scroll vicino al bordo non la ritriggerano.
+    if ('IntersectionObserver' in window) {
+      var heroWasOut = false;
+      var heroIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.intersectionRatio <= 0.15) {
+            heroWasOut = true;
+          } else if (entry.intersectionRatio >= 0.75 && heroWasOut) {
+            heroWasOut = false;
+            if (!hero.classList.contains('static')) { replay(false); }
+          }
+        });
+      }, { threshold: [0.15, 0.75] });
+      heroIO.observe(hero);
+    }
   }
 
   // il replay è un gesto esplicito: qui l'audio parte dall'inizio, completo
-  replayBtn.addEventListener('click', function () {
-    hero.classList.remove('ended', 'static');
-    ensureAudio();
-    resetCues(0);
-    video.currentTime = 0;
-    var p = video.play();
-    if (p && typeof p.catch === 'function') {
-      p.catch(showStatic);
-    }
-  });
+  replayBtn.addEventListener('click', function () { replay(true); });
 
   // Il reveal on scroll delle sezioni e tutte le altre interazioni della pagina
   // (nav, accordion, tabs, form) vivono in site.js: main.js resta hero.

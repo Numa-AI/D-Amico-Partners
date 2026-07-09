@@ -8,7 +8,9 @@
   <meta name="theme-color" content="#0a0a0c">
   <meta name="robots" content="noindex, follow">
 
-  <link rel="icon" type="image/png" href="logo-chiaro-trasparente.png">
+  <!-- Favicon: quadrato (niente squish) e adattivo al tema del browser: bianco su dark, nero su light -->
+  <link rel="icon" type="image/png" sizes="256x256" href="favicon-light.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" sizes="256x256" href="favicon-dark.png" media="(prefers-color-scheme: dark)">
 
   <!-- Preload webfont self-hosted (coerenti col logo) -->
   <link rel="preload" href="fonts/playfair.woff2" as="font" type="font/woff2" crossorigin>

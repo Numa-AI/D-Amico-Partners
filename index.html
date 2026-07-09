@@ -21,7 +21,9 @@
   <meta name="twitter:description" content="Mediazione creditizia, finanza d'impresa, ristrutturazione del debito, gestione della crisi. Un unico interlocutore. Brescia.">
   <meta name="twitter:image" content="https://www.damicoandpartners.it/hero-fine.jpg">
 
-  <link rel="icon" type="image/png" href="logo-chiaro-trasparente.png">
+  <!-- Favicon: quadrato (niente squish) e adattivo al tema del browser: bianco su dark, nero su light -->
+  <link rel="icon" type="image/png" sizes="256x256" href="favicon-light.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" sizes="256x256" href="favicon-dark.png" media="(prefers-color-scheme: dark)">
 
   <!-- Preload webfont self-hosted (coerenti col logo) -->
   <link rel="preload" href="fonts/playfair.woff2" as="font" type="font/woff2" crossorigin>
@@ -175,8 +177,8 @@
           <p class="lead">Dal supporto quotidiano nei rapporti bancari fino alla gestione delle situazioni più complesse, vi affianchiamo in ogni fase.</p>
         </header>
 
-        <div class="division-grid">
-          <article class="division reveal">
+        <div class="division-grid reveal">
+          <article class="division">
             <div class="division__head">
               <span class="division__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
@@ -191,9 +193,15 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Operazioni di finanza straordinaria</li>
             </ul>
             <a class="division__cta" href="#servizi">Scopri Consulting <span aria-hidden="true">→</span></a>
+            <span class="swipe-hint swipe-hint--right" aria-hidden="true">
+              <span class="swipe-hint__label">Scorri</span>
+              <svg class="swipe-hint__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
           </article>
 
-          <article class="division reveal">
+          <article class="division">
             <div class="division__head">
               <span class="division__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
@@ -207,7 +215,13 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Risanamento e turnaround aziendale</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Consulenza legale collegata alla finanza d'impresa</li>
             </ul>
-            <a class="division__cta" href="#audience">Scopri Advisory <span aria-hidden="true">→</span></a>
+            <a class="division__cta division__cta--end" href="#audience">Scopri Advisory <span aria-hidden="true">→</span></a>
+            <span class="swipe-hint swipe-hint--left" aria-hidden="true">
+              <svg class="swipe-hint__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+              </svg>
+              <span class="swipe-hint__label">Scorri</span>
+            </span>
           </article>
         </div>
       </div>
@@ -223,7 +237,6 @@
 
         <div class="feature-list">
           <article class="feature-row reveal">
-            <span class="feature-row__num">01</span>
             <div>
               <h3 class="feature-row__title">Mediazione creditizia</h3>
               <p class="feature-row__body">Iscritti OAM (M640). Costruiamo e manteniamo un rapporto sano con il sistema bancario, ottimizzando l'accesso al credito per la vostra impresa.</p>
@@ -248,7 +261,6 @@
           </article>
 
           <article class="feature-row reveal">
-            <span class="feature-row__num">02</span>
             <div>
               <h3 class="feature-row__title">Finanza d'impresa</h3>
               <p class="feature-row__body">Finanza ordinaria e straordinaria: rapporti bancari, fido, anticipo fatture, fino a M&amp;A, finanza di progetto e riorganizzazioni societarie.</p>
@@ -270,7 +282,6 @@
           </article>
 
           <article class="feature-row reveal">
-            <span class="feature-row__num">03</span>
             <div>
               <h3 class="feature-row__title">Ristrutturazione del debito</h3>
               <p class="feature-row__body">Debiti bancari, erariali e contributivi. Percorsi strutturati con gli strumenti del Codice della Crisi, nel massimo riserbo.</p>
@@ -286,9 +297,8 @@
           </article>
 
           <article class="feature-row reveal">
-            <span class="feature-row__num">04</span>
             <div>
-              <h3 class="feature-row__title">Gestione della crisi &amp; advisory</h3>
+              <h3 class="feature-row__title">Gestione della crisi e advisory</h3>
               <p class="feature-row__body">Gestione della crisi d'impresa, risanamento e turnaround, con il supporto legale del nostro network di avvocati.</p>
             </div>
             <div class="feature-visual" aria-hidden="true">
@@ -413,32 +423,28 @@
                 <source srcset="chi-siamo-brescia.avif" type="image/avif">
                 <img src="chi-siamo-brescia.avif" alt="Brescia, Piazza della Vittoria — sede di D'Amico &amp; Partners" width="800" height="1000" loading="lazy">
               </picture>
-              <span class="hero-cluster__credential" aria-label="Iscrizione OAM mediatori creditizi M640">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5z"/></svg>
-                OAM&nbsp;M640
-              </span>
-              <div class="hero-cluster__overlay">
-                <span class="hero-cluster__label">Brescia</span>
-                <p class="hero-cluster__big">20<small>+</small></p>
-                <p class="hero-cluster__sub">anni al fianco delle PMI e degli imprenditori bresciani</p>
-              </div>
             </div>
           </div>
 
           <div>
             <span class="mono-label mb-3">Chi siamo</span>
             <h2 class="section-title" id="chisiamo-title">Un partner, non un semplice consulente.</h2>
-            <p class="lead mt-4">Dal 2006 affianchiamo imprenditori e famiglie di Brescia e della Lombardia. Un team multidisciplinare — financial advisor, commercialisti e avvocati — con un unico obiettivo: valorizzare il profilo e la credibilità di chi ci affida la propria storia.</p>
+            <p class="lead mt-4">Dal 2006 affianchiamo imprenditori e famiglie di Brescia e della Lombardia. Financial advisor, commercialisti e avvocati che lavorano insieme, con un solo obiettivo: dare valore al profilo e alla credibilità di chi ci affida la propria storia.</p>
             <div class="cert-list">
               <span class="cert-badge">Financial advisor</span>
               <span class="cert-badge">Commercialisti</span>
               <span class="cert-badge">Avvocati</span>
               <span class="cert-badge">Esperti di crisi</span>
             </div>
-            <div class="dev-links">
-              <a href="#metodo">Scopri come lavoriamo</a>
-              <span class="sep">|</span>
-              <a class="text-muted" href="#contatti">Fissa un colloquio</a>
+            <div class="link-row">
+              <a class="link-arrow" href="#metodo">
+                Scopri come lavoriamo
+                <svg class="link-arrow__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a class="link-arrow link-arrow--muted" href="#contatti">
+                Fissa un colloquio
+                <svg class="link-arrow__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
             </div>
           </div>
         </div>
@@ -453,8 +459,11 @@
             <span class="mono-label mb-3">A chi ci rivolgiamo</span>
             <h2 class="section-title" id="audience-title">Soluzioni su misura per ogni situazione.</h2>
             <p class="lead mt-4">Che siate un'impresa in crescita, una realtà in difficoltà o una famiglia sovraindebitata, il primo passo è sempre lo stesso: un colloquio riservato, senza impegno.</p>
-            <div class="dev-links">
-              <a href="#contatti">Parliamone in riservatezza</a>
+            <div class="link-row">
+              <a class="link-arrow" href="#contatti">
+                Parliamone in riservatezza
+                <svg class="link-arrow__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
             </div>
           </div>
 

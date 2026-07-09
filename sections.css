@@ -91,15 +91,8 @@
   align-items: center;
 }
 .feature-row > * { min-width: 0; }
-.feature-row__num {
-  grid-column: 1 / -1;
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  color: var(--accent);
-}
 @media (min-width: 768px) {
-  .feature-row { grid-template-columns: auto 1fr auto; gap: var(--space-6); padding-block: var(--space-6); }
-  .feature-row__num { grid-column: auto; }
+  .feature-row { grid-template-columns: 1fr auto; gap: var(--space-6); padding-block: var(--space-6); }
 }
 .feature-row__title {
   font-family: var(--font-display);
@@ -128,13 +121,31 @@
    Overview delle due macro-aree: card con icona, elenco puntato e CTA
    di ancoraggio. Mobile 1 col → da 768px 2 col affiancate. */
 .division-grid {
-  display: grid;
-  gap: var(--space-5);
-  grid-template-columns: 1fr;
+  /* Mobile: carosello orizzontale — una card alla volta, swipe sx/dx con snap.
+     La card successiva "sbircia" dal bordo per rendere evidente che si scorre. */
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;      /* momentum su iOS */
+  scrollbar-width: none;                   /* Firefox: nasconde la scrollbar */
 }
-.division-grid > * { min-width: 0; }
+.division-grid::-webkit-scrollbar { display: none; }  /* Chrome/Safari/Edge */
+.division-grid > * {
+  min-width: 0;
+  flex: 0 0 91%;                           /* card quasi a tutta larghezza + piccolo peek della successiva */
+  scroll-snap-align: start;
+}
 @media (min-width: 768px) {
-  .division-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+  /* Da tablet in su torna griglia a 2 colonne affiancate: niente scroll/snap. */
+  .division-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+  .division-grid > * { flex: initial; }
 }
 
 .division {
@@ -142,7 +153,7 @@
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  padding: var(--space-6);
+  padding: var(--space-5);                 /* mobile/carosello: padding compatto per dare più larghezza al testo */
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--bg-1);
@@ -150,6 +161,7 @@
               transform var(--dur) var(--ease),
               box-shadow var(--dur) var(--ease);
 }
+@media (min-width: 768px)  { .division { padding: var(--space-6); } }
 @media (min-width: 1024px) { .division { padding: var(--space-7); } }
 /* filo d'accento in cima alla card */
 .division::before {
@@ -224,6 +236,51 @@
   gap: var(--space-3);
 }
 @media (hover: none) { .division:active { transform: scale(.99); } }
+/* Advisory nel carosello mobile: CTA a destra, così l'hint "← scorri" resta a sinistra senza sovrapporsi.
+   Da tablet (card affiancate) torna allineato a sinistra come Consulting, per coerenza. */
+.division__cta--end { align-self: flex-end; }
+@media (min-width: 768px) { .division__cta--end { align-self: flex-start; } }
+
+/* ============ Hint "scorri" dentro le card divisioni (solo mobile) ============
+   Affordance direzionale in basso a ciascuna card del carosello: su Consulting
+   la freccia punta a destra (prossima card), su Advisory a sinistra (indietro).
+   La freccetta azzurra oscilla nella sua direzione come un gesto di swipe.
+   Visibile solo <768px (dove le card scorrono); da tablet le card sono affiancate. */
+.swipe-hint {
+  position: absolute;                    /* overlay flottante sopra la card, fuori dal flusso */
+  bottom: var(--space-5);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  line-height: 1;
+  pointer-events: none;                  /* è solo un hint: non intercetta i tap sulla card */
+}
+.swipe-hint--right { right: var(--space-4); }   /* Consulting: in basso, spinto a destra */
+.swipe-hint--left  { left: var(--space-4); }    /* Advisory: in basso, spinto a sinistra */
+.swipe-hint__label { line-height: 1; }
+.swipe-hint__icon { width: 18px; height: 18px; flex: none; }
+.swipe-hint--right .swipe-hint__icon { animation: swipe-hint-r 1.6s ease-in-out infinite; }
+.swipe-hint--left  .swipe-hint__icon { animation: swipe-hint-l 1.6s ease-in-out infinite; }
+
+@keyframes swipe-hint-r {
+  0%, 100% { transform: translateX(-3px); opacity: .55; }
+  50%      { transform: translateX(3px);  opacity: 1; }
+}
+@keyframes swipe-hint-l {
+  0%, 100% { transform: translateX(3px);  opacity: .55; }
+  50%      { transform: translateX(-3px); opacity: 1; }
+}
+
+@media (min-width: 768px) { .swipe-hint { display: none; } }     /* da tablet: card affiancate, nessun hint */
+@media (prefers-reduced-motion: reduce) {
+  .swipe-hint__icon { animation: none; transform: none; }        /* resta statico ma visibile */
+}
 
 /* ============ Metodo — accordion (mobile) / tab + pannello sticky (desktop) ============
    Stessa struttura DOM ai due breakpoint: disclosure (aria-expanded + aria-controls).
@@ -421,18 +478,35 @@
   .cert-badge:hover { border-color: var(--accent); color: var(--text); }
 }
 
-.dev-links {
+/* Riga di azioni testuali sotto un blocco di contenuto. */
+.link-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-4);
-  margin-top: var(--space-5);
-  font-size: var(--fs-sm);
+  gap: var(--space-2) var(--space-6);
+  margin-top: var(--space-6);
 }
-.dev-links a { color: var(--accent); }
-.dev-links a:hover { color: var(--accent-hover); }
-.dev-links .sep { color: var(--border-strong); }
-.dev-links .text-muted { color: var(--text-dim); }
+.link-row > * { min-width: 0; }
+
+/* Link testuale con freccia animata (stesso linguaggio di .division__cta). */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  transition: color var(--dur) var(--ease), gap var(--dur) var(--ease);
+}
+.link-arrow--muted { color: var(--text-dim); font-weight: 500; }
+.link-arrow__icon { flex: none; transition: transform var(--dur) var(--ease); }
+
+@media (hover: hover) {
+  .link-arrow:hover { color: var(--accent-hover); gap: var(--space-3); }
+  .link-arrow:hover .link-arrow__icon { transform: translateX(3px); }
+  .link-arrow--muted:hover { color: var(--text); }
+}
 
 /* ============ Strumenti — gruppi statici di chip ============
    Due gruppi tematici, wrap statico: niente scorrimenti, molta aria. */
@@ -978,13 +1052,19 @@ body.is-menu-open .mobile-cta-bar { transform: translateY(100%); }
 .theme-light .feature-visual { color: #64748b; }
 /* Numeri fase accordion: erano bianco al 30% → scuro tenue */
 .theme-light .process-step__num { color: rgba(20, 20, 25, .24); }
+/* Step non attivi: opacity .5 (pensata per fondo scuro) su bianco rende
+   titolo e descrizione illeggibili → alza la soglia mantenendo la gerarchia.
+   Lo step attivo resta a opacity 1 grazie al :not([aria-expanded="true"]). */
+.theme-light .process-step:not([aria-expanded="true"]) { opacity: .85; }
+.theme-light .process-step:not([aria-expanded="true"]):hover { opacity: 1; }
 
 /* --- Azzurro-come-testo → variante scura per contrasto AA --- */
-.theme-light .feature-row__num,
 .theme-light .brief__eyebrow { color: var(--accent-strong); }
 .theme-light .info-window__icon { color: var(--accent-strong); }
-.theme-light .dev-links a { color: var(--accent-strong); }
-.theme-light .dev-links a:hover { color: var(--accent); }
+.theme-light .link-arrow { color: var(--accent-strong); }
+.theme-light .link-arrow:hover { color: var(--accent); }
+.theme-light .link-arrow--muted { color: var(--text-dim); }
+.theme-light .link-arrow--muted:hover { color: var(--text); }
 
 /* --- Lift delle card su fondo chiaro (bordo tenue + ombra morbida) --- */
 .theme-light .info-window { box-shadow: var(--shadow-sm); }
