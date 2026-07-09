@@ -178,10 +178,14 @@
 .division::before {
   content: "";
   position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;   /* segue gli angoli tondi (serve ora che la card non è più overflow:hidden) */
+  inset: -1px;                                            /* stessa area del bordo ESTERNO della card (tutti e 4 i lati) */
+  border-radius: var(--radius-lg);                        /* stessa forma/raggio della card → gli angoli coincidono */
   background: linear-gradient(90deg, var(--accent), transparent 70%);
+  /* mostro solo la fascia alta di 4px: essendo un rettangolo arrotondato,
+     la fetta superiore segue esattamente la curva degli angoli della card */
+  -webkit-mask: linear-gradient(180deg, #000 4px, transparent 4px);
+          mask: linear-gradient(180deg, #000 4px, transparent 4px);
+  pointer-events: none;
 }
 @media (hover: hover) {
   .division:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow); }
@@ -360,7 +364,9 @@
   border-radius: var(--radius-md);
 }
 .process-item__panel[hidden] { display: none; }
-.brief__eyebrow { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--accent); }
+/* Su mobile il pannello si apre sotto il bottone che già mostra numero + titolo
+   della fase: l'occhiello "Fase I · riservata" è un doppione → nascosto (riappare su desktop). */
+.brief__eyebrow { display: none; font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--accent); }
 .brief__title { display: none; font-family: var(--font-display); font-weight: 400; color: var(--text); font-size: var(--fs-xl); margin: var(--space-2) 0 var(--space-3); }
 .brief__body { color: var(--text-soft); font-size: var(--fs-sm); line-height: var(--lh-base); margin-top: var(--space-2); }
 .brief__list { margin-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); padding-left: 0; /* rimuove il padding-left di default del <ul>: spunte allineate al resto del pannello */ }
@@ -393,6 +399,7 @@
     background: var(--bg-2);
     border: 1px solid var(--border);
   }
+  .brief__eyebrow { display: block; }   /* colonna staccata: qui l'etichetta di fase non è ridondante */
   .brief__title { display: block; }
   .brief__body { margin-top: 0; }
 }
@@ -401,13 +408,13 @@
 .hero-cluster { position: relative; }
 .hero-cluster__main {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--bg-1);
   box-shadow: var(--shadow);
 }
-@media (min-width: 768px) { .hero-cluster__main { aspect-ratio: 5 / 6; max-height: 560px; margin-inline: auto; } }
+@media (min-width: 768px) { .hero-cluster__main { aspect-ratio: 3 / 2; max-height: 460px; margin-inline: auto; } }
 .hero-cluster__main picture,
 .hero-cluster__main img {
   position: absolute;
@@ -481,16 +488,49 @@
   .hero-cluster__sub { font-size: var(--fs-base); }
 }
 
+/* Chi siamo — riordino mobile + CTA sulla foto -----------------------------
+   Su mobile/tablet il testo (occhiello → badge) sta sopra e la foto scende
+   sotto; da 1024px torna l'ordine naturale (foto a sinistra, testo a destra). */
+.two-col--chisiamo .hero-cluster { order: 2; }
+.two-col--chisiamo .two-col__text { order: 1; }
+@media (min-width: 1024px) {
+  .two-col--chisiamo .hero-cluster,
+  .two-col--chisiamo .two-col__text { order: 0; }
+}
+/* Le due CTA vivono dentro la foto, su una velatura scura (overlay riusato). */
+.hero-cluster__overlay--actions { padding: var(--space-8) var(--space-5) var(--space-4); }
+.link-row--on-image { margin-top: 0; gap: var(--space-3) var(--space-6); }
+.theme-light .hero-cluster__overlay .link-arrow { color: var(--accent); }
+.theme-light .hero-cluster__overlay .link-arrow--muted { color: rgba(255, 255, 255, .82); }
+@media (hover: hover) {
+  .theme-light .hero-cluster__overlay .link-arrow:hover { color: var(--accent-hover); }
+  .theme-light .hero-cluster__overlay .link-arrow--muted:hover { color: #fff; }
+}
+
 /* Badge competenze / qualifiche */
-.cert-list { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-5); }
+.cert-list {
+  display: flex;
+  flex-wrap: nowrap;                 /* mobile: tutte le qualifiche su un'unica riga */
+  gap: var(--space-1);
+  margin-top: var(--space-5);
+  overflow-x: auto;                  /* fallback: su schermi strettissimi si scorre invece di rompere il layout */
+  scrollbar-width: none;
+}
+.cert-list::-webkit-scrollbar { display: none; }
 .cert-badge {
+  flex: none;
+  white-space: nowrap;
   font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  padding: var(--space-2) var(--space-4);
+  font-size: clamp(9.5px, 2.6vw, var(--fs-xs));
+  padding: var(--space-2) clamp(6px, 1.7vw, var(--space-4));
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
   color: var(--text-dim);
   transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+@media (min-width: 640px) {           /* da tablet in su: torna il wrap e le dimensioni piene */
+  .cert-list { flex-wrap: wrap; overflow: visible; }
+  .cert-badge { font-size: var(--fs-xs); padding: var(--space-2) var(--space-4); }
 }
 @media (hover: hover) {
   .cert-badge:hover { border-color: var(--accent); color: var(--text); }
