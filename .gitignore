@@ -18,3 +18,6 @@ npm-debug.log*
 
 # Local server output
 .playwright-cli/
+
+# Video grezzi / esperimenti AI (non asset del sito: l'hero usa hero.mp4)
+Firefly*.mp4

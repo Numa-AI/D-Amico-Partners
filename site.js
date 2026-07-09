@@ -125,16 +125,36 @@
     var buttons = Array.prototype.slice.call(root.querySelectorAll('.process-step[aria-controls]'));
     if (!buttons.length) return;
 
+    var mqDesktop = window.matchMedia('(min-width: 1024px)');
+
+    var setOpen = function (btn, on) {
+      btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if (panel) panel.hidden = !on;
+    };
+
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        if (btn.getAttribute('aria-expanded') === 'true') return; // resta sempre uno aperto
-        buttons.forEach(function (b) {
-          var on = b === btn;
-          b.setAttribute('aria-expanded', on ? 'true' : 'false');
-          var panel = document.getElementById(b.getAttribute('aria-controls'));
-          if (panel) panel.hidden = !on;
-        });
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          // Desktop (2 colonne sticky): resta sempre un pannello aperto.
+          if (mqDesktop.matches) return;
+          // Mobile: seconda toccata sulla fase aperta → la richiude (toggle).
+          setOpen(btn, false);
+          return;
+        }
+        buttons.forEach(function (b) { setOpen(b, b === btn); });
       });
+    });
+
+    // Se si torna a desktop con tutte le fasi chiuse, riapri la prima:
+    // la colonna sticky di destra non deve restare vuota.
+    mqDesktop.addEventListener('change', function (e) {
+      if (!e.matches) return;
+      var anyOpen = buttons.some(function (b) {
+        return b.getAttribute('aria-expanded') === 'true';
+      });
+      if (!anyOpen) buttons.forEach(function (b, i) { setOpen(b, i === 0); });
     });
   })();
 
@@ -231,18 +251,22 @@
     set.forEach(function (el) { io.observe(el); });
   })();
 
-  /* ---------- Sticky mobile CTA bar: visibile solo quando l'hero è fuori vista ---------- */
-  (function mobileCta() {
-    var hero = document.querySelector('.hero');
-    var bar = document.querySelector('.mobile-cta-bar');
-    if (!bar) return;
-    if (!hero || !('IntersectionObserver' in window)) { bar.classList.add('is-visible'); return; }
+  /* ---------- Carosello divisioni: mostra l'hint "scorri" solo della card in vista ----------
+     Con l'overhang sul bordo, la freccia di una card sborderebbe nel peek dell'altra.
+     Marchiamo come .is-current la card centrata (>=60% visibile nel carosello) e via
+     CSS mostriamo solo il suo hint. Senza IntersectionObserver: fallback CSS con entrambi. */
+  (function divisionHints() {
+    var grid = document.querySelector('.division-grid');
+    if (!grid) return;
+    var cards = grid.querySelectorAll('.division');
+    if (!cards.length || !('IntersectionObserver' in window)) return;
+    grid.classList.add('hints-managed');
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        bar.classList.toggle('is-visible', !entry.isIntersecting);
+      entries.forEach(function (e) {
+        e.target.classList.toggle('is-current', e.intersectionRatio >= 0.6);
       });
-    }, { threshold: 0 });
-    io.observe(hero);
+    }, { root: grid, threshold: [0, 0.6, 1] });
+    cards.forEach(function (c) { io.observe(c); });
   })();
 
   /* ---------- Form: validazione client + invio Web3Forms + honeypot ---------- */
