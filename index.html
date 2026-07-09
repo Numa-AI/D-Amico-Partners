@@ -430,11 +430,6 @@
               <source src="bilancio-crescita.mp4" type="video/mp4">
             </video>
           </div>
-          <figcaption class="results__caption">
-            <span class="results__chip">Bilancio in perdita</span>
-            <svg class="results__arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            <span class="results__chip results__chip--to">Ritorno alla crescita</span>
-          </figcaption>
         </figure>
       </div>
     </section>
@@ -500,19 +495,61 @@
               <button class="info-window__tab" type="button" role="tab" id="tab-privati" data-tab="privati" aria-selected="false" aria-controls="panel-privati" tabindex="-1">Privati</button>
             </div>
             <div class="info-window__body" id="panel-pmi" role="tabpanel" data-panel="pmi" aria-labelledby="tab-pmi">
-              <span class="info-window__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21V12h6v9"/></svg></span>
-              <h3 class="info-window__title">Piccole e medie imprese</h3>
-              <p class="info-window__text">Aziende che vogliono ottimizzare i rapporti bancari, reperire risorse per crescere o riorganizzare la struttura finanziaria.</p>
+              <p class="info-window__index"><span class="info-window__num">01</span> Imprese in crescita</p>
+              <div class="info-window__head">
+                <h3 class="info-window__title">Piccole e medie imprese</h3>
+                <span class="info-window__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21V12h6v9"/></svg></span>
+              </div>
+              <p class="info-window__text">Aziende solide che vogliono ottimizzare i rapporti con le banche, reperire risorse per crescere o riordinare la propria struttura finanziaria.</p>
+              <hr class="info-window__rule">
+              <p class="info-window__list-label">Dove entriamo in gioco</p>
+              <ul class="info-window__list">
+                <li>Rapporti bancari, fido e anticipo fatture</li>
+                <li>Accesso al credito e finanza d'impresa</li>
+                <li>M&amp;A, finanza di progetto e riorganizzazioni</li>
+              </ul>
+              <a class="link-arrow" href="#servizi">
+                Le competenze Consulting
+                <svg class="link-arrow__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
             </div>
             <div class="info-window__body" id="panel-crisi" role="tabpanel" data-panel="crisi" aria-labelledby="tab-crisi" hidden>
-              <span class="info-window__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
-              <h3 class="info-window__title">Imprese in difficoltà</h3>
-              <p class="info-window__text">Realtà che attraversano una fase critica e cercano un percorso strutturato di ristrutturazione del debito o risanamento.</p>
+              <p class="info-window__index"><span class="info-window__num">02</span> Imprese sotto pressione</p>
+              <div class="info-window__head">
+                <h3 class="info-window__title">Imprese in difficoltà</h3>
+                <span class="info-window__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+              </div>
+              <p class="info-window__text">Realtà che stanno attraversando una fase critica e cercano un percorso strutturato — non una soluzione improvvisata — per alleggerire il debito e ritrovare equilibrio.</p>
+              <hr class="info-window__rule">
+              <p class="info-window__list-label">Dove entriamo in gioco</p>
+              <ul class="info-window__list">
+                <li>Ristrutturazione del debito, anche erariale e contributivo</li>
+                <li>Composizione negoziata e strumenti del Codice della Crisi</li>
+                <li>Risanamento e rilancio operativo</li>
+              </ul>
+              <a class="link-arrow" href="#metodo">
+                Il nostro metodo
+                <svg class="link-arrow__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
             </div>
             <div class="info-window__body" id="panel-privati" role="tabpanel" data-panel="privati" aria-labelledby="tab-privati" hidden>
-              <span class="info-window__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-              <h3 class="info-window__title">Privati sovraindebitati</h3>
-              <p class="info-window__text">Persone con un'esposizione debitoria insostenibile, che necessitano di una strategia di uscita ordinata (L. 3/2012, Codice della Crisi).</p>
+              <p class="info-window__index"><span class="info-window__num">03</span> Persone e famiglie</p>
+              <div class="info-window__head">
+                <h3 class="info-window__title">Privati sovraindebitati</h3>
+                <span class="info-window__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+              </div>
+              <p class="info-window__text">Persone e famiglie con un'esposizione debitoria ormai insostenibile, che hanno diritto a una via d'uscita ordinata e alla possibilità di ripartire.</p>
+              <hr class="info-window__rule">
+              <p class="info-window__list-label">Dove entriamo in gioco</p>
+              <ul class="info-window__list">
+                <li>Piano del consumatore e liquidazione controllata</li>
+                <li>Esdebitazione (L. 3/2012 e Codice della Crisi)</li>
+                <li>Trattativa con creditori e agenzia di riscossione</li>
+              </ul>
+              <a class="link-arrow" href="#contatti">
+                Richiedi un colloquio riservato
+                <svg class="link-arrow__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
             </div>
           </div>
         </div>
