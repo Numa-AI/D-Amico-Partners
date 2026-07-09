@@ -82,16 +82,38 @@
     var i = 0;
     el.textContent = words[0];
     if (reduceMotion) return;
-    setInterval(function () {
-      i = (i + 1) % words.length;
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(0.25em)';
-      setTimeout(function () {
-        el.textContent = words[i];
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-      }, 220);
-    }, 2600);
+
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    function startRotation() {
+      setInterval(function () {
+        i = (i + 1) % words.length;
+        el.style.opacity = '0';
+        setTimeout(function () {
+          el.textContent = words[i];
+          el.style.opacity = '1';
+        }, 220);
+      }, 2600);
+    }
+
+    // Il titolo compare solo quando la hero raggiunge lo stato finale
+    // (.ended = video finito, .static = fallback autoplay/reduced-motion).
+    // Prima di allora è invisibile: se la rotazione partisse dal load, la
+    // prima parola ("crescita") sarebbe già cambiata quando la scritta appare.
+    // Facciamo quindi partire il ciclo da lì → prima parola ferma un attimo,
+    // poi ruota. Il primo cambio arriva ~2.6s dopo la comparsa.
+    function ready() {
+      return hero.classList.contains('ended') || hero.classList.contains('static');
+    }
+    if (ready()) {
+      startRotation();
+    } else {
+      var obs = new MutationObserver(function () {
+        if (ready()) { obs.disconnect(); startRotation(); }
+      });
+      obs.observe(hero, { attributes: true, attributeFilter: ['class'] });
+    }
   })();
 
   /* ---------- Metodo: accordion (mobile) / tab-panel sticky (desktop) ----------

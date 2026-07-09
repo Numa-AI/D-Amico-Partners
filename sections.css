@@ -190,6 +190,7 @@
   flex-direction: column;
   gap: var(--space-3);
   margin-bottom: var(--space-6);
+  padding-left: 0;            /* rimuove il padding-left di default del <ul>: spunte allineate al resto della card */
 }
 .division__list li {
   display: flex;
@@ -543,7 +544,7 @@
 /* ============ Manifesto (citazione) ============ */
 .manifesto {
   position: relative;
-  background: var(--bg-1);
+  background: var(--bg-2);
   padding-block: var(--space-7);
   overflow: hidden;
   isolation: isolate;
@@ -580,6 +581,7 @@
 /* ============ Contatti — CTA finale + form ============ */
 .final-cta {
   background: var(--bg-1);
+  border-top: 1px solid var(--border);
   padding-block: var(--space-8);
   text-align: center;
 }
@@ -922,3 +924,71 @@ body.is-menu-open .mobile-cta-bar { transform: translateY(100%); }
 }
 .error-page__title { font-size: var(--fs-2xl); color: var(--text); margin: var(--space-4) 0 var(--space-3); }
 .error-page__body { color: var(--text-soft); margin-inline: auto; margin-bottom: var(--space-6); max-width: 46ch; }
+
+/* ============================================================================
+   TEMA CHIARO — sezioni "respiro" (Servizi · Metodo · Chi siamo · Audience)
+   ----------------------------------------------------------------------------
+   Ritmo a tre movimenti: apertura dark (Hero/Credenziali/Divisioni) → cuore
+   chiaro e leggibile → chiusura dark (Manifesto/Contatti/Footer). Rompe la
+   monotonia del near-black e alleggerisce il tono per un pubblico sensibile.
+
+   Meccanica: `.theme-light` ridefinisce SOLO i token cromatici; grazie al
+   sistema token-based tutti i componenti figli virano automaticamente. Qui
+   sotto restano solo i fix mirati ai pochi valori cromatici hardcoded nei
+   componenti (SVG, numeri decorativi) che su fondo chiaro sparirebbero.
+   Palette chiara = carta calda (non bianco sterile) + azzurro brand invariato;
+   per l'azzurro USATO COME TESTO si usa una variante scurita (--accent-strong)
+   così da restare ≥ 4.5:1 su fondo chiaro (WCAG AA).
+   ========================================================================== */
+.theme-light {
+  /* Superfici (in chiaro l'elevazione va verso il bianco) */
+  --bg-0: #f6f5f2;   /* sfondo sezione: carta calda */
+  --bg-1: #ffffff;   /* card, pannelli, finestre */
+  --bg-2: #fbfaf8;   /* input / pannelli elevati */
+  --bg-3: #eeece7;   /* hover */
+
+  /* Testo */
+  --text:       #17171c;
+  --text-soft:  rgba(23, 23, 28, .74);
+  --text-dim:   #565660;
+  --text-faint: rgba(23, 23, 28, .42);
+
+  /* Bordi */
+  --border-soft:   rgba(20, 20, 25, .07);
+  --border:        rgba(20, 20, 25, .12);
+  --border-strong: rgba(20, 20, 25, .20);
+
+  /* Accento: azzurro brand invariato per fondi/linee; variante scura per il testo */
+  --accent-wash:   rgba(41, 171, 226, .13);
+  --accent-strong: #0b6c99;
+
+  /* Ombre ricalibrate per fondo chiaro (nere leggere, non pesanti) */
+  --shadow-sm: 0 1px 2px rgba(20, 20, 25, .06), 0 1px 3px rgba(20, 20, 25, .08);
+  --shadow:    0 10px 30px rgba(20, 20, 25, .10);
+  --shadow-lg: 0 24px 50px rgba(20, 20, 25, .14);
+
+  color: var(--text);
+}
+/* Le .section generiche (Servizi/Chi siamo/Audience) sono trasparenti: qui va
+   dipinto lo sfondo carta. Il .process (Metodo) tiene il suo bg-1 = bianco. */
+.section.theme-light { background: var(--bg-0); }
+
+/* --- Fix mirati ai valori hardcoded chiari (invisibili su fondo chiaro) --- */
+/* SVG illustrazioni servizi: erano grigio chiaro per il dark → slate sul chiaro */
+.theme-light .feature-visual { color: #64748b; }
+/* Numeri fase accordion: erano bianco al 30% → scuro tenue */
+.theme-light .process-step__num { color: rgba(20, 20, 25, .24); }
+
+/* --- Azzurro-come-testo → variante scura per contrasto AA --- */
+.theme-light .feature-row__num,
+.theme-light .brief__eyebrow { color: var(--accent-strong); }
+.theme-light .info-window__icon { color: var(--accent-strong); }
+.theme-light .dev-links a { color: var(--accent-strong); }
+.theme-light .dev-links a:hover { color: var(--accent); }
+
+/* --- Lift delle card su fondo chiaro (bordo tenue + ombra morbida) --- */
+.theme-light .info-window { box-shadow: var(--shadow-sm); }
+@media (min-width: 1024px) {
+  /* Pannello sticky del Metodo: carta su sezione bianca + ombra = card netta */
+  .theme-light .process-item__panel { background: var(--bg-0); box-shadow: var(--shadow-sm); }
+}

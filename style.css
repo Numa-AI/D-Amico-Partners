@@ -442,13 +442,12 @@ main { padding-top: var(--header-h); }
   }
 }
 
-/* dopo la ricomposizione il logo 3D "respira": galleggiamento lentissimo.
-   Il fotogramma si scurisce perché il logo bianco renderebbe illeggibili
-   le scritte chiare sottostanti. */
+/* dopo la ricomposizione il logo resta fermo: solo un micro-assestamento
+   one-shot al "click" finale. Il fotogramma si scurisce perché il logo
+   bianco renderebbe illeggibili le scritte chiare sottostanti. */
 .hero.ended .hero-video {
   filter: brightness(.58);
-  animation: heroFloat 6.5s ease-in-out .9s infinite,
-             heroSettle .9s ease-out;
+  animation: heroSettle .9s ease-out;
 }
 
 .hero.static .hero-still { filter: brightness(.58); }
@@ -468,11 +467,6 @@ main { padding-top: var(--header-h); }
 }
 
 .hero.ended::after, .hero.static::after { opacity: 1; }
-
-@keyframes heroFloat {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-6px); }
-}
 
 /* micro-impulso di scala al momento del "click" finale */
 @keyframes heroSettle {
@@ -542,7 +536,7 @@ main { padding-top: var(--header-h); }
 .hero__rotate {
   display: inline-block;
   color: var(--accent);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  transition: opacity var(--dur) var(--ease);
 }
 
 .hero-sub {
