@@ -7,6 +7,29 @@
    I componenti delle sezioni sono in sections.css (caricato dopo).
    ========================================================================== */
 
+/* ============================================================================
+   Webfont self-hosted — GDPR-clean (nessuna richiesta a Google), coerenti col logo.
+   Font variabili, subset latin (copre accenti italiani à è é ì ò ù e €).
+   · Playfair Display = display/titoli: serif Didone ad alto contrasto, ricalca
+     il monogramma DP e il wordmark "D'AMICO & PARTNERS" del logo.
+   · Inter = corpo, UI ed etichette: sans neutro, leggibile su fondo scuro.
+   Un solo file per famiglia (~86KB totali). Preload dei woff2 nell'<head>.
+   ========================================================================== */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;      /* variabile: copre tutti i pesi */
+  font-display: swap;
+  src: url('fonts/inter.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 900;      /* variabile: copre tutti i pesi */
+  font-display: swap;
+  src: url('fonts/playfair.woff2') format('woff2');
+}
+
 :root {
   /* ===== Superfici (elevazione crescente) ===== */
   --bg-0: #0a0a0c;   /* pagina, hero */
@@ -35,10 +58,11 @@
   --success: #16a34a;
   --warn:    #d97706;
 
-  /* ===== Tipografia ===== */
-  --font-display: Georgia, "Times New Roman", serif;
-  --font-body:    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
-  --font-mono:    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  /* ===== Tipografia (coerente col logo: serif Didone + sans neutro) ===== */
+  --font-display: 'Playfair Display', Georgia, "Times New Roman", serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+  /* Le "eyebrow"/label non usano più il monospace: ereditano Inter (tracked uppercase). */
+  --font-mono:    var(--font-body);
 
   --fs-xs:      clamp(12px, 0.75rem, 12px);
   --fs-sm:      clamp(13px, 0.8125rem, 14px);
@@ -307,10 +331,12 @@ main { padding-top: var(--header-h); }
 .brand-logo { height: 30px; width: auto; }
 @media (min-width: 1024px) { .brand-logo { height: 36px; } }
 .brand-name {
-  font-size: .9rem;
-  letter-spacing: .14em;
+  font-family: var(--font-display);   /* serif Playfair: echeggia il wordmark del logo */
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: .08em;               /* il serif ha già ampiezza: meno tracking del sans */
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--text-soft);
 }
 @media (max-width: 359px) { .brand-name { display: none; } }
 
@@ -388,7 +414,7 @@ main { padding-top: var(--header-h); }
   position: absolute;
   inset: 0;
   overflow: hidden;
-  transform: scale(2);     /* mobile: ingrandisce il video "contain" (zoom in leggero) */
+  transform: scale(2.2);   /* mobile: ingrandisce il video "contain" (zoom in leggero) */
 }
 
 .hero-video,
@@ -494,10 +520,13 @@ main { padding-top: var(--header-h); }
 /* ---------- Testi hero (compaiono dopo la ricomposizione) ---------- */
 .hero-copy {
   position: absolute;
-  inset: auto 0 12svh 0;
+  inset: auto 0 8svh 0;   /* mobile: scritte un po' più in basso */
   text-align: center;
   padding: 0 24px;
   z-index: 10;
+}
+@media (min-width: 768px) {
+  .hero-copy { bottom: 12svh; }   /* desktop: posizione invariata */
 }
 
 .hero-title {
