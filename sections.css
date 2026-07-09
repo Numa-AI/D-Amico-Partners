@@ -633,6 +633,79 @@
 .sec-item__title { font-family: var(--font-body); font-weight: 600; color: var(--text); margin-bottom: 2px; }
 .sec-item__body { font-size: var(--fs-sm); color: var(--text-dim); }
 
+/* ============ Risultato — video "dal bilancio in perdita alla crescita" ============
+   Sezione scura fra due sezioni theme-light: il video (scrivania antracite)
+   si fonde nel fondo. Video lazy: caricato e riprodotto solo in vista (site.js).
+   Mobile-first, aspect-ratio per zero CLS. */
+.results {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%, var(--bg-2), transparent 68%),
+    var(--bg-1);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.results__media {
+  max-width: 960px;
+  margin-inline: auto;
+  margin-top: var(--space-6);
+}
+
+.results__frame {
+  position: relative;
+  aspect-ratio: 16 / 9;             /* niente CLS: riserva lo spazio prima del load */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: #000;                  /* seamless col charcoal del video */
+  box-shadow: var(--shadow-lg);
+}
+.results__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* vignetta interna: sfuma i bordi del frame nel fondo scuro */
+.results__frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 70px 12px rgba(0, 0, 0, .45);
+}
+
+/* Didascalia: due chip "prima → dopo" che esplicitano la trasformazione */
+.results__caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.results__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px 16px;
+  min-height: 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  color: var(--text-soft);
+}
+.results__chip--to {
+  border-color: rgba(41, 171, 226, .40);
+  background: var(--accent-wash);
+  color: var(--accent);
+  font-weight: 600;
+}
+.results__arrow { color: var(--text-dim); flex-shrink: 0; }
+@media (min-width: 640px) {
+  .results__media { margin-top: var(--space-7); }
+}
+
 /* ============ Manifesto (citazione) ============ */
 .manifesto {
   position: relative;

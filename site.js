@@ -269,6 +269,31 @@
     cards.forEach(function (c) { io.observe(c); });
   })();
 
+  /* ---------- Video lazy: play/pausa quando entra/esce dalla vista ----------
+     Il <video data-autoplay-inview> ha preload="none": non scarica nulla al load.
+     Riproduce (muto, in loop) solo quando è ≥35% in vista e mette in pausa quando
+     esce → il secondo video non pesa sul caricamento iniziale della pagina.
+     Con reduced-motion o senza IntersectionObserver resta il poster statico. */
+  (function inViewVideo() {
+    var vids = document.querySelectorAll('video[data-autoplay-inview]');
+    if (!vids.length) return;
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var v = entry.target;
+        if (entry.isIntersecting) {
+          var p = v.play();
+          if (p && p.catch) p.catch(function () {}); /* autoplay negato: resta il poster */
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.35 });
+
+    vids.forEach(function (v) { io.observe(v); });
+  })();
+
   /* ---------- Form: validazione client + invio Web3Forms + honeypot ---------- */
   (function forms() {
     var list = document.querySelectorAll('form[data-form]');
