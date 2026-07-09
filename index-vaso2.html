@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D'Amico &amp; Partners · Vaso</title>
+  <meta name="theme-color" content="#0a0a0c">
+
+  <!-- Favicon: quadrato e adattivo al tema del browser -->
+  <link rel="icon" type="image/png" sizes="256x256" href="favicon-light.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" sizes="256x256" href="favicon-dark.png" media="(prefers-color-scheme: dark)">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="sections.css">
+</head>
+<body>
+  <!-- ============ HERO: solo il video ============ -->
+  <header class="hero" id="top">
+    <!-- .hero-frame: wrapper di scala/crop per mostrare intero il video su mobile -->
+    <div class="hero-frame">
+      <video id="heroVideo" class="hero-video" muted playsinline autoplay
+             preload="auto" poster="hero-poster.jpg" aria-hidden="true">
+        <source src="Vaso%202.mp4" type="video/mp4">
+      </video>
+      <!-- Fallback statico (autoplay bloccato / reduced motion): ultimo fotogramma -->
+      <div class="hero-still" aria-hidden="true"></div>
+    </div>
+
+    <!-- Vignetta che fonde i bordi del video nello sfondo pagina -->
+    <div class="hero-vignette" aria-hidden="true"></div>
+    <!-- Bagliore one-shot al momento della ricomposizione -->
+    <div class="hero-glow" aria-hidden="true"></div>
+
+    <button class="replay" id="replayBtn" aria-label="Riproduci l'animazione con il suono" title="Riproduci con suono">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/>
+        <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+        <path d="M18.5 5.5a9.5 9.5 0 0 1 0 13"/>
+      </svg>
+    </button>
+  </header>
+
+  <script src="main.js"></script>
+</body>
+</html>
