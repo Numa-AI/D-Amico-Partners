@@ -39,23 +39,25 @@
         </svg>
       </button>
     </div>
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu di navigazione">
-      <ul class="mobile-menu__list">
-        <li><a class="mobile-menu__link" href="index.html#servizi">Servizi</a></li>
-        <li><a class="mobile-menu__link" href="index.html#metodo">Metodo</a></li>
-        <li><a class="mobile-menu__link" href="index.html#chi-siamo">Chi siamo</a></li>
-        <li><a class="mobile-menu__link" href="index.html#audience">A chi ci rivolgiamo</a></li>
-        <li><a class="mobile-menu__link" href="index.html#contatti">Contatti</a></li>
-      </ul>
-      <a class="cta cta--block mobile-menu__cta" href="index.html#contatti">Richiedi una consulenza</a>
-      <div class="mobile-menu__contact">
-        <strong>Contatti rapidi</strong>
-        <a href="tel:+390302403392">+39 030 240 3392</a><br>
-        <a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a><br>
-        Piazza della Vittoria 11, Brescia
-      </div>
-    </div>
   </nav>
+
+  <!-- Drawer mobile + backdrop: FUORI dalla .topbar (evita il clipping da backdrop-filter). -->
+  <div class="mobile-menu__backdrop" data-menu-close hidden></div>
+  <aside class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu di navigazione">
+    <div class="mobile-menu__head">
+      <button class="mobile-menu__close" type="button" data-menu-close aria-label="Chiudi il menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <ul class="mobile-menu__list">
+      <li><a class="mobile-menu__link" href="index.html#servizi">Servizi</a></li>
+      <li><a class="mobile-menu__link" href="index.html#metodo">Metodo</a></li>
+      <li><a class="mobile-menu__link" href="index.html#chi-siamo">Chi siamo</a></li>
+      <li><a class="mobile-menu__link" href="index.html#audience">A chi ci rivolgiamo</a></li>
+      <li><a class="mobile-menu__link" href="index.html#contatti">Contatti</a></li>
+    </ul>
+    <a class="cta cta--block mobile-menu__cta" href="index.html#contatti">Richiedi una consulenza</a>
+  </aside>
 
   <main id="main" class="legal">
     <div class="container container--narrow">
@@ -68,7 +70,7 @@
           <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
         </svg>
         <div class="banner__body">
-          <strong>Sito a impatto cookie minimo.</strong> Il sito non utilizza cookie di profilazione né strumenti di marketing o analytics. I font e tutte le risorse grafiche sono ospitati sul dominio del sito, senza CDN di terze parti. L'unico servizio esterno è <strong>Formspree</strong>, contattato solo nel momento in cui l'utente invia il modulo di contatto. Nessuna profilazione pubblicitaria.
+          <strong>Sito a impatto cookie minimo.</strong> Il sito non utilizza cookie di profilazione né strumenti di marketing o analytics. I font e tutte le risorse grafiche sono ospitati sul dominio del sito, senza CDN di terze parti. L'unico servizio esterno è <strong>Web3Forms</strong> (infrastruttura nell'Unione Europea), contattato solo nel momento in cui l'utente invia il modulo di contatto. Nessuna profilazione pubblicitaria.
         </div>
       </div>
 
@@ -82,7 +84,7 @@
 
       <h3>Servizi di terze parti</h3>
       <ul>
-        <li><strong>Formspree</strong> (formspree.io): utilizzato per la gestione e l'inoltro del modulo di contatto. Viene contattato <em>solo al momento dell'invio</em> del modulo; i dati transitano unicamente in quel frangente. In fase di invio Formspree può registrare dati tecnici (es. indirizzo IP) per finalità antispam e di sicurezza. Maggiori informazioni: <a class="break-word" href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">formspree.io/legal/privacy-policy</a>.</li>
+        <li><strong>Web3Forms</strong> (web3forms.com): utilizzato per la gestione e l'inoltro del modulo di contatto, con infrastruttura ubicata nell'Unione Europea. Viene contattato <em>solo al momento dell'invio</em> del modulo; i dati transitano unicamente in quel frangente. In fase di invio Web3Forms può registrare dati tecnici (es. indirizzo IP) per finalità antispam e di sicurezza. Maggiori informazioni: <a class="break-word" href="https://web3forms.com/" target="_blank" rel="noopener noreferrer">web3forms.com</a>.</li>
       </ul>
       <p>Il sito non carica font da CDN esterne (Google Fonts), non incorpora mappe interattive né video di terze parti e non utilizza strumenti di analytics o social plugin.</p>
 

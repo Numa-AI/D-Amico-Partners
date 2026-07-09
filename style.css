@@ -199,19 +199,19 @@ a { transition: color var(--dur) var(--ease); }
 main { padding-top: var(--header-h); }
 @media (min-width: 1024px) { main { padding-top: var(--header-h-md); } }
 
-.section { padding-block: var(--space-6); }
-@media (min-width: 768px)  { .section { padding-block: var(--space-8); } }
-@media (min-width: 1024px) { .section { padding-block: var(--space-9); } }
+.section { padding-block: var(--space-5); }
+@media (min-width: 768px)  { .section { padding-block: var(--space-7); } }
+@media (min-width: 1024px) { .section { padding-block: var(--space-8); } }
 .section--soft { background: var(--bg-1); }
 
 /* Header di sezione centrato (Strumenti) */
 .section-header {
   text-align: center;
   margin-inline: auto;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
   max-width: 720px;
 }
-@media (min-width: 768px) { .section-header { margin-bottom: var(--space-7); } }
+@media (min-width: 768px) { .section-header { margin-bottom: var(--space-6); } }
 .section-header h2 { margin-bottom: var(--space-3); }
 .section-header .lead { margin-inline: auto; }
 
@@ -388,7 +388,7 @@ main { padding-top: var(--header-h); }
   position: absolute;
   inset: 0;
   overflow: hidden;
-  transform: scale(1.8);   /* mobile: ingrandisce il video "contain" */
+  transform: scale(2);     /* mobile: ingrandisce il video "contain" (zoom in leggero) */
 }
 
 .hero-video,
@@ -403,9 +403,17 @@ main { padding-top: var(--header-h); }
 .hero-video { object-fit: contain; }
 
 @media (min-width: 768px) {
-  .hero-frame  { transform: none; }
+  /* Desktop: il video 16:9 riempie l'altezza e viene ritagliato ai lati.
+     translateY abbassa il vaso senza ridurre il fondo (taglia solo ~4vh sotto,
+     non il 10% dello scale). La riga in alto lasciata dalla traslazione è
+     coperta da una sfumatura scura sulla vignetta, non da un ingrandimento. */
+  .hero-frame  { transform: translateY(4vh); }
   .hero-video  { object-fit: cover; }
   .hero-still  { background-size: cover; }
+  /* sfumatura dall'alto che nasconde il bordo del video sceso di 4vh */
+  .hero-vignette {
+    background: linear-gradient(to bottom, var(--bg-0), rgba(10, 10, 12, 0) 16vh);
+  }
 }
 
 /* dopo la ricomposizione il logo 3D "respira": galleggiamento lentissimo.

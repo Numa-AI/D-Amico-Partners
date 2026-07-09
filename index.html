@@ -88,24 +88,27 @@
         </svg>
       </button>
     </div>
-
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu di navigazione">
-      <ul class="mobile-menu__list">
-        <li><a class="mobile-menu__link" href="#servizi">Servizi</a></li>
-        <li><a class="mobile-menu__link" href="#metodo">Metodo</a></li>
-        <li><a class="mobile-menu__link" href="#chi-siamo">Chi siamo</a></li>
-        <li><a class="mobile-menu__link" href="#audience">A chi ci rivolgiamo</a></li>
-        <li><a class="mobile-menu__link" href="#contatti">Contatti</a></li>
-      </ul>
-      <a class="cta cta--block mobile-menu__cta" href="#contatti">Richiedi una consulenza</a>
-      <div class="mobile-menu__contact">
-        <strong>Contatti rapidi</strong>
-        <a href="tel:+390302403392">+39 030 240 3392</a><br>
-        <a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a><br>
-        Piazza della Vittoria 11, Brescia
-      </div>
-    </div>
   </nav>
+
+  <!-- Drawer mobile + backdrop: FUORI dalla .topbar. Quando la topbar è
+       .is-scrolled applica backdrop-filter e diventerebbe il containing block
+       di un figlio position:fixed, schiacciando il menu dentro l'header. -->
+  <div class="mobile-menu__backdrop" data-menu-close hidden></div>
+  <aside class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu di navigazione">
+    <div class="mobile-menu__head">
+      <button class="mobile-menu__close" type="button" data-menu-close aria-label="Chiudi il menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <ul class="mobile-menu__list">
+      <li><a class="mobile-menu__link" href="#servizi">Servizi</a></li>
+      <li><a class="mobile-menu__link" href="#metodo">Metodo</a></li>
+      <li><a class="mobile-menu__link" href="#chi-siamo">Chi siamo</a></li>
+      <li><a class="mobile-menu__link" href="#audience">A chi ci rivolgiamo</a></li>
+      <li><a class="mobile-menu__link" href="#contatti">Contatti</a></li>
+    </ul>
+    <a class="cta cta--block mobile-menu__cta" href="#contatti">Richiedi una consulenza</a>
+  </aside>
 
   <!-- ============ HERO: il video del vaso che si ricompone nel logo ============ -->
   <header class="hero" id="top">
@@ -129,7 +132,6 @@
         Diamo forma alla vostra
         <span class="hero__rotate" data-rotate="crescita, ripartenza, solidità, strategia">crescita</span>.
       </h1>
-      <p class="hero-sub">Affianchiamo PMI e privati nell'accesso al credito, nella ristrutturazione del debito e nella gestione della crisi d'impresa. Un unico interlocutore, con competenze integrate.</p>
       <div class="hero-cta-group">
         <a class="cta" href="#contatti">Richiedi una consulenza</a>
         <a class="cta-secondary" href="#servizi">Scopri i servizi →</a>
@@ -197,7 +199,7 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Risanamento e turnaround aziendale</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Consulenza legale collegata alla finanza d'impresa</li>
             </ul>
-            <a class="division__cta" href="#strumenti">Scopri Advisory <span aria-hidden="true">→</span></a>
+            <a class="division__cta" href="#audience">Scopri Advisory <span aria-hidden="true">→</span></a>
           </article>
         </div>
       </div>
@@ -435,44 +437,8 @@
       </div>
     </section>
 
-    <!-- ============ STRUMENTI (gruppi statici) ============ -->
-    <section class="section" id="strumenti" aria-labelledby="strumenti-title">
-      <div class="container">
-        <div class="section-header">
-          <span class="mono-label mono-label--center mb-3">Strumenti e soluzioni</span>
-          <h2 class="section-title" id="strumenti-title">Gli strumenti giusti per ogni situazione.</h2>
-          <p class="lead">Dalla finanza ordinaria agli strumenti del Codice della Crisi.</p>
-        </div>
-
-        <div class="tool-groups">
-          <div class="tool-group">
-            <h3 class="mono-label tool-group__title" id="tool-group-crisi">Codice della Crisi</h3>
-            <ul class="tool-group__list" aria-labelledby="tool-group-crisi">
-              <li class="chip">Composizione negoziata</li>
-              <li class="chip">Piano attestato di risanamento</li>
-              <li class="chip">Accordo di ristrutturazione</li>
-              <li class="chip">Concordato preventivo</li>
-              <li class="chip">Sovraindebitamento</li>
-            </ul>
-          </div>
-          <div class="tool-group">
-            <h3 class="mono-label tool-group__title" id="tool-group-finanza">Finanza d'impresa</h3>
-            <ul class="tool-group__list" aria-labelledby="tool-group-finanza">
-              <li class="chip">Accesso al credito</li>
-              <li class="chip">Anticipo fatture</li>
-              <li class="chip">Fido &amp; rapporti bancari</li>
-              <li class="chip">M&amp;A</li>
-              <li class="chip">Finanza di progetto</li>
-              <li class="chip">Riorganizzazioni societarie</li>
-              <li class="chip">Turnaround &amp; risanamento</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ A CHI CI RIVOLGIAMO (tabs) ============ -->
-    <section class="section section--soft" id="audience" aria-labelledby="audience-title">
+    <section class="section" id="audience" aria-labelledby="audience-title">
       <div class="container">
         <div class="two-col">
           <div>
@@ -510,45 +476,6 @@
       </div>
     </section>
 
-    <!-- ============ PERCHÉ SCEGLIERCI (security grid) ============ -->
-    <section class="section" id="perche" aria-labelledby="perche-title">
-      <div class="container">
-        <div class="two-col">
-          <div>
-            <span class="mono-label mb-3">Perché sceglierci</span>
-            <h2 class="section-title" id="perche-title">Riservatezza e affidabilità, sempre.</h2>
-            <p class="lead mt-4">Operiamo in un settore regolato e delicato. Riservatezza, competenza e trasparenza non sono opzionali: sono il fondamento di ogni rapporto.</p>
-            <div class="cert-list">
-              <span class="cert-badge">OAM M640</span>
-              <span class="cert-badge">OAM M234</span>
-              <span class="cert-badge">Regione Lombardia</span>
-              <span class="cert-badge">Dal 2006</span>
-              <span class="cert-badge">REA BS-480151</span>
-            </div>
-          </div>
-
-          <div class="sec-grid">
-            <div class="sec-item reveal">
-              <span class="sec-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5z"/></svg></span>
-              <div><p class="sec-item__title">Riservatezza assoluta</p><p class="sec-item__body">Ogni colloquio e ogni documento sono trattati con la massima discrezione.</p></div>
-            </div>
-            <div class="sec-item reveal">
-              <span class="sec-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
-              <div><p class="sec-item__title">Iscrizione OAM</p><p class="sec-item__body">Mediatori creditizi iscritti all'OAM (M640). Operiamo nel pieno rispetto delle norme.</p></div>
-            </div>
-            <div class="sec-item reveal">
-              <span class="sec-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-              <div><p class="sec-item__title">Team multidisciplinare</p><p class="sec-item__body">Financial advisor, commercialisti e avvocati che lavorano insieme, per voi.</p></div>
-            </div>
-            <div class="sec-item reveal">
-              <span class="sec-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
-              <div><p class="sec-item__title">Esperienza dal 2006</p><p class="sec-item__body">Quasi vent'anni al fianco delle imprese bresciane e dei loro imprenditori.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ MANIFESTO ============ -->
     <section class="manifesto" aria-labelledby="manifesto-title">
       <div class="container">
@@ -566,8 +493,14 @@
         <h2 id="cta-title">Parliamone in riservatezza</h2>
         <p>Un primo colloquio è sempre senza impegno. Scriveteci due righe — vi richiameremo per fissare un appuntamento e capire insieme se possiamo esservi utili.</p>
 
-        <form class="form" data-form data-endpoint="FORMSPREE_ENDPOINT_PLACEHOLDER" novalidate>
+        <form class="form" data-form data-endpoint="https://api.web3forms.com/submit" novalidate>
+          <!-- Web3Forms: incollare qui la propria access key (dashboard web3forms.com) -->
+          <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="Nuova richiesta dal sito D'Amico &amp; Partners">
+          <input type="hidden" name="from_name" value="Sito D'Amico &amp; Partners">
+          <!-- Honeypot: _gotcha (gestito da site.js) + botcheck (nativo Web3Forms) -->
           <input class="form__honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input class="form__honeypot" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form__field">
             <label class="sr-only" for="mini-name">Nome</label>
             <input class="form__input" id="mini-name" type="text" name="name" placeholder="Il vostro nome" required>
@@ -614,9 +547,7 @@
             <li><a href="#servizi">Servizi</a></li>
             <li><a href="#metodo">Metodo</a></li>
             <li><a href="#chi-siamo">Chi siamo</a></li>
-            <li><a href="#strumenti">Strumenti</a></li>
             <li><a href="#audience">A chi ci rivolgiamo</a></li>
-            <li><a href="#perche">Perché sceglierci</a></li>
             <li><a href="#contatti">Contatti</a></li>
           </ul>
         </div>

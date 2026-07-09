@@ -48,7 +48,7 @@
 .cred-strip {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding-block: var(--space-6);
+  padding-block: var(--space-5);
   background: var(--bg-1);
 }
 .cred-strip__grid {
@@ -86,7 +86,7 @@
   display: grid;
   gap: var(--space-3) var(--space-5);
   grid-template-columns: minmax(0, 1fr) clamp(84px, 24vw, 120px);
-  padding-block: var(--space-6);
+  padding-block: var(--space-5);
   border-bottom: 1px solid var(--border);
   align-items: center;
 }
@@ -98,7 +98,7 @@
   color: var(--accent);
 }
 @media (min-width: 768px) {
-  .feature-row { grid-template-columns: auto 1fr auto; gap: var(--space-6); padding-block: var(--space-7); }
+  .feature-row { grid-template-columns: auto 1fr auto; gap: var(--space-6); padding-block: var(--space-6); }
   .feature-row__num { grid-column: auto; }
 }
 .feature-row__title {
@@ -225,11 +225,11 @@
 .process {
   position: relative;
   background: var(--bg-1);
-  padding-block: var(--space-8);
+  padding-block: var(--space-7);
   overflow: hidden;
   isolation: isolate;
 }
-@media (min-width: 1024px) { .process { padding-block: var(--space-9); } }
+@media (min-width: 1024px) { .process { padding-block: var(--space-8); } }
 .process h2 { color: var(--text); }
 .process__muted { color: var(--text-dim); }
 
@@ -245,7 +245,7 @@
   display: flex;
   gap: var(--space-4);
   align-items: flex-start;
-  padding: var(--space-5) 0;
+  padding: var(--space-4) 0;
   opacity: .5;
   transition: opacity var(--dur) var(--ease);
 }
@@ -539,11 +539,11 @@
 .manifesto {
   position: relative;
   background: var(--bg-1);
-  padding-block: var(--space-8);
+  padding-block: var(--space-7);
   overflow: hidden;
   isolation: isolate;
 }
-@media (min-width: 768px) { .manifesto { padding-block: var(--space-9); } }
+@media (min-width: 768px) { .manifesto { padding-block: var(--space-8); } }
 .manifesto__mark {
   font-family: var(--font-display);
   font-size: clamp(70px, 10vw, 140px);
@@ -575,7 +575,7 @@
 /* ============ Contatti — CTA finale + form ============ */
 .final-cta {
   background: var(--bg-1);
-  padding-block: var(--space-9);
+  padding-block: var(--space-8);
   text-align: center;
 }
 .final-cta h2 { color: var(--text); margin-bottom: var(--space-4); font-size: var(--fs-3xl); }
@@ -676,19 +676,65 @@
 .site-footer__bottom > div { min-width: 0; }
 .site-footer__legal { display: flex; flex-wrap: wrap; gap: var(--space-4); }
 
-/* ============ Menu mobile (overlay full-screen) ============ */
+/* ============ Menu mobile — drawer laterale + backdrop ============
+   Drawer e backdrop stanno FUORI dalla .topbar: quando la topbar è
+   .is-scrolled applica backdrop-filter e diventerebbe il containing block
+   di un figlio position:fixed, schiacciando il menu dentro l'header (bug
+   "il menu non si vede"). Fuori dalla topbar il problema non si pone. */
+.mobile-menu__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: rgba(6, 6, 8, .62);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur) var(--ease), visibility var(--dur) var(--ease);
+}
+body.is-menu-open .mobile-menu__backdrop { opacity: 1; visibility: visible; }
+@media (min-width: 1024px) { .mobile-menu__backdrop { display: none; } }
+
 .mobile-menu {
   position: fixed;
-  inset: var(--header-h) 0 0 0;
-  z-index: var(--z-overlay);
-  background: var(--bg-0);
-  padding: var(--space-6) var(--container-pad) var(--space-8);
+  top: 0; right: 0; bottom: 0;
+  z-index: var(--z-modal);           /* sopra topbar e cta-bar (entrambe z 100) */
+  width: min(84vw, 340px);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-1);
+  border-left: 1px solid var(--border);
+  box-shadow: -24px 0 60px rgba(0, 0, 0, .55);
+  padding: max(var(--space-3), env(safe-area-inset-top)) var(--space-6) var(--space-8);
   overflow-y: auto;
+  overscroll-behavior: contain;
   transform: translateX(100%);
-  transition: transform var(--dur-slow) var(--ease);
+  transition: transform var(--dur-slow) var(--ease-out);
 }
 .mobile-menu.is-open { transform: translateX(0); }
 @media (min-width: 1024px) { .mobile-menu { display: none; } }
+
+/* Riga con la X di chiusura, in alto nel drawer */
+.mobile-menu__head {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: var(--space-2);
+}
+.mobile-menu__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  margin-right: -8px;
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.mobile-menu__close:hover { background: var(--bg-3); color: var(--text); }
+.mobile-menu__close:active { transform: scale(.94); }
+.mobile-menu__close svg { width: 24px; height: 24px; }
 
 .mobile-menu__list { display: flex; flex-direction: column; }
 .mobile-menu__link {
@@ -701,17 +747,9 @@
 }
 .mobile-menu__link:hover { color: var(--accent); }
 .mobile-menu__cta { margin-top: var(--space-6); }
-.mobile-menu__contact {
-  margin-top: var(--space-7);
-  font-size: var(--fs-sm);
-  color: var(--text-dim);
-  line-height: 1.9;
-}
-.mobile-menu__contact strong { display: block; color: var(--text); margin-bottom: var(--space-2); }
-.mobile-menu__contact a { color: var(--text); }
-.mobile-menu__contact a:hover { color: var(--accent); }
 
 body.is-menu-open { overflow: hidden; }
+body.is-menu-open .mobile-cta-bar { transform: translateY(100%); }
 
 /* ============ Sticky mobile CTA bar (Chiama / Scrivici) ============ */
 .mobile-cta-bar {

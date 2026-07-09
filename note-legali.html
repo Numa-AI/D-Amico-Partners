@@ -39,23 +39,25 @@
         </svg>
       </button>
     </div>
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu di navigazione">
-      <ul class="mobile-menu__list">
-        <li><a class="mobile-menu__link" href="index.html#servizi">Servizi</a></li>
-        <li><a class="mobile-menu__link" href="index.html#metodo">Metodo</a></li>
-        <li><a class="mobile-menu__link" href="index.html#chi-siamo">Chi siamo</a></li>
-        <li><a class="mobile-menu__link" href="index.html#audience">A chi ci rivolgiamo</a></li>
-        <li><a class="mobile-menu__link" href="index.html#contatti">Contatti</a></li>
-      </ul>
-      <a class="cta cta--block mobile-menu__cta" href="index.html#contatti">Richiedi una consulenza</a>
-      <div class="mobile-menu__contact">
-        <strong>Contatti rapidi</strong>
-        <a href="tel:+390302403392">+39 030 240 3392</a><br>
-        <a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a><br>
-        Piazza della Vittoria 11, Brescia
-      </div>
-    </div>
   </nav>
+
+  <!-- Drawer mobile + backdrop: FUORI dalla .topbar (evita il clipping da backdrop-filter). -->
+  <div class="mobile-menu__backdrop" data-menu-close hidden></div>
+  <aside class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu di navigazione">
+    <div class="mobile-menu__head">
+      <button class="mobile-menu__close" type="button" data-menu-close aria-label="Chiudi il menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <ul class="mobile-menu__list">
+      <li><a class="mobile-menu__link" href="index.html#servizi">Servizi</a></li>
+      <li><a class="mobile-menu__link" href="index.html#metodo">Metodo</a></li>
+      <li><a class="mobile-menu__link" href="index.html#chi-siamo">Chi siamo</a></li>
+      <li><a class="mobile-menu__link" href="index.html#audience">A chi ci rivolgiamo</a></li>
+      <li><a class="mobile-menu__link" href="index.html#contatti">Contatti</a></li>
+    </ul>
+    <a class="cta cta--block mobile-menu__cta" href="index.html#contatti">Richiedi una consulenza</a>
+  </aside>
 
   <main id="main" class="legal">
     <div class="container container--narrow">

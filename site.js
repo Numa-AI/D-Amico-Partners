@@ -2,7 +2,7 @@
    D'Amico & Partners — interazioni della pagina (vanilla ES, defer).
    main.js resta dedicato all'hero; qui vivono:
    nav mobile, topbar scroll, parola rotante, accordion Metodo, tabs Audience,
-   form Formspree, reveal on scroll, pausa SMIL su reduced-motion,
+   form Web3Forms, reveal on scroll, pausa SMIL su reduced-motion,
    sticky CTA bar mobile, anno footer.
    Rispetta prefers-reduced-motion.
    ========================================================================== */
@@ -53,6 +53,10 @@
     toggle.addEventListener('click', function () {
       if (toggle.getAttribute('aria-expanded') === 'true') close();
       else open();
+    });
+    /* Backdrop e pulsante X: ogni [data-menu-close] chiude il drawer */
+    document.querySelectorAll('[data-menu-close]').forEach(function (el) {
+      el.addEventListener('click', close);
     });
     menu.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', close);
@@ -219,7 +223,7 @@
     io.observe(hero);
   })();
 
-  /* ---------- Form: validazione client + invio Formspree + honeypot ---------- */
+  /* ---------- Form: validazione client + invio Web3Forms + honeypot ---------- */
   (function forms() {
     var list = document.querySelectorAll('form[data-form]');
     if (!list.length) return;
@@ -229,6 +233,7 @@
       var feedback = form.querySelector('.form__feedback');
       var submitBtn = form.querySelector('button[type="submit"]');
       var endpoint = form.dataset.endpoint || form.getAttribute('action');
+      var accessKey = form.querySelector('input[name="access_key"]');
 
       var showFeedback = function (msg, state) {
         if (!feedback) return;
@@ -280,8 +285,11 @@
           return;
         }
 
-        if (!endpoint || endpoint.indexOf('FORMSPREE_ENDPOINT_PLACEHOLDER') !== -1) {
-          showFeedback('Demo: modulo pronto. Configurate l\'endpoint Formspree per inviare davvero la richiesta.', 'success');
+        var notConfigured = !endpoint ||
+          endpoint.indexOf('PLACEHOLDER') !== -1 ||
+          (accessKey && accessKey.value.indexOf('WEB3FORMS_ACCESS_KEY') !== -1);
+        if (notConfigured) {
+          showFeedback('Demo: modulo pronto. Inserite la vostra access key Web3Forms per inviare davvero la richiesta.', 'success');
           form.reset();
           return;
         }

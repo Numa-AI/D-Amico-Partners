@@ -6,7 +6,7 @@ Il sito è una **single-page** dal tema scuro (antracite + accento azzurro `#29A
 
 ## Struttura
 
-```
+```text
 sito/
 ├── index.html            Home (single-page: tutte le sezioni)
 ├── privacy.html          Informativa privacy (GDPR)
@@ -16,7 +16,7 @@ sito/
 ├── style.css             Token, reset, base, topbar, hero
 ├── sections.css          Componenti delle sezioni + pagine legali
 ├── main.js               State machine dell'hero video (+ audio sintetizzato)
-├── site.js               Nav, accordion, tabs, form Formspree, reveal, sticky bar
+├── site.js               Nav, accordion, tabs, form Web3Forms, reveal, sticky bar
 ├── logo-chiaro-trasparente.png
 ├── hero.mp4 · hero-poster.jpg · hero-fine.jpg
 ├── chi-siamo-brescia.avif
@@ -38,6 +38,6 @@ Poi aprire <http://localhost:8765/>
 
 ## Note
 
-- **Formspree**: il form usa il placeholder `FORMSPREE_ENDPOINT_PLACEHOLDER` in `index.html`. Sostituirlo con l'endpoint reale per attivare l'invio.
+- **Web3Forms**: il form (in `index.html`) invia a `https://api.web3forms.com/submit` con il campo nascosto `access_key` valorizzato al placeholder `WEB3FORMS_ACCESS_KEY`. Sostituirlo con la propria access key (dashboard su web3forms.com) per attivare l'invio. Infrastruttura UE: nessun trasferimento dati extra-UE.
 - **Deploy**: hosting statico (Vercel via `vercel.json`, o Netlify via `_redirects`). Il dominio `damicoadvisory.it` reindirizza a `damicoandpartners.it`.
 - **Privacy**: l'informativa è una bozza da far validare dal consulente privacy / DPO (v. banner in `privacy.html`).
