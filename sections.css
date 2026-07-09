@@ -163,13 +163,19 @@
   .division:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow); }
 }
 
+.division__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
 .division__icon {
+  flex: none;
   width: 52px; height: 52px;
   display: grid; place-items: center;
   border-radius: var(--radius-md);
   background: var(--accent-wash);
   color: var(--accent);
-  margin-bottom: var(--space-5);
 }
 .division__icon svg { width: 28px; height: 28px; }
 .division__title {
@@ -177,7 +183,6 @@
   font-weight: 400;
   font-size: var(--fs-2xl);
   color: var(--text);
-  margin-bottom: var(--space-3);
 }
 .division__body { color: var(--text-soft); margin-bottom: var(--space-5); }
 .division__list {
@@ -305,7 +310,7 @@
   .process-item__panel {
     grid-column: 2;
     grid-row: 1 / -1;
-    align-self: start;
+    align-self: center;        /* centrato verticalmente rispetto alle 4 fasi a sinistra */
     position: sticky;
     top: calc(var(--header-h-md) + var(--space-5));
     padding: var(--space-6);

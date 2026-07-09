@@ -137,12 +137,14 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + 12px);
+  /* Landing degli anchor a filo sotto la topbar fissa: nessun +offset, così
+     non resta una fascia della sezione precedente visibile sotto l'header. */
+  scroll-padding-top: var(--header-h);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 @media (min-width: 1024px) {
-  html { scroll-padding-top: calc(var(--header-h-md) + 12px); }
+  html { scroll-padding-top: var(--header-h-md); }
 }
 
 html, body {
@@ -331,12 +333,10 @@ main { padding-top: var(--header-h); }
 .brand-logo { height: 30px; width: auto; }
 @media (min-width: 1024px) { .brand-logo { height: 36px; } }
 .brand-name {
-  font-family: var(--font-display);   /* serif Playfair: echeggia il wordmark del logo */
-  font-size: 1.02rem;
-  font-weight: 600;
-  letter-spacing: .08em;               /* il serif ha già ampiezza: meno tracking del sans */
+  font-size: .9rem;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: var(--text-dim);
 }
 @media (max-width: 359px) { .brand-name { display: none; } }
 
