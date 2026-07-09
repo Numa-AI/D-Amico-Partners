@@ -532,9 +532,18 @@ main { padding-top: var(--header-h); }
   text-shadow: 0 2px 24px rgba(0, 0, 0, .8);
 }
 
+/* "vostra <parola>." è un gruppo non spezzabile: la parola rotante non
+   attraversa mai da sola il confine di riga (causa del flash in cui, al cambio
+   parola, il titolo andava a 3 righe per un istante prima di ricomporsi a 2).
+   Cambiando parola varia solo la larghezza della riga 2, mai il numero di righe. */
+.hero-title__tail { white-space: nowrap; }
+
 /* parola rotante (rimpiazzata da site.js) */
 .hero__rotate {
   display: inline-block;
+  /* Il punto è incluso nella parola (site.js) così resta sempre incollato e
+     non finisce orfano a capo; nowrap evita che la parola stessa si spezzi. */
+  white-space: nowrap;
   color: var(--accent);
   transition: opacity var(--dur) var(--ease);
 }

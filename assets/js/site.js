@@ -80,7 +80,7 @@
     var words = (el.getAttribute('data-rotate') || '').split(',').map(function (w) { return w.trim(); });
     if (words.length < 2) return;
     var i = 0;
-    el.textContent = words[0];
+    el.textContent = words[0] + '.';
     if (reduceMotion) return;
 
     var hero = document.querySelector('.hero');
@@ -91,7 +91,7 @@
         i = (i + 1) % words.length;
         el.style.opacity = '0';
         setTimeout(function () {
-          el.textContent = words[i];
+          el.textContent = words[i] + '.';
           el.style.opacity = '1';
         }, 220);
       }, 2600);
