@@ -645,8 +645,17 @@
   grid-template-columns: 1fr;
 }
 .site-footer__grid > * { min-width: 0; }
-@media (min-width: 480px)  { .site-footer__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .site-footer__grid { grid-template-columns: 1.5fr 1fr 1fr; } }
+@media (min-width: 480px) {
+  .site-footer__grid { grid-template-columns: 1fr 1fr; }
+  .site-footer__brand { grid-column: 1 / -1; }   /* logo + payoff a tutta larghezza: Contatti e Naviga restano appaiati, niente colonna orfana */
+}
+@media (min-width: 1024px) {
+  .site-footer__grid {
+    grid-template-columns: minmax(0, 1fr) auto auto;   /* logo a sinistra, le due colonne link ancorate a destra: nessun vuoto residuo */
+    column-gap: clamp(var(--space-7), 6vw, var(--space-8));
+  }
+  .site-footer__brand { grid-column: auto; }
+}
 
 .site-footer__brand-logo { height: 40px; width: auto; opacity: .85; margin-bottom: var(--space-4); }
 .site-footer__tagline { font-size: var(--fs-sm); color: var(--text-dim); max-width: 38ch; }
@@ -660,6 +669,7 @@
   font-weight: 600;
   margin-bottom: var(--space-4);
 }
+.site-footer__list { margin: 0; padding: 0; }   /* rimuove il rientro di default dell'<ul>: le voci si allineano sotto il titolo */
 .site-footer__list li { margin-bottom: var(--space-2); font-size: var(--fs-sm); }
 
 .site-footer__bottom {
