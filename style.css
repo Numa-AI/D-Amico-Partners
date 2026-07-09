@@ -1,0 +1,651 @@
+/* ============================================================================
+   D'Amico & Partners — sito one-page (core)
+   Palette: dark diffuso (antracite) + bianco + azzurro brand #29ABE2.
+   Questo file contiene: token, reset, base, topbar e HERO.
+   La state machine dell'hero (video → ended → testi) è preservata identica:
+   sono aggiunte solo regole attorno (.hero-frame per il crop mobile).
+   I componenti delle sezioni sono in sections.css (caricato dopo).
+   ========================================================================== */
+
+:root {
+  /* ===== Superfici (elevazione crescente) ===== */
+  --bg-0: #0a0a0c;   /* pagina, hero */
+  --bg-1: #16161a;   /* card, sezioni soft, footer */
+  --bg-2: #1c1c21;   /* pannelli elevati: input, tab attiva, brief */
+  --bg-3: #222228;   /* hover/stato attivo su bg-2 */
+
+  /* ===== Testo ===== */
+  --text:       #ededed;
+  --text-soft:  rgba(237, 237, 237, .78);
+  --text-dim:   #9a9aa2;
+  --text-faint: rgba(237, 237, 237, .45);
+
+  /* ===== Bordi ===== */
+  --border-soft:   rgba(237, 237, 237, .10);
+  --border:        rgba(237, 237, 237, .14);
+  --border-strong: rgba(237, 237, 237, .24);
+
+  /* ===== Accento (brand) ===== */
+  --accent:       #29abe2;
+  --accent-hover: #45bcf0;
+  --accent-ink:   #05202b;
+  --accent-wash:  rgba(41, 171, 226, .14);
+
+  /* ===== Stati ===== */
+  --success: #16a34a;
+  --warn:    #d97706;
+
+  /* ===== Tipografia ===== */
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+  --font-mono:    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --fs-xs:      clamp(12px, 0.75rem, 12px);
+  --fs-sm:      clamp(13px, 0.8125rem, 14px);
+  --fs-base:    clamp(15px, 0.9375rem, 16px);
+  --fs-md:      clamp(16px, 1rem + 0.1vw, 18px);
+  --fs-lg:      clamp(18px, 1.05rem + 0.2vw, 20px);
+  --fs-xl:      clamp(20px, 1.15rem + 0.3vw, 24px);
+  --fs-2xl:     clamp(24px, 1.35rem + 0.6vw, 32px);
+  --fs-3xl:     clamp(30px, 1.65rem + 1vw, 44px);
+  --fs-display: clamp(34px, 1.85rem + 1.4vw, 54px);
+
+  --lh-tight: 1.15;
+  --lh-snug:  1.25;
+  --lh-base:  1.65;
+
+  /* ===== Spaziatura ===== */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  --container-max:    1200px;
+  --container-narrow: 880px;
+  --container-pad:    clamp(16px, 4vw, 32px);
+
+  /* ===== Raggi ===== */
+  --radius-sm:   4px;
+  --radius:      6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-pill: 999px;
+
+  /* ===== Ombre (calibrate per sfondo scuro) ===== */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, .45);
+  --shadow:    0 12px 32px rgba(0, 0, 0, .5);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, .6);
+
+  /* ===== Motion ===== */
+  --ease:       cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:   150ms;
+  --dur:        220ms;
+  --dur-slow:   320ms;
+  --dur-reveal: 620ms;
+
+  /* ===== Layout ===== */
+  --header-h:    64px;
+  --header-h-md: 72px;
+  --z-header:  100;
+  --z-overlay: 200;
+  --z-modal:   300;
+
+  /* ===== Breakpoint canonici (mobile-first) — riferimento =====
+     480 · 640 · 768 · 1024 · 1280 (px). Le @media usano sempre questi valori. */
+  --bp-sm:  480px;
+  --bp-md:  640px;
+  --bp-lg:  768px;
+  --bp-xl:  1024px;
+  --bp-2xl: 1280px;
+}
+
+/* ============ Reset ============ */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; min-width: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+@media (min-width: 1024px) {
+  html { scroll-padding-top: calc(var(--header-h-md) + 12px); }
+}
+
+html, body {
+  /* clip (non hidden) per non rompere position: sticky nelle sezioni */
+  overflow-x: clip;
+}
+
+body {
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img, picture, video, canvas, svg, iframe {
+  display: block;
+  max-width: 100%;
+}
+img, picture { height: auto; }
+
+input, button, textarea, select { font: inherit; color: inherit; }
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+a, button, [role="button"], label, summary { touch-action: manipulation; }
+ul, ol { list-style: none; }
+:focus:not(:focus-visible) { outline: none; }
+
+/* ============ Base tipografica ============ */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: var(--lh-tight);
+  letter-spacing: .01em;
+  color: var(--text);
+  text-wrap: balance;
+}
+h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  color: var(--text);
+}
+
+p { max-width: 68ch; }
+
+.lead {
+  font-size: var(--fs-md);
+  color: var(--text-soft);
+  max-width: 60ch;
+}
+
+a { transition: color var(--dur) var(--ease); }
+
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============ Layout: container + sezioni ============ */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+.container--narrow { max-width: var(--container-narrow); }
+
+/* Il clearance per la topbar fissa è messo una volta sola su <main>.
+   L'hero è fuori da <main> e resta a tutta altezza sotto la topbar. */
+main { padding-top: var(--header-h); }
+@media (min-width: 1024px) { main { padding-top: var(--header-h-md); } }
+
+.section { padding-block: var(--space-6); }
+@media (min-width: 768px)  { .section { padding-block: var(--space-8); } }
+@media (min-width: 1024px) { .section { padding-block: var(--space-9); } }
+.section--soft { background: var(--bg-1); }
+
+/* Header di sezione centrato (Strumenti) */
+.section-header {
+  text-align: center;
+  margin-inline: auto;
+  margin-bottom: var(--space-6);
+  max-width: 720px;
+}
+@media (min-width: 768px) { .section-header { margin-bottom: var(--space-7); } }
+.section-header h2 { margin-bottom: var(--space-3); }
+.section-header .lead { margin-inline: auto; }
+
+/* ============ Utility ============ */
+.text-muted { color: var(--text-dim); }
+.break-word { overflow-wrap: anywhere; word-break: break-word; }
+
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.mt-4 { margin-top: var(--space-4); }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+/* Visibilità responsive */
+.show-from-lg { display: none !important; }
+@media (min-width: 1024px) {
+  .hide-from-lg { display: none !important; }
+  .show-from-lg { display: revert !important; }
+}
+
+/* ============ Skip-link (accent su fondo scuro) ============ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 12px;
+  z-index: var(--z-modal);
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+  transition: top var(--dur) var(--ease);
+}
+.skip-link:focus { top: 12px; }
+
+/* ============ Reveal on scroll (gestito da site.js) ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-reveal="left"]  { transform: translateX(-28px); }
+.reveal[data-reveal="scale"] { transform: scale(0.94); }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* ============================================================================
+   TOPBAR
+   ========================================================================== */
+.topbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-header);
+  background: linear-gradient(rgba(10, 10, 12, .85), rgba(10, 10, 12, 0));
+  transition: background var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease);
+  border-bottom: 1px solid transparent;
+}
+/* Stato "in scroll": vetro scuro flottante */
+.topbar.is-scrolled {
+  background: rgba(10, 10, 12, .92);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  border-bottom-color: var(--border-soft);
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: var(--header-h);
+}
+@media (min-width: 1024px) { .topbar__inner { height: var(--header-h-md); } }
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.brand-logo { height: 30px; width: auto; }
+@media (min-width: 1024px) { .brand-logo { height: 36px; } }
+.brand-name {
+  font-size: .9rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+@media (max-width: 359px) { .brand-name { display: none; } }
+
+/* Nav desktop */
+.topbar__nav { display: none; }
+@media (min-width: 1024px) {
+  .topbar__nav { display: flex; align-items: center; gap: var(--space-6); }
+}
+.topbar__link {
+  position: relative;
+  padding: 8px 0;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-dim);
+}
+.topbar__link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+.topbar__link:hover,
+.topbar__link[aria-current="page"] { color: var(--accent); }
+.topbar__link:hover::after,
+.topbar__link[aria-current="page"]::after { transform: scaleX(1); }
+
+/* Specificità rinforzata: .cta imposta display:inline-flex più avanti nel file,
+   quindi la regola di hide dev'essere più forte per non essere sovrascritta. */
+.topbar .topbar__cta { display: none; }
+@media (min-width: 1024px) { .topbar .topbar__cta { display: inline-flex; } }
+
+/* Hamburger */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: var(--radius);
+  color: var(--text);
+  transition: background var(--dur) var(--ease);
+}
+.nav-toggle:hover { background: rgba(237, 237, 237, .08); }
+@media (min-width: 1024px) { .nav-toggle { display: none; } }
+.nav-toggle__icon { width: 24px; height: 24px; }
+.nav-toggle__icon line {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-origin: center;
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon line:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ============================================================================
+   HERO  (state machine preservata — vedi main.js)
+   ========================================================================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: radial-gradient(ellipse 90% 70% at 50% 45%, var(--bg-1), var(--bg-0) 75%);
+}
+
+/* Wrapper di crop/scala: unico elemento nuovo nel DOM dell'hero.
+   Serve a mostrare per intero il logo DP su mobile senza toccare le
+   animazioni transform (heroFloat/heroSettle) che vivono su .hero-video. */
+.hero-frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform: scale(1.8);   /* mobile: ingrandisce il video "contain" */
+}
+
+.hero-video,
+.hero-still {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: filter 1s ease;
+}
+/* mobile-first: niente crop laterale del logo */
+.hero-video { object-fit: contain; }
+
+@media (min-width: 768px) {
+  .hero-frame  { transform: none; }
+  .hero-video  { object-fit: cover; }
+  .hero-still  { background-size: cover; }
+}
+
+/* dopo la ricomposizione il logo 3D "respira": galleggiamento lentissimo.
+   Il fotogramma si scurisce perché il logo bianco renderebbe illeggibili
+   le scritte chiare sottostanti. */
+.hero.ended .hero-video {
+  filter: brightness(.58);
+  animation: heroFloat 6.5s ease-in-out .9s infinite,
+             heroSettle .9s ease-out;
+}
+
+.hero.static .hero-still { filter: brightness(.58); }
+
+/* velo sfumato dal basso: protegge la zona testi senza spegnere il logo */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top,
+              rgba(10, 10, 12, .88) 0%,
+              rgba(10, 10, 12, .45) 26%,
+              transparent 55%);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.hero.ended::after, .hero.static::after { opacity: 1; }
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* micro-impulso di scala al momento del "click" finale */
+@keyframes heroSettle {
+  0%   { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+
+/* fallback statico: nascosto finché non serve */
+.hero-still {
+  background: url("hero-fine.jpg") center / contain no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s ease;
+}
+
+.hero.static .hero-still { opacity: 1; }
+.hero.static .hero-video { opacity: 0; }
+
+/* vignetta: fonde i bordi del video nel fondo pagina */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 140px 60px var(--bg-0);
+}
+
+/* bagliore one-shot dietro il logo quando il video finisce */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(ellipse 42% 34% at 50% 42%,
+              rgba(190, 215, 240, .28), rgba(41, 171, 226, .10) 55%, transparent 75%);
+}
+
+.hero.ended .hero-glow { animation: glowPulse 1.6s ease-out .15s 1; }
+
+@keyframes glowPulse {
+  0%   { opacity: 0; }
+  30%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ---------- Testi hero (compaiono dopo la ricomposizione) ---------- */
+.hero-copy {
+  position: absolute;
+  inset: auto 0 12svh 0;
+  text-align: center;
+  padding: 0 24px;
+  z-index: 10;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 4.2vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: .01em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, .8);
+}
+
+/* parola rotante (rimpiazzata da site.js) */
+.hero__rotate {
+  display: inline-block;
+  color: var(--accent);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+.hero-sub {
+  margin-top: 14px;
+  color: var(--text-dim);
+  font-size: clamp(.95rem, 1.6vw, 1.15rem);
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+/* gruppo CTA hero: colonna su mobile, riga da 480px */
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+@media (min-width: 480px) {
+  .hero-cta-group { flex-direction: row; justify-content: center; gap: 20px; }
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 13px 34px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: .02em;
+  text-align: center;
+  transition: transform var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease),
+              background var(--dur) var(--ease);
+}
+.cta:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(41, 171, 226, .35);
+}
+.cta--sm { padding: 10px 20px; font-size: var(--fs-sm); }
+.cta--block { width: 100%; }
+
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  color: var(--text-dim);
+  font-size: .95rem;
+  transition: color var(--dur) var(--ease);
+}
+.cta-secondary:hover { color: var(--accent); }
+
+/* CTA primaria hero: solo da tablet in su. Su mobile la pill azzurra pesa
+   troppo sull'hero video; le azioni restano nella sticky bar e nel menu. */
+.hero-cta-group .cta { display: none; }
+@media (min-width: 768px) {
+  .hero-cta-group .cta { display: inline-flex; }
+}
+
+/* stato iniziale testi: invisibili; .ended o .static li rivela con stagger */
+.hero-title, .hero-sub, .hero-cta-group {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.hero.ended .hero-title, .hero.static .hero-title { opacity: 1; transform: none; transition-delay: .45s; }
+.hero.ended .hero-sub,   .hero.static .hero-sub   { opacity: 1; transform: none; transition-delay: .62s; }
+.hero.ended .hero-cta-group, .hero.static .hero-cta-group { opacity: 1; transform: none; transition-delay: .82s; }
+
+/* ---------- Replay e scroll hint ---------- */
+.replay {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 12;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(41, 171, 226, .55);
+  background: rgba(10, 10, 12, .6);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .5);
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.replay:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 2px 22px rgba(41, 171, 226, .35);
+  transform: scale(1.06);
+}
+
+.scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity .7s ease 1.1s;
+}
+.hero.ended .scroll-hint, .hero.static .scroll-hint { opacity: .7; }
+
+.chevron {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid var(--text-dim);
+  border-bottom: 2px solid var(--text-dim);
+  transform: rotate(45deg);
+  animation: chevronNudge 2.2s ease-in-out infinite;
+}
+@keyframes chevronNudge {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); }
+  50%      { transform: rotate(45deg) translate(4px, 4px); }
+}
+
+/* ============ Feedback tattile al tap (touch) ============ */
+@media (hover: none) {
+  .cta:active,
+  .cta-secondary:active,
+  .topbar__link:active { transform: scale(0.975); }
+}
+
+/* ============ Reduced motion: tutto fermo, tutto visibile ============ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}

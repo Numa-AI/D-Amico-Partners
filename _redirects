@@ -1,19 +1,20 @@
-# Netlify _redirects — D'Amico & Partners
-# Mantiene gli alias storici e URL puliti (senza .html)
+# Netlify _redirects — D'Amico & Partners (sito one-page)
+# Il sito è ora una singola pagina: gli alias storici puntano alla home.
 
-# Alias storici dai vecchi siti
-/area-di-attivita/*    /servizi.html         301
-/aree-di-attivita/*    /servizi.html         301
-/chi-siamo/*           /chi-siamo.html       301
-/contatti/*            /contatti.html        301
-/profilo-societario    /chi-siamo.html       301
+# Alias storici dai vecchi siti / vecchie pagine
+/area-di-attivita/*    /                     301
+/aree-di-attivita/*    /                     301
+/servizi               /                     301
+/advisory              /                     301
+/chi-siamo             /                     301
+/chi-siamo/*           /                     301
+/contatti              /                     301
+/contatti/*            /                     301
+/dove-siamo            /                     301
+/profilo-societario    /                     301
 /news/*                /                     302
 
-# URL puliti -> file .html
-/chi-siamo             /chi-siamo.html       200
-/servizi               /servizi.html         200
-/advisory              /advisory.html        200
-/contatti              /contatti.html        200
+# URL puliti -> pagine legali
 /privacy               /privacy.html         200
 /cookie                /cookie.html          200
 /note-legali           /note-legali.html     200

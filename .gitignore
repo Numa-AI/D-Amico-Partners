@@ -18,7 +18,3 @@ npm-debug.log*
 
 # Local server output
 .playwright-cli/
-
-# Asset sorgente in staging (PNG grezzi non ottimizzati, da convertire in
-# WebP/AVIF <200KB prima di pubblicarli). Restano in locale, fuori dal repo.
-assets/img/new/
