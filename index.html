@@ -14,15 +14,13 @@
   <meta property="og:url" content="https://www.damicoandpartners.it/">
   <meta property="og:image" content="https://www.damicoandpartners.it/assets/img/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#FFFFFF">
+  <meta name="theme-color" content="#16223B">
   <link rel="icon" href="favicon-light.png" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="favicon-dark.png" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="apple-touch-icon" href="favicon-light.png">
-  <link rel="preload" href="assets/fonts/bodoni-moda-italic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/archivo-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css">
-  <link rel="stylesheet" href="assets/css/film.css">
-  <noscript><style>.film__layer--next,.film__beat--2,.film__beat--3,.film__veil{display:none}</style></noscript>
+  <link rel="preload" href="assets/fonts/libre-caslon-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/hanken-grotesk-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
   <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -41,218 +39,152 @@
     "vatID": "IT02808450981"
   }</script>
 </head>
-<body class="page-home">
-<a class="skip-link" href="#main">Salta al contenuto</a>
-<header class="header header--film">
-  <div class="wrap header__inner">
+<body>
+<a class="skip" href="#main">Salta al contenuto</a>
+<header class="header" data-over>
+  <div class="wrap header__in">
     <a class="brand" href="index.html" aria-label="D’Amico &amp; Partners, pagina iniziale">
-      <img class="brand__logo" src="assets/img/logo-dp-96.png" alt="" width="179" height="96">
-      <img class="brand__logo brand__logo--bianco" src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96">
-      <span class="brand__name wordmark">D’Amico &amp; Partners</span>
+      <img class="d" src="assets/img/logo-dp-96.png" alt="" width="179" height="96">
+      <img class="w" src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96">
+      <span>D’Amico &amp; Partners</span>
     </a>
-    <nav class="nav" aria-label="Navigazione principale">
+    <nav class="nav" aria-label="Principale">
       <a href="chi-siamo.html">Chi siamo</a>
       <a href="approccio.html">Approccio</a>
       <a href="advisory.html">Advisory</a>
       <a href="consulting.html">Consulting</a>
       <a href="contatti.html">Contatti</a>
     </nav>
-    <a class="btn btn--ghost btn--sm header__cta" href="contatti.html">Richiedi un incontro</a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu"><span></span></button>
+    <a class="btn btn--notte" href="contatti.html">Richiedi un incontro</a>
+    <button class="burger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><i></i></button>
   </div>
 </header>
 <div class="menu" id="menu" hidden>
+  <div class="menu__top">
+    <a class="brand" href="index.html" aria-label="D’Amico &amp; Partners, pagina iniziale"><img src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96"><span>D’Amico &amp; Partners</span></a>
+    <button class="menu__close" type="button" aria-label="Chiudi il menu">×</button>
+  </div>
   <nav aria-label="Menu">
-    <ul class="menu__list">
-      <li><a href="chi-siamo.html">Chi siamo</a></li>
-      <li><a href="approccio.html">Approccio</a></li>
-      <li><a href="advisory.html">Advisory</a></li>
-      <li><a href="consulting.html">Consulting</a></li>
-      <li><a href="contatti.html">Contatti</a></li>
-    </ul>
+    <a href="chi-siamo.html">Chi siamo</a>
+    <a href="approccio.html">Approccio</a>
+    <a href="advisory.html">Advisory</a>
+    <a href="consulting.html">Consulting</a>
+    <a href="contatti.html">Contatti</a>
   </nav>
   <div class="menu__foot">
-    <a class="btn btn--brass" href="contatti.html">Richiedi un incontro</a>
+    <a class="btn btn--bianco" href="contatti.html">Richiedi un incontro</a>
     <a href="tel:+390302403392">+39 030 240 3392</a>
     <a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a>
   </div>
 </div>
 <main id="main">
-  <section class="film" aria-label="Piazza della Vittoria, Brescia">
-    <div class="film__layer film__layer--crepuscolo">
-      <picture>
-        <source media="(max-width:767px)" srcset="assets/img/film/crepuscolo-mobile.webp">
-        <source media="(max-width:1100px)" srcset="assets/img/film/crepuscolo-1000.webp">
-        <img src="assets/img/film/crepuscolo-1448.webp" alt="Piazza della Vittoria a Brescia al crepuscolo, con i portici illuminati" width="1448" height="1086" fetchpriority="high" decoding="async">
-      </picture>
-      <div class="film__scrim"></div>
-    </div>
-    <div class="film__layer film__layer--giorno film__layer--next">
-      <picture>
-        <source media="(max-width:767px)" srcset="assets/img/film/giorno-mobile.webp">
-        <source media="(max-width:1100px)" srcset="assets/img/film/giorno-1000.webp">
-        <img src="assets/img/film/giorno-1448.webp" alt="La torre di Piazza della Vittoria a Brescia di giorno" width="1448" height="1086" fetchpriority="low" decoding="async">
-      </picture>
-      <div class="film__scrim"></div>
-    </div>
-    <div class="film__layer film__layer--arco film__layer--next">
-      <picture>
-        <source media="(max-width:767px)" srcset="assets/img/film/arco-720.webp">
-        <img src="assets/img/film/arco-1024.webp" alt="La torre vista attraverso un arco dei portici di Piazza della Vittoria" width="1024" height="1536" fetchpriority="low" decoding="async">
-      </picture>
-      <div class="film__scrim"></div>
-    </div>
-    <div class="film__layer film__layer--targa film__layer--next">
-      <picture>
-        <source media="(max-width:767px)" srcset="assets/img/film/targa-mobile.webp">
-        <img src="assets/img/film/targa-desktop.webp" alt="La targa in ottone D’Amico &amp; Partners all’ingresso dello studio" width="1920" height="1080" fetchpriority="low" decoding="async">
-      </picture>
-    </div>
-    <div class="film__veil"></div>
-    <div class="film__beat film__beat--1">
-      <h1>D’Amico &amp; Partners affianca le imprese nelle decisioni strategiche e nelle operazioni finanziarie e societarie complesse.</h1>
-    </div>
-    <div class="film__beat film__beat--2" aria-hidden="true">
-      <p>D’Amico &amp; Partners Advisory, specializzata nella gestione della crisi d’impresa</p>
-      <p>D’Amico &amp; Partners Consulting, dedicata alla ricerca di finanza ordinaria e straordinaria</p>
-    </div>
-    <div class="film__beat film__beat--3" aria-hidden="true">
-      <blockquote><p>«Siamo passati dal finanziare l’operazione al pensare l’operazione insieme all’impresa.»</p></blockquote>
-    </div>
-  </section>
-
-  <section class="section intro" aria-labelledby="chi-siamo-t">
-    <div class="wrap split">
-      <div class="split__head"><h2 id="chi-siamo-t">Chi siamo</h2><img class="split__photo" src="assets/img/film/arco-720.webp" alt="La torre di Piazza della Vittoria vista dai portici" width="720" height="1080" loading="lazy"></div>
-      <div class="prose">
-        <p>D’Amico &amp; Partners affianca le imprese nelle decisioni strategiche e nelle operazioni finanziarie e societarie complesse. Operiamo a fianco degli imprenditori con una visione d’insieme che integra analisi economico-finanziaria, competenze giuridiche e conoscenza delle dinamiche aziendali, per trasformare esigenze e obiettivi in progetti concretamente realizzabili.</p>
+  <div class="stack">
+    <section class="panel panel--hero" aria-labelledby="h1">
+      <div class="panel__media"><picture><source media="(max-width:700px)" srcset="assets/img/film/giorno-mobile.webp"><img src="assets/img/film/giorno-1448.webp" alt="Piazza della Vittoria a Brescia, con la torre e i portici" width="1448" height="1086" style="object-position:62% 50%" decoding="async" fetchpriority="high"></picture></div>
+      <div class="panel__shade"></div>
+      <div class="hero__text">
+        <h1 id="h1">D’Amico &amp; Partners</h1>
+        <p class="lead" style="max-width:40ch;margin-top:1rem">D’Amico &amp; Partners affianca le imprese nelle decisioni strategiche e nelle operazioni finanziarie e societarie complesse.</p>
+        <div class="btns"><a class="btn btn--bianco" href="#attivita">Le nostre attività</a><a class="btn btn--linea" href="contatti.html">Richiedi un incontro</a></div>
+      </div>
+    </section>
+    <section class="panel" aria-labelledby="chi-t">
+      <div class="panel__media"><picture><source media="(max-width:700px)" srcset="assets/img/film/arco-720.webp"><img src="assets/img/film/arco-1024.webp" alt="La torre di Piazza della Vittoria vista sotto un arco dei portici" width="1024" height="1536" style="object-position:50% 38%" decoding="async" loading="lazy"></picture></div>
+      <div class="panel__shade"></div>
+      <div class="panel__card">
+        <h2 id="chi-t">Chi siamo</h2>
         <p>Le nostre origini risalgono al 2004, quando il dott. Fulvio D’Amico, Dottore Commercialista e Revisore Legale, grazie all’esperienza maturata nel settore bancario e finanziario, fonda D’Amico &amp; Partners con l’obiettivo di supportare le piccole e medie imprese nella ricerca di risorse finanziarie e nella gestione dei rapporti con il sistema creditizio.</p>
-        <p class="after"><a class="link" href="chi-siamo.html">La nostra storia e le due aree di attività</a></p>
+        <a class="tlink" href="chi-siamo.html">La nostra storia</a>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--tight aree band--pietra" aria-labelledby="attivita-t">
-    <div class="wrap">
-      <h2 id="attivita-t">Le nostre attività</h2>
-      <div class="aree__grid">
-        <div class="area">
-          <h3>D’Amico &amp; Partners Advisory</h3>
-          <p class="area__nota">Cofondata dall’avv. Simone D’Amico e dal dott. Giammaria D’Amico, dottore commercialista e revisore legale.</p>
-          <ul class="area__list">
-            <li><a href="advisory.html#advisory-finanziaria">Advisory finanziaria e operazioni straordinarie</a></li>
-            <li><a href="advisory.html#ristrutturazione-del-debito">Ristrutturazione del debito e gestione della crisi</a></li>
-            <li><a href="advisory.html#riorganizzazione-societaria">Pianificazione e riorganizzazione societaria</a></li>
-          </ul>
-          <a class="link" href="advisory.html">Tutta l’attività di Advisory</a>
-        </div>
-        <div class="area">
-          <h3>D’Amico &amp; Partners Consulting</h3>
-          <p class="area__nota">Società iscritta all’Albo dei Mediatori Creditizi OAM n. M640.</p>
-          <ul class="area__list">
-            <li><a href="consulting.html#accesso-al-credito">Accesso al credito e pianificazione finanziaria</a></li>
-            <li><a href="consulting.html#business-plan">Redazione di Business Plan</a></li>
-          </ul>
-          <a class="link" href="consulting.html">Tutta l’attività di Consulting</a>
+    </section>
+    <section class="panel" id="attivita" aria-labelledby="att-t">
+      <div class="panel__media"><picture><source media="(max-width:700px)" srcset="assets/img/film/crepuscolo-mobile.webp"><img src="assets/img/film/crepuscolo-1448.webp" alt="I portici illuminati di Piazza della Vittoria al crepuscolo" width="1448" height="1086" style="object-position:50% 45%" decoding="async" loading="lazy"></picture></div>
+      <div class="panel__shade"></div>
+      <div class="panel__card">
+        <h2 id="att-t">Le nostre attività</h2>
+        <div class="aree">
+          <a href="advisory.html"><strong>D’Amico &amp; Partners Advisory</strong><span>Specializzata nella gestione della crisi d’impresa</span></a>
+          <a href="consulting.html"><strong>D’Amico &amp; Partners Consulting</strong><span>Dedicata alla ricerca di finanza ordinaria e straordinaria</span></a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section risultato" aria-labelledby="risultato-t">
-    <div class="wrap risultato__grid">
-      <h2 id="risultato-t">Dal bilancio in perdita al ritorno alla crescita.</h2>
-      <figure class="video-frame">
-        <video muted loop playsinline preload="none" poster="assets/img/bilancio-crescita-poster.jpg" data-autoplay-inview width="1280" height="720" aria-label="Un bilancio sulla scrivania: la curva torna a salire">
-          <source src="assets/video/bilancio-crescita.mp4" type="video/mp4">
-        </video>
-      </figure>
-    </div>
-  </section>
-
-  <div class="photo-band" role="img" aria-label="Piazza della Vittoria a Brescia">
-    <img src="assets/img/film/giorno-1448.webp" alt="" width="1448" height="1086" loading="lazy" style="object-position:50% 78%">
+    </section>
   </div>
 
-  <section class="section approccio-teaser" aria-labelledby="approccio-t">
-    <div class="wrap split">
-      <div class="split__head"><h2 id="approccio-t">Il nostro approccio</h2></div>
-      <div class="prose">
-        <p>Ogni impresa presenta caratteristiche proprie: storia, struttura proprietaria, modello di business, equilibri economico-finanziari e obiettivi di sviluppo. Il nostro lavoro inizia dall’ascolto dell’imprenditore e dall’analisi del contesto aziendale, per comprendere le esigenze effettive, identificare i punti di criticità e individuare le opportunità percorribili.</p>
-        <p class="after"><a class="link" href="approccio.html">Come lavoriamo, dall’ascolto all’operatività</a></p>
+  <section class="sec dichiarazione" aria-labelledby="app-t">
+    <div class="wrap">
+      <blockquote><p>«Siamo passati dal finanziare l’operazione al pensare l’operazione insieme all’impresa.»</p></blockquote>
+      <div class="due">
+        <h2 id="app-t">Il nostro approccio</h2>
+        <div class="prose">
+          <p>Ogni impresa presenta caratteristiche proprie: storia, struttura proprietaria, modello di business, equilibri economico-finanziari e obiettivi di sviluppo. Il nostro lavoro inizia dall’ascolto dell’imprenditore e dall’analisi del contesto aziendale, per comprendere le esigenze effettive, identificare i punti di criticità e individuare le opportunità percorribili.</p>
+          <a class="tlink" href="approccio.html">Come lavoriamo</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section manifesto band--pietra" aria-labelledby="competenze-t">
-    <div class="wrap split">
-      <div class="split__head"><h2 id="competenze-t">Competenze integrate, soluzioni concrete</h2></div>
+  <section class="sec sec--pietra" aria-labelledby="vid-t">
+    <div class="wrap video">
+      <h2 id="vid-t">Dal bilancio in perdita al ritorno alla crescita.</h2>
+      <figure><video muted loop playsinline preload="none" poster="assets/img/bilancio-crescita-poster.jpg" data-inview width="1280" height="720" aria-label="Un bilancio sulla scrivania: la curva torna a salire"><source src="assets/video/bilancio-crescita.mp4" type="video/mp4"></video></figure>
+    </div>
+  </section>
+
+  <section class="sec sec--notte" aria-labelledby="comp-t">
+    <div class="wrap notte-grid">
+      <h2 id="comp-t">Competenze integrate, soluzioni concrete</h2>
       <div class="prose">
-        <p>Nelle operazioni più complesse, la validità di una scelta economica dipende anche dalla sua sostenibilità finanziaria, dalla fattibilità giuridica ed economica e dalla possibilità di tradurla in accordi efficaci. Per questo lavoriamo con un approccio integrato, mettendo in relazione competenze differenti e mantenendo una visione unitaria degli obiettivi dell’impresa.</p>
+        <p class="muted">Nelle operazioni più complesse, la validità di una scelta economica dipende anche dalla sua sostenibilità finanziaria, dalla fattibilità giuridica ed economica e dalla possibilità di tradurla in accordi efficaci. Per questo lavoriamo con un approccio integrato, mettendo in relazione competenze differenti e mantenendo una visione unitaria degli obiettivi dell’impresa.</p>
         <p>Il nostro impegno è affiancare l’imprenditore con metodo, concretezza e continuità: non limitandoci a individuare una soluzione sulla carta, ma contribuendo a costruire il percorso necessario per realizzarla.</p>
       </div>
     </div>
   </section>
 
-  <section class="section chiusura" aria-labelledby="chiusura-t">
-    <div class="wrap chiusura__grid">
-      <h2 id="chiusura-t">Piazza della Vittoria 11, Brescia.</h2>
-      <div class="chiusura__contatti">
+  <section class="porta" aria-labelledby="porta-t">
+    <div class="porta__img"><picture><source media="(max-width:700px)" srcset="assets/img/film/targa-800.webp"><img src="assets/img/film/targa-1122.webp" alt="La targa in ottone all’ingresso dello studio" width="1122" height="1402" style="object-position:50% 50%" decoding="async" loading="lazy"></picture></div>
+    <div class="porta__card">
+      <h2 id="porta-t">Piazza della Vittoria 11, Brescia</h2>
+      <div class="rec">
         <a href="tel:+390302403392">+39 030 240 3392</a>
         <a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a>
-        <div><a class="btn btn--brass" href="contatti.html">Richiedi un incontro</a></div>
       </div>
+      <a class="btn btn--notte" href="contatti.html">Richiedi un incontro</a>
     </div>
   </section>
 </main>
 <footer class="footer">
   <div class="wrap">
     <div class="footer__grid">
-      <div class="footer__brand">
-        <a class="brand" href="index.html" aria-label="D’Amico &amp; Partners, pagina iniziale">
-          <img class="brand__logo" src="assets/img/logo-dp-96.png" alt="" width="179" height="96" loading="lazy">
-          <span class="brand__name wordmark">D’Amico &amp; Partners</span>
-        </a>
-        <div class="footer__rule" aria-hidden="true"></div>
+      <div>
+        <a class="brand" href="index.html" aria-label="D’Amico &amp; Partners, pagina iniziale"><img src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96" loading="lazy"><span>D’Amico &amp; Partners</span></a>
         <address>Piazza della Vittoria 11<br>25121 Brescia (BS)</address>
       </div>
       <div>
-        <h3>Contatti</h3>
+        <h2>Contatti</h2>
         <ul>
           <li><a href="tel:+390302403392">+39 030 240 3392</a></li>
           <li><a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a></li>
         </ul>
       </div>
-      <div class="footer__societa">
-        <h3>Società</h3>
+      <div class="soc">
+        <h2>Società</h2>
         <div><strong>D’Amico &amp; Partners S.r.l.</strong><span>P.IVA 02808450981</span><span>PEC info@pec.damicoandpartners.it</span></div>
-        <div><strong>D’Amico &amp; Partners Consulting S.r.l.</strong><span>P.IVA 04622630988</span><span>Mediatore creditizio OAM M640</span><span>PEC damicofinance@legalmail.it</span></div>
+        <div><strong>D’Amico &amp; Partners Consulting S.r.l.</strong><span>P.IVA 04622630988 · OAM M640</span><span>PEC damicofinance@legalmail.it</span></div>
       </div>
       <div>
-        <h3>Pagine</h3>
-        <ul>
-          <li><a href="chi-siamo.html">Chi siamo</a></li>
-          <li><a href="approccio.html">Il nostro approccio</a></li>
-          <li><a href="advisory.html">Advisory</a></li>
-          <li><a href="consulting.html">Consulting</a></li>
-          <li><a href="contatti.html">Contatti</a></li>
-        </ul>
+        <h2>Pagine</h2>
+        <ul><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="approccio.html">Approccio</a></li><li><a href="advisory.html">Advisory</a></li><li><a href="consulting.html">Consulting</a></li><li><a href="contatti.html">Contatti</a></li></ul>
       </div>
     </div>
     <div class="footer__bottom">
-      <div>© <span data-year>2026</span> D’Amico &amp; Partners S.r.l. e D’Amico &amp; Partners Consulting S.r.l.</div>
-      <ul class="footer__legal">
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="cookie.html">Cookie</a></li>
-        <li><a href="note-legali.html">Note legali</a></li>
-      </ul>
+      <p>© <span data-year>2026</span> D’Amico &amp; Partners S.r.l. e D’Amico &amp; Partners Consulting S.r.l.</p>
+      <ul><li><a href="privacy.html">Privacy</a></li><li><a href="cookie.html">Cookie</a></li><li><a href="note-legali.html">Note legali</a></li></ul>
     </div>
   </div>
 </footer>
 <script src="assets/js/site.js" defer></script>
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="assets/vendor/lenis.min.js" defer></script>
-<script src="assets/js/film.js" defer></script>
+<script src="assets/js/home.js" defer></script>
 </body>
 </html>

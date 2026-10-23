@@ -3,12 +3,9 @@
 Repo: questo clone (`main`, GitHub Pages root). Sorgenti (docx, PNG) nella cartella madre, MAI nel repo.
 
 ## Decisioni fisse
-- Sfondo BIANCO. Concept home «Verso lo studio»: crepuscolo → giorno → arco → targa → bianco. Un solo vettore.
-- Transizioni = dissolvenze pulite con lento zoom (il cliente ha bocciato le soglie ad arco). Blocco fisso breve: 2,6 schermate.
-- Testi: SOLO dal docx (verbatim, refusi corretti). Dati societari: dal vecchio note-legali.
-- Niente CDN esterne, niente Google Fonts remoto, niente mappe embed (cookie policy). Vendor in assets/vendor, font in assets/fonts.
-- Niente: eyebrow maiuscoletto, 01/02/03, card identiche con ombra, "→" nei link, parola colorata nel titolo,
-  fade-up su ogni sezione, copy che racconta il meccanismo, loghi disegnati a mano.
+- Versione 3 (rifatta da zero dopo due bocciature): pannelli foto sticky che scorrono uno sopra l'altro, schede bianche,
+  blu notte #16223B + pietra #E8E5DF, Libre Caslon Display + Hanken Grotesk. Niente maschere, niente dissolvenze lunghe.
+- Testi SOLO dal docx. Niente CDN esterne. Generatore fuori repo (scratchpad/gen/gen2.py).
 
 ## Token
 --bianco #FFFFFF · --pietra #EFEDE8 · --inchiostro #16213A · --inchiostro-2 #4A546A

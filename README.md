@@ -7,7 +7,7 @@ Pubblicato con GitHub Pages dal branch `main` (cartella root, `.nojekyll` presen
 
 | File | Contenuto |
 |---|---|
-| `index.html` | Home: film a scorrimento su quattro immagini di Piazza della Vittoria (crepuscolo → giorno → arco → targa), poi Chi siamo, Le nostre attività, video, Il nostro approccio, Competenze integrate, contatti |
+| `index.html` | Home: pannelli fotografici a tutto schermo (piazza, arco, crepuscolo), poi Chi siamo, Le nostre attività, video, Il nostro approccio, Competenze integrate, contatti |
 | `chi-siamo.html` | Storia dello studio e le due aree |
 | `approccio.html` | Il nostro approccio |
 | `advisory.html` | D'Amico & Partners Advisory: tre servizi |
@@ -22,13 +22,12 @@ Header e footer sono ripetuti in ogni pagina: una modifica va replicata a mano i
 
 ```text
 assets/
-├── css/site.css      token, font, tipografia, header, menu, layout, pagine, footer
-├── css/film.css      solo home: i quattro quadri del film
-├── js/site.js        header, menu mobile, anno, video in vista, modulo contatti
-├── js/film.js        solo home: GSAP ScrollTrigger + Lenis (con fallback statico senza JS o con motion ridotto)
-├── vendor/           gsap 3.13.0, ScrollTrigger 3.13.0, lenis 1.3.8 (copie locali, nessuna CDN)
-├── fonts/            Bodoni Moda e Archivo in woff2 (self-hosted, nessuna richiesta a Google Fonts)
-├── img/film/         le quattro immagini in WebP, con ritagli 9:16 per mobile
+├── css/style.css     tutto lo stile (token, header, pannelli della home, pagine, footer)
+├── js/site.js        header, menu, video in vista, modulo contatti
+├── js/home.js        solo home: pannelli fotografici che scorrono uno sopra l'altro (GSAP ScrollTrigger)
+├── vendor/           gsap e ScrollTrigger 3.13.0 (copie locali, nessuna CDN)
+├── fonts/            Libre Caslon Display e Hanken Grotesk (self-hosted)
+├── img/film/         le quattro immagini in WebP, con ritagli per mobile
 ├── img/              logo DP, poster del video, immagine Open Graph
 └── video/            bilancio-crescita.mp4
 ```
