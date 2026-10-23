@@ -1,4 +1,4 @@
-/* film.js — home. Il film «Verso lo studio»: quattro quadri, un vettore, soglie ad arco.
+/* film.js — home. Quattro quadri a dissolvenza: ogni immagine fa un lento zoom, la successiva sfuma sopra.
    Richiede gsap + ScrollTrigger + Lenis (assets/vendor). Senza di essi, o con motion ridotto, resta il primo quadro. */
 (function () {
   'use strict';
@@ -38,7 +38,7 @@
   /* ---- scroll morbido ---- */
   var lenis = null;
   if (window.Lenis && JUMP === null) {
-    lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+    lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
     gsap.ticker.lagSmoothing(0);
@@ -51,62 +51,57 @@
     targa: film.querySelector('.film__layer--targa')
   };
   var img = function (l) { return l.querySelector('img'); };
-  var shade = function (l) { return l.querySelector('.film__shade'); };
   var beat1 = film.querySelector('.film__beat--1');
   var beat2 = film.querySelector('.film__beat--2');
   var beat3 = film.querySelector('.film__beat--3');
   var veil = film.querySelector('.film__veil');
 
-  var ARCH_IN = 'inset(64% 45% 0% 45% round 50vw 50vw 0vw 0vw)';
-  var ARCH_OUT = 'inset(-40% -34% 0% -34% round 50vw 50vw 0vw 0vw)';
+  gsap.set([L.giorno, L.arco, L.targa], { autoAlpha: 0 });
+  gsap.set([beat2, beat3], { autoAlpha: 0, y: 24 });
 
-  gsap.set([L.giorno, L.arco, L.targa], { clipPath: ARCH_IN, autoAlpha: 0 });   /* nascosti finché la loro soglia non si apre */
-  gsap.set([img(L.giorno), img(L.arco), img(L.targa)], { scale: 1.14 });
-  gsap.set([beat2, beat3], { autoAlpha: 0, y: 28 });
-
+  /* durata totale del blocco fisso: 2,6 schermate di scroll (la timeline va da 0 a 2.6) */
+  var LEN = 2.6;
   var tl = gsap.timeline({
     defaults: { ease: 'none' },
     scrollTrigger: {
       trigger: film,
       start: 'top top',
-      end: function () { return '+=' + Math.round(film.offsetHeight * 4.2); },
+      end: function () { return '+=' + Math.round(film.offsetHeight * LEN); },
       pin: true,
       anticipatePin: 1,
-      scrub: JUMP !== null ? true : 0.7,
+      scrub: JUMP !== null ? true : 0.4,
       invalidateOnRefresh: true,
-      onUpdate: function (self) { header.classList.toggle('header--film', self.progress < 0.93); }
+      onUpdate: function (self) { header.classList.toggle('header--film', self.progress < 0.92); }
     }
   });
 
-  function soglia(layer, at, dur) {               /* l'immagine nuova entra dall'arco e si avvicina */
-    tl.set(layer, { autoAlpha: 1 }, at);
-    tl.fromTo(layer, { clipPath: ARCH_IN }, { clipPath: ARCH_OUT, duration: dur, ease: 'power2.in' }, at);
-    tl.fromTo(img(layer), { scale: 1.14 }, { scale: 1, duration: dur + 0.35, ease: 'power1.out' }, at);
+  /* ogni quadro fa un lento zoom per tutta la sua vita; il successivo sfuma sopra */
+  function zoom(layer, from, to, at, dur) {
+    tl.fromTo(img(layer), { scale: from }, { scale: to, duration: dur }, at);
   }
-  function indietro(layer, at, dur) {             /* l'immagine vecchia resta indietro, un po' più scura */
-    tl.to(img(layer), { scale: 1.12, duration: dur, ease: 'power1.in' }, at);
-    tl.to(shade(layer), { opacity: 0.4, duration: dur, ease: 'power1.in' }, at);
+  function dissolvi(layer, at, dur) {
+    tl.to(layer, { autoAlpha: 1, duration: dur, ease: 'power1.inOut' }, at);
   }
-  function beatIn(b, at) { tl.to(b, { autoAlpha: 1, y: 0, duration: 0.28, ease: 'power2.out' }, at); }
-  function beatOut(b, at) { tl.to(b, { autoAlpha: 0, y: -24, duration: 0.24, ease: 'power2.in' }, at); }
+  function beatIn(b, at) { tl.to(b, { autoAlpha: 1, y: 0, duration: 0.18, ease: 'power2.out' }, at); }
+  function beatOut(b, at) { tl.to(b, { autoAlpha: 0, y: -18, duration: 0.14, ease: 'power2.in' }, at); }
 
-  /* 1 — crepuscolo (0 → 1) */
-  tl.fromTo(img(L.crepuscolo), { scale: 1 }, { scale: 1.06, duration: 1.0 }, 0);
-  beatOut(beat1, 0.78);
-  /* 2 — giorno (1 → 2.15) */
-  indietro(L.crepuscolo, 1.0, 0.9);
-  soglia(L.giorno, 1.0, 0.9);
-  beatIn(beat2, 1.5);
-  beatOut(beat2, 1.98);
-  /* 3 — arco (2.15 → 3.3) */
-  indietro(L.giorno, 2.15, 0.9);
-  soglia(L.arco, 2.15, 0.9);
-  beatIn(beat3, 2.62);
-  beatOut(beat3, 3.12);
-  /* 4 — targa, poi il bianco della pagina (3.3 → 4.2) */
-  indietro(L.arco, 3.3, 0.8);
-  soglia(L.targa, 3.3, 0.75);
-  tl.to(veil, { opacity: 1, duration: 0.35, ease: 'power1.in' }, 3.85);
+  /* 1 — crepuscolo */
+  zoom(L.crepuscolo, 1.0, 1.08, 0, 1.0);
+  beatOut(beat1, 0.5);
+  /* 2 — giorno */
+  zoom(L.giorno, 1.06, 1.12, 0.6, 0.95);
+  dissolvi(L.giorno, 0.6, 0.32);
+  beatIn(beat2, 0.9);
+  beatOut(beat2, 1.22);
+  /* 3 — arco */
+  zoom(L.arco, 1.06, 1.12, 1.3, 0.95);
+  dissolvi(L.arco, 1.3, 0.32);
+  beatIn(beat3, 1.6);
+  beatOut(beat3, 1.92);
+  /* 4 — targa, poi il bianco della pagina */
+  zoom(L.targa, 1.05, 1.0, 2.0, 0.6);
+  dissolvi(L.targa, 2.0, 0.3);
+  tl.to(veil, { opacity: 1, duration: 0.25, ease: 'power1.in' }, 2.35);
 
   /* una sola rivelazione al caricamento, solo in cima */
   if (JUMP === null && window.scrollY < 10) {

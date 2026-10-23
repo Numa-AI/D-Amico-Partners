@@ -22,7 +22,7 @@
   <link rel="preload" href="assets/fonts/archivo-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/site.css">
   <link rel="stylesheet" href="assets/css/film.css">
-  <noscript><style>.film__layer[data-arch],.film__beat--2,.film__beat--3,.film__veil{display:none}</style></noscript>
+  <noscript><style>.film__layer--next,.film__beat--2,.film__beat--3,.film__veil{display:none}</style></noscript>
   <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -86,31 +86,27 @@
         <img src="assets/img/film/crepuscolo-1448.webp" alt="Piazza della Vittoria a Brescia al crepuscolo, con i portici illuminati" width="1448" height="1086" fetchpriority="high" decoding="async">
       </picture>
       <div class="film__scrim"></div>
-      <div class="film__shade"></div>
     </div>
-    <div class="film__layer film__layer--giorno" data-arch>
+    <div class="film__layer film__layer--giorno film__layer--next">
       <picture>
         <source media="(max-width:767px)" srcset="assets/img/film/giorno-mobile.webp">
         <source media="(max-width:1100px)" srcset="assets/img/film/giorno-1000.webp">
         <img src="assets/img/film/giorno-1448.webp" alt="La torre di Piazza della Vittoria a Brescia di giorno" width="1448" height="1086" fetchpriority="low" decoding="async">
       </picture>
       <div class="film__scrim"></div>
-      <div class="film__shade"></div>
     </div>
-    <div class="film__layer film__layer--arco" data-arch>
+    <div class="film__layer film__layer--arco film__layer--next">
       <picture>
         <source media="(max-width:767px)" srcset="assets/img/film/arco-720.webp">
         <img src="assets/img/film/arco-1024.webp" alt="La torre vista attraverso un arco dei portici di Piazza della Vittoria" width="1024" height="1536" fetchpriority="low" decoding="async">
       </picture>
       <div class="film__scrim"></div>
-      <div class="film__shade"></div>
     </div>
-    <div class="film__layer film__layer--targa" data-arch>
+    <div class="film__layer film__layer--targa film__layer--next">
       <picture>
         <source media="(max-width:767px)" srcset="assets/img/film/targa-mobile.webp">
         <img src="assets/img/film/targa-desktop.webp" alt="La targa in ottone D’Amico &amp; Partners all’ingresso dello studio" width="1920" height="1080" fetchpriority="low" decoding="async">
       </picture>
-      <div class="film__shade"></div>
     </div>
     <div class="film__veil"></div>
     <div class="film__beat film__beat--1">
@@ -127,7 +123,7 @@
 
   <section class="section intro" aria-labelledby="chi-siamo-t">
     <div class="wrap split">
-      <div class="split__head"><h2 id="chi-siamo-t">Chi siamo</h2></div>
+      <div class="split__head"><h2 id="chi-siamo-t">Chi siamo</h2><img class="split__photo" src="assets/img/film/arco-720.webp" alt="La torre di Piazza della Vittoria vista dai portici" width="720" height="1080" loading="lazy"></div>
       <div class="prose">
         <p>D’Amico &amp; Partners affianca le imprese nelle decisioni strategiche e nelle operazioni finanziarie e societarie complesse. Operiamo a fianco degli imprenditori con una visione d’insieme che integra analisi economico-finanziaria, competenze giuridiche e conoscenza delle dinamiche aziendali, per trasformare esigenze e obiettivi in progetti concretamente realizzabili.</p>
         <p>Le nostre origini risalgono al 2004, quando il dott. Fulvio D’Amico, Dottore Commercialista e Revisore Legale, grazie all’esperienza maturata nel settore bancario e finanziario, fonda D’Amico &amp; Partners con l’obiettivo di supportare le piccole e medie imprese nella ricerca di risorse finanziarie e nella gestione dei rapporti con il sistema creditizio.</p>
@@ -136,7 +132,7 @@
     </div>
   </section>
 
-  <section class="section section--tight aree" aria-labelledby="attivita-t">
+  <section class="section section--tight aree band--pietra" aria-labelledby="attivita-t">
     <div class="wrap">
       <h2 id="attivita-t">Le nostre attività</h2>
       <div class="aree__grid">
@@ -174,6 +170,10 @@
     </div>
   </section>
 
+  <div class="photo-band" role="img" aria-label="Piazza della Vittoria a Brescia">
+    <img src="assets/img/film/giorno-1448.webp" alt="" width="1448" height="1086" loading="lazy" style="object-position:50% 78%">
+  </div>
+
   <section class="section approccio-teaser" aria-labelledby="approccio-t">
     <div class="wrap split">
       <div class="split__head"><h2 id="approccio-t">Il nostro approccio</h2></div>
@@ -184,7 +184,7 @@
     </div>
   </section>
 
-  <section class="section manifesto" aria-labelledby="competenze-t">
+  <section class="section manifesto band--pietra" aria-labelledby="competenze-t">
     <div class="wrap split">
       <div class="split__head"><h2 id="competenze-t">Competenze integrate, soluzioni concrete</h2></div>
       <div class="prose">

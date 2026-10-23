@@ -4,7 +4,7 @@ Repo: questo clone (`main`, GitHub Pages root). Sorgenti (docx, PNG) nella carte
 
 ## Decisioni fisse
 - Sfondo BIANCO. Concept home «Verso lo studio»: crepuscolo → giorno → arco → targa → bianco. Un solo vettore.
-- Transizioni = soglie ad arco (clip-path inset round), non dissolvenze. Niente continuità di camera promessa.
+- Transizioni = dissolvenze pulite con lento zoom (il cliente ha bocciato le soglie ad arco). Blocco fisso breve: 2,6 schermate.
 - Testi: SOLO dal docx (verbatim, refusi corretti). Dati societari: dal vecchio note-legali.
 - Niente CDN esterne, niente Google Fonts remoto, niente mappe embed (cookie policy). Vendor in assets/vendor, font in assets/fonts.
 - Niente: eyebrow maiuscoletto, 01/02/03, card identiche con ombra, "→" nei link, parola colorata nel titolo,
