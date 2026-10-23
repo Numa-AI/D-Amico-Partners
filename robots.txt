@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /404.html
+Disallow: /index-piazza.html
 
 Sitemap: https://www.damicoandpartners.it/sitemap.xml

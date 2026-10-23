@@ -1,49 +1,55 @@
 # Sito D'Amico & Partners
 
-Sito web statico unificato per **D'Amico & Partners** (Brescia). HTML5 + CSS3 + JS vanilla, zero build, zero dipendenze npm.
+Sito statico di **D'Amico & Partners** (Brescia): HTML, CSS e JavaScript senza build step né dipendenze da installare.
+Pubblicato con GitHub Pages dal branch `main` (cartella root, `.nojekyll` presente).
 
-Il sito è una **single-page** dal tema scuro (antracite + accento azzurro `#29ABE2`), con hero video del vaso che si ricompone nel logo, sezioni Divisioni (Consulting / Advisory), Servizi, Metodo, Chi siamo, Strumenti, A chi ci rivolgiamo, Perché sceglierci e Contatti. Le pagine legali sono separate ma condividono lo stesso tema.
+## Pagine
+
+| File | Contenuto |
+|---|---|
+| `index.html` | Home: film a scorrimento su quattro immagini di Piazza della Vittoria (crepuscolo → giorno → arco → targa), poi Chi siamo, Le nostre attività, video, Il nostro approccio, Competenze integrate, contatti |
+| `chi-siamo.html` | Storia dello studio e le due aree |
+| `approccio.html` | Il nostro approccio |
+| `advisory.html` | D'Amico & Partners Advisory: tre servizi |
+| `consulting.html` | D'Amico & Partners Consulting (OAM M640): due servizi e obiettivo finale |
+| `contatti.html` | Recapiti, PEC e modulo di contatto |
+| `privacy.html` · `cookie.html` · `note-legali.html` | Pagine legali |
+| `404.html` | Pagina di errore · `index-piazza.html` reindirizza alla home (vecchia anteprima) |
+
+Header e footer sono ripetuti in ogni pagina: una modifica va replicata a mano in tutti i file.
 
 ## Struttura
 
 ```text
-sito/
-├── index.html             Home (single-page: tutte le sezioni)
-├── index-vaso2.html       Variante hero con il video "Vaso 2" (noindex, anteprima)
-├── privacy.html           Informativa privacy (GDPR)
-├── cookie.html            Cookie policy
-├── note-legali.html       Note legali & dati societari
-├── 404.html               Pagina di errore
-├── favicon-light.png · favicon-dark.png    Favicon adattive al tema
-├── sitemap.xml · robots.txt · .nojekyll    Meta + deploy GitHub Pages
-└── assets/
-    ├── css/
-    │   ├── style.css       Token, reset, base, topbar, hero
-    │   └── sections.css    Componenti delle sezioni + pagine legali
-    ├── js/
-    │   ├── main.js         State machine dell'hero video (+ audio sintetizzato)
-    │   └── site.js         Nav, accordion, tabs, form Web3Forms, reveal, sticky bar
-    ├── fonts/              inter.woff2 · playfair.woff2 (self-hosted, GDPR-clean)
-    ├── img/                logo · hero-poster · hero-fine · chi-siamo-brescia · poster video · div-start
-    └── video/              hero.mp4 · hero-vaso2.mp4 · bilancio-crescita.mp4
+assets/
+├── css/site.css      token, font, tipografia, header, menu, layout, pagine, footer
+├── css/film.css      solo home: i quattro quadri del film
+├── js/site.js        header, menu mobile, anno, video in vista, modulo contatti
+├── js/film.js        solo home: GSAP ScrollTrigger + Lenis (con fallback statico senza JS o con motion ridotto)
+├── vendor/           gsap 3.13.0, ScrollTrigger 3.13.0, lenis 1.3.8 (copie locali, nessuna CDN)
+├── fonts/            Bodoni Moda e Archivo in woff2 (self-hosted, nessuna richiesta a Google Fonts)
+├── img/film/         le quattro immagini in WebP, con ritagli 9:16 per mobile
+├── img/              logo DP, poster del video, immagine Open Graph
+└── video/            bilancio-crescita.mp4
 ```
 
-> Tutti gli asset (CSS, JS, font, immagini, video) vivono sotto `assets/`; solo le
-> pagine `.html`, i favicon e i file di meta/deploy restano nella root (necessario per
-> le URL pubbliche e GitHub Pages). `main.js` è dedicato all'hero e viene incluso **solo**
-> in `index.html` e `index-vaso2.html`; le pagine legali e la 404 caricano soltanto
-> `site.js` (null-safe).
+Nessuna risorsa viene caricata da domini esterni: coerente con la cookie policy pubblicata. L'unico servizio esterno
+è Web3Forms, contattato solo all'invio del modulo.
 
 ## Anteprima locale
 
 ```bash
-cd sito && python -m http.server 8765
+python3 -m http.server 8765
 ```
 
-Poi aprire <http://localhost:8765/>
+Poi aprire <http://localhost:8765/>.
 
-## Note
+## Da fare per attivare il modulo contatti
 
-- **Web3Forms**: il form (in `index.html`) invia a `https://api.web3forms.com/submit` con il campo nascosto `access_key` valorizzato al placeholder `WEB3FORMS_ACCESS_KEY`. Sostituirlo con la propria access key (dashboard su web3forms.com) per attivare l'invio. Infrastruttura UE: nessun trasferimento dati extra-UE.
-- **Deploy**: **GitHub Pages** (branch `main`, cartella root). Il file `.nojekyll` evita l'elaborazione Jekyll, così i file sono serviti così come sono. Per il dominio personalizzato `damicoandpartners.it`: aggiungere un file `CNAME` oppure impostarlo da Settings → Pages. Nota: GitHub Pages non supporta redirect server-side (i vecchi URL richiederebbero pagine stub con meta-refresh).
-- **Privacy**: l'informativa è una bozza da far validare dal consulente privacy / DPO (v. banner in `privacy.html`).
+In `contatti.html` sostituire il valore `WEB3FORMS_ACCESS_KEY` del campo nascosto `access_key` con la chiave
+della dashboard di web3forms.com. Finché resta il segnaposto, il modulo mostra un messaggio con telefono ed email.
+
+## Dominio
+
+Per `damicoandpartners.it`: aggiungere un file `CNAME` con il dominio (o impostarlo da Settings → Pages) e
+puntare il DNS a GitHub Pages. `canonical`, `sitemap.xml` e `robots.txt` usano già `https://www.damicoandpartners.it/`.

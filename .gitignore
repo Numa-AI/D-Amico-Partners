@@ -1,24 +1,15 @@
-# Dependencies
+# Dipendenze e output locali
 node_modules/
+.playwright-cli/
 
-# OS
+# Sistema operativo / editor
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# Editor
 .vscode/
 .idea/
 *.swp
 *~
 
-# Logs
+# Log
 *.log
-npm-debug.log*
-
-# Local server output
-.playwright-cli/
-
-# Video grezzi / esperimenti AI non pubblicati.
-# Gli hero ufficiali sono in assets/video/ (hero.mp4, hero-vaso2.mp4): quelli restano tracciati.
-Firefly*.mp4

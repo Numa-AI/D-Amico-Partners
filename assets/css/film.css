@@ -1,0 +1,39 @@
+/* ==========================================================================
+   D'Amico & Partners — film.css (solo home)
+   Quattro immagini, un solo vettore: crepuscolo → giorno → arco → targa → bianco.
+   Ogni immagine entra attraverso un arco (clip-path) animato da film.js.
+   ========================================================================== */
+.film{ position:relative; height:100svh; min-height:560px; overflow:hidden; background:#0F192C; color:#fff; }
+.film__layer{ position:absolute; inset:0; overflow:hidden; }
+.film__layer picture,.film__layer img{ position:absolute; inset:0; width:100%; height:100%; }
+.film__layer img{ object-fit:cover; transform-origin:50% 56%; will-change:transform; }
+.film__layer--crepuscolo img{ object-position:50% 46%; }
+.film__layer--giorno img{ object-position:64% 50%; }
+.film__layer--arco img{ object-position:50% 42%; }
+.film__layer--targa{ background:var(--muro); }
+.film__layer[data-arch]{ clip-path:inset(56% 42% 0% 42% round 50vw 50vw 0vw 0vw); will-change:clip-path; }
+.film__shade{ position:absolute; inset:0; background:#070C18; opacity:0; pointer-events:none; }
+.film__scrim{
+  position:absolute; left:0; right:0; bottom:0; height:64%; pointer-events:none;
+  background:linear-gradient(to top,rgba(5,9,20,.66) 0%,rgba(5,9,20,.3) 42%,rgba(5,9,20,0) 100%);
+}
+.film__layer--giorno .film__scrim,.film__layer--arco .film__scrim{ height:70%; background:linear-gradient(to top,rgba(5,9,20,.72) 0%,rgba(5,9,20,.36) 40%,rgba(5,9,20,0) 100%); }
+.film__beat::before{   /* scrim radiale morbido dietro il testo: leggibile anche sui quadri più chiari */
+  content:""; position:absolute; z-index:-1; inset:-45% -30% -40% -18%; pointer-events:none;
+  background:radial-gradient(62% 60% at 24% 55%,rgba(5,9,20,.55),rgba(5,9,20,.28) 48%,transparent 78%);
+}
+.film__beat{ isolation:isolate; }
+.film__veil{ position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; }
+.film__beat{
+  position:absolute; left:var(--gutter); right:var(--gutter); bottom:clamp(2.75rem,9vh,6.5rem);
+  max-width:min(100%,58rem); opacity:0; visibility:hidden; pointer-events:none;
+}
+.film__beat--1{ opacity:1; visibility:visible; pointer-events:auto; }
+.film__beat h1,.film__beat p,.film__beat blockquote{ color:#fff; text-shadow:0 2px 28px rgba(0,0,0,.55),0 0 2px rgba(0,0,0,.35); }
+.film__beat h1{ font-style:italic; font-size:clamp(2.05rem,1.15rem + 3.5vw,4.5rem); line-height:1.06; }
+.film__beat--2 p{ font-family:var(--display); font-style:italic; font-size:clamp(1.45rem,1rem + 2vw,2.9rem); line-height:1.15; max-width:24ch; text-wrap:balance; }
+.film__beat--2 p + p{ margin-top:.65em; }
+.film__beat--3 blockquote p{ font-family:var(--display); font-style:italic; font-size:clamp(1.6rem,1.05rem + 2.3vw,3.2rem); line-height:1.15; max-width:22ch; text-wrap:balance; }
+/* senza JS o con motion ridotto: resta il primo quadro, statico */
+.film--static .film__layer[data-arch],.film--static .film__beat--2,.film--static .film__beat--3,.film--static .film__veil{ display:none; }
+.film--static .film__beat--1{ opacity:1; visibility:visible; }
