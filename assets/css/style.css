@@ -73,8 +73,7 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .btns{ display:flex; flex-wrap:wrap; gap:.75rem; }
 
 /* header */
-.header{ position:fixed; inset:0 0 auto; height:var(--hh); z-index:50; display:flex; align-items:center; background:#fff; color:var(--inchiostro); transition:background-color .35s,color .35s,transform .45s var(--ease); }
-.header--hide{ transform:translateY(-100%); }
+.header{ position:fixed; inset:0 0 auto; height:var(--hh); z-index:50; display:flex; align-items:center; background:#fff; color:var(--inchiostro); transition:background-color .35s,color .35s; }
 .header__in{ display:flex; align-items:center; gap:1.5rem; }
 .brand{ display:flex; align-items:center; gap:.7rem; text-decoration:none; margin-right:auto; }
 .brand img{ height:32px; width:auto; }

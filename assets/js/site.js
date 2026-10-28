@@ -10,16 +10,6 @@
     addEventListener('scroll', over, { passive: true }); addEventListener('resize', over); over();
   }
 
-  /* l'header si toglie di mezzo mentre si legge verso il basso e torna appena si risale */
-  if (header) {
-    var lastY = scrollY;
-    addEventListener('scroll', function () {
-      var y = scrollY, menuOpen = document.documentElement.classList.contains('lock');
-      if (!menuOpen && Math.abs(y - lastY) > 6) { header.classList.toggle('header--hide', y > lastY && y > innerHeight * 0.6); lastY = y; }
-    }, { passive: true });
-    header.addEventListener('focusin', function () { header.classList.remove('header--hide'); });
-  }
-
   /* menu */
   var menu = document.getElementById('menu'), open = document.querySelector('.burger'), close = document.querySelector('.menu__close');
   if (menu && open && close) {
