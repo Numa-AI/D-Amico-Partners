@@ -60,23 +60,9 @@
   });
 
   /* foto che si spostano piano */
-  document.querySelectorAll('[data-drift], .phero__img img, .competenze__foto img, .intro__foto img').forEach(function (img) {
+  document.querySelectorAll('[data-drift], .phero__img img, .competenze__foto img, .intro__foto img, .colonne__foto img').forEach(function (img) {
     gsap.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1 } });
   });
-
-  /* icone dei servizi: il tratto si disegna mentre entrano, poi compare il dettaglio in ottone */
-  document.querySelectorAll('.icona').forEach(function (svg) {
-    var tratti = svg.querySelectorAll('[pathLength]'), pieni = svg.querySelectorAll('.pieno, .tratto');
-    gsap.set(tratti, { strokeDasharray: 1, strokeDashoffset: 1 });
-    gsap.set(pieni, { autoAlpha: 0, scale: 0.6, transformOrigin: '50% 50%' });
-    gsap.timeline({ scrollTrigger: { trigger: svg, start: 'top 88%', once: true } })
-      .to(tratti, { strokeDashoffset: 0, duration: 0.9, ease: 'power2.inOut', stagger: 0.08 })
-      .to(pieni, { autoAlpha: 1, scale: 1, duration: 0.45, ease: 'back.out(2)' }, '-=0.25');
-  });
-
-  /* il nome nel footer sale quando la pagina lo scopre */
-  var nome = document.querySelector('.footer__nome svg');
-  if (nome) gsap.fromTo(nome, { yPercent: 40, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1, ease: 'none', scrollTrigger: { trigger: '.footer', start: 'top bottom', end: 'bottom bottom', scrub: 1 } });
 
   decoded().then(function () {
     ScrollTrigger.refresh();
