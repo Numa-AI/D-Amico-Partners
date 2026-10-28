@@ -16,7 +16,7 @@ Repo: questo clone (`main`, GitHub Pages root). Sorgenti (docx, PNG) nella carte
 
 ## Token
 --carta #FFFFFF · --pietra #E5E4E1 · --notte #16223B · --inchiostro #141C2E · --soft #4D5669 · --ottone #B38A3E · --azzurro #29ABE2 (solo focus/logo)
-Display: Imbue (variabile, opsz) — h1 e marchio in maiuscolo. Testo: Albert Sans. Self-hosted in assets/fonts.
+Display: EB Garamond (500, corsivo per le citazioni), maiuscolo solo nel marchio. Testo: Source Sans 3. Self-hosted in assets/fonts. Imbue + Albert Sans bocciati dal cliente il 2026-10-28.
 Foto Commons (credito nel footer): img/torrione-portici-1100.webp, img/torrione-piazza-1600.webp — Fred Romero, CC BY 2.0.
 
 ## File immagine (assets/img/film)
