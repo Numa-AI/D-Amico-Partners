@@ -65,6 +65,17 @@
     gsap.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1 } });
   });
 
+  /* linea del tempo: il filo d'ottone avanza con lo scroll; a ogni anno il pallino si accende e la data entra */
+  document.querySelectorAll('.linea').forEach(function (linea) {
+    var anni = linea.children;
+    var tl = gsap.timeline({ scrollTrigger: { trigger: linea, start: 'top 85%', end: 'bottom 45%', scrub: 1.2 } });
+    tl.fromTo(linea, { '--corsa': 0 }, { '--corsa': 1, duration: anni.length, ease: 'none' }, 0);
+    [].forEach.call(anni, function (li, i) {
+      tl.fromTo(li, { '--acceso': 0, '--pieno': 0 }, { '--acceso': 1, '--pieno': 1, duration: .45, ease: 'back.out(3)' }, i);
+      tl.fromTo(li.children, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: .8, ease: 'power2.out', stagger: .12 }, i + .1);
+    });
+  });
+
   /* approccio: i passi entrano uno alla volta, legati da una scia di puntini che scende a gradino */
   var gradini = document.querySelector('.gradini');
   var scia = null;

@@ -141,17 +141,12 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 /* chi siamo: paragrafo nella metà destra, foto sola che pende a sinistra */
 .intro{ padding:var(--sec) 0; }
 .sec-fascia{ padding-top:var(--sec); }
-.intro__testo{ display:contents; }
-.intro__testo h2{ grid-column:1 / 5; grid-row:1; align-self:start; }
-.intro__testo p{ grid-column:6 / -1; grid-row:1; }
-.intro__testo p{ font-size:clamp(1.375rem,1.1rem + .6vw,1.75rem); line-height:1.3; text-indent:3em; max-width:46ch; }
-.intro__nota{ grid-column:1 / 5; grid-row:1; align-self:end; font-size:var(--step-small); color:var(--soft); max-width:200px; }
-@media (max-width:899px){
-  .intro__testo p{ text-indent:0; font-size:1.375rem; }
-  .intro__testo h2,.intro__testo p,.intro__nota{ grid-row:auto; grid-column:1 / -1; }
-  .intro__testo h2{ margin-bottom:1.25rem; }
-  .intro__nota{ max-width:none; margin-top:1.25rem; }
-  }
+/* chi siamo: il titolo con l'indirizzo sulla stessa riga, sotto la frase in grande */
+.intro__testa{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:.5rem 2rem; padding-bottom:1.25rem; border-bottom:2px solid var(--ottone); }
+.intro__testa p{ font-size:var(--step-small); font-weight:600; color:var(--ottone-2); }
+.intro__frase{ margin-top:clamp(2rem,4vw,3.5rem); max-width:30ch; font-family:var(--display); font-size:clamp(1.9rem,1rem + 3vw,4.1rem); line-height:1.16; letter-spacing:-.01em; color:var(--notte); text-wrap:pretty; }
+.intro__frase em{ color:var(--ottone-2); }
+@media (min-width:1200px){ .intro__frase{ max-width:40ch; } }
 
 /* lo studio: il 2004 in grande, la linea del tempo, poi le persone su pietra */
 .anni{ margin-top:clamp(5rem,9vw,8rem); padding-top:clamp(3rem,5vw,4.5rem); border-top:1px solid var(--pietra-2); align-items:end; row-gap:2rem; }
@@ -162,14 +157,15 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .anni__testo{ grid-column:7 / -1; padding-bottom:.35rem; }
 .anni__testo .lead{ font-family:var(--display); font-size:clamp(1.4rem,1.1rem + .6vw,1.75rem); line-height:1.32; max-width:48ch; }
 .anni__testo .tlink{ margin-top:1.75rem; }
-.linea{ margin-top:clamp(4rem,7vw,6rem); display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--gap); border-top:2px solid var(--ottone); }
+/* il filo è uno sfondo lungo var(--corsa) e i pallini si accendono con --acceso e --pieno: motion.js li fa crescere allo scroll */
+.linea{ margin-top:clamp(4rem,7vw,6rem); display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--gap); padding-top:2px; background:linear-gradient(var(--ottone),var(--ottone)) 0 0 / calc(var(--corsa,1) * 100%) 2px no-repeat; }
 .linea li{ position:relative; padding-top:2rem; display:grid; gap:.45rem; align-content:start; color:var(--soft); line-height:1.4; }
-.linea li::before{ content:""; position:absolute; top:-8px; left:0; width:14px; height:14px; border-radius:50%; background:var(--carta); box-shadow:inset 0 0 0 2px var(--ottone); }
+.linea li::before{ content:""; position:absolute; top:-8px; left:0; width:14px; height:14px; border-radius:50%; background:var(--carta); box-shadow:inset 0 0 0 calc(2px + var(--pieno,0) * 5px) var(--ottone); transform:scale(var(--acceso,1)); }
 .linea li:first-child::before{ top:-10px; width:18px; height:18px; background:var(--ottone); box-shadow:none; }
 .linea b{ font-family:var(--display); font-weight:500; font-size:clamp(1.9rem,1.5rem + .8vw,2.4rem); line-height:1; color:var(--ottone-2); }
 @media (max-width:899px){
   .anni{ margin-top:4rem; }
-  .linea{ grid-template-columns:1fr; gap:1.75rem; border-top:0; border-left:2px solid var(--ottone); padding-left:28px; }
+  .linea{ grid-template-columns:1fr; gap:1.75rem; padding:0 0 0 30px; background-size:2px calc(var(--corsa,1) * 100%); }
   .linea li{ padding-top:0; }
   .linea li::before{ left:-36px; top:.45rem; }
   .linea li:first-child::before{ left:-38px; top:.3rem; }
@@ -462,5 +458,6 @@ main{ position:relative; background:var(--carta); }
 @media (max-width:899px){ .footer__grid{ grid-template-columns:1fr 1fr; } .footer__studio,.footer .soc{ grid-column:1 / -1 !important; } .footer__grid > div:nth-child(2){ grid-column:1 / -1; } }
 
 /* entrate: il contenuto resta visibile se lo script non parte */
-.anim [data-in], .anim .gradino{ opacity:0; }
+.anim [data-in], .anim .gradino, .anim .linea li > *{ opacity:0; }
+.anim .linea{ --corsa:0; }
 @media (prefers-reduced-motion:reduce){ *,*::before,*::after{ transition-duration:.01ms!important; animation-duration:.01ms!important; } }
