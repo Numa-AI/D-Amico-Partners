@@ -117,19 +117,25 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .hero__testo h1{ font-size:clamp(3.6rem,1rem + 8.2vw,10rem); }
 .hero__testo p{ margin-top:1.75rem; max-width:40ch; font-size:var(--step-lead); line-height:1.35; }
 .hero__schede{ position:absolute; z-index:2; right:var(--g); bottom:var(--g); display:flex; gap:16px; }
-.scheda{ display:block; width:clamp(190px,15vw,240px); text-decoration:none; color:var(--inchiostro); background:#fff; }
-.scheda__img{ aspect-ratio:3/2; overflow:hidden; }
-.scheda__img img{ width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease); }
-.scheda:hover .scheda__img img{ transform:scale(1.06); }
-.scheda span{ display:flex; align-items:center; height:44px; padding:0 14px; font-weight:500; font-size:1rem; }
-.scheda:hover span{ color:var(--ottone); }
+.scheda{ display:flex; align-items:center; gap:16px; width:clamp(270px,19vw,330px); padding:14px 18px 14px 14px; text-decoration:none; color:#fff; background:var(--notte); transition:background .3s var(--ease); }
+.scheda__icona{ flex:none; width:68px; padding:13px; background:var(--notte-2); }
+.scheda__icona .icona{ stroke-width:2; }
+.scheda__testo{ display:grid; gap:4px; }
+.scheda__testo b{ font-family:var(--display); font-weight:400; font-size:1.75rem; line-height:1; text-transform:uppercase; }
+.scheda__testo small{ font-size:.9375rem; line-height:1.3; color:var(--notte-ink); }
+.scheda:hover{ background:var(--notte-2); }
+.scheda:hover .scheda__icona{ background:var(--notte); }
+.scheda:hover b{ color:var(--ottone); }
 @media (max-width:899px){
   .hero::before{ inset:0; background:linear-gradient(rgba(8,13,26,0) 20%,rgba(8,13,26,.55) 50%,rgba(8,13,26,.3)); } /* taste-skill-ignore: scrim neutra sotto il testo sulla foto */
   .hero__testo{ top:40%; right:var(--g); max-width:none; }
   .hero__testo h1{ font-size:clamp(3.2rem,15vw,6rem); }
   .hero__testo p{ font-size:1.125rem; margin-top:1.1rem; }
   .hero__schede{ left:var(--g); }
-  .scheda{ width:auto; flex:1 1 0; }
+  .scheda{ width:auto; flex:1 1 0; gap:12px; padding:10px; }
+  .scheda__icona{ width:48px; padding:9px; }
+  .scheda__testo b{ font-size:1.375rem; }
+  .scheda__testo small{ display:none; }
 }
 
 /* chi siamo: paragrafo nella metà destra, foto sola che pende a sinistra */
