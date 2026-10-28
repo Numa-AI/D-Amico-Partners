@@ -59,12 +59,64 @@
     onEnter: function (els) { gsap.fromTo(els, { y: 26, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.9, ease: EASE, stagger: 0.075, overwrite: true }); }
   });
 
-  /* foto che si spostano piano */
+  /* foto che si spostano piano (la targa no: resta ferma) */
   document.querySelectorAll('[data-drift], .phero__img img, .competenze__foto img, .intro__foto img, .colonne__foto img').forEach(function (img) {
+    if (/targa/.test(img.getAttribute('src'))) return;
     gsap.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1 } });
   });
 
-  decoded().then(function () {
+  /* approccio: i passi entrano uno alla volta, legati da una scia di puntini che scende a gradino */
+  var gradini = document.querySelector('.gradini');
+  var scia = null;
+  function traccia() {
+    if (scia) { scia.tl.scrollTrigger.kill(); scia.tl.kill(); scia.svg.remove(); }
+    var NS = 'http://www.w3.org/2000/svg', passi = gradini.querySelectorAll('.gradino');
+    gsap.set(passi, { clearProps: 'all' });
+    var box = gradini.getBoundingClientRect();
+    var r = [].map.call(passi, function (g) { return [g.getBoundingClientRect(), g.querySelector('h3').getBoundingClientRect()]; });
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'gradini__scia'); svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('width', box.width); svg.setAttribute('height', box.height);
+    gradini.insertBefore(svg, gradini.firstChild);
+    var tl = gsap.timeline({ scrollTrigger: { trigger: gradini, start: 'top 70%', end: 'bottom 60%', scrub: 1.2 } });
+    [].forEach.call(passi, function (g, i) {
+      tl.fromTo(g, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 1, ease: 'power2.out' });
+      var dopo = passi[i + 1];
+      if (!dopo) return;
+      var a = r[i][0], b = r[i + 1][0], t = r[i + 1][1];
+      var x0 = r[i][1].left - box.left + 8, y0 = a.bottom - box.top + 18, lati = t.left - r[i][1].left > 40;
+      // a destra: giù fino a metà del titolo seguente, poi verso di lui; in colonna: dritto in giù
+      var y1 = lati ? t.top - box.top + t.height * .55 : t.top - box.top - 18, x1 = lati ? t.left - box.left - 22 : x0;
+      var tappe = [[x0, y0], [x0, y1]];
+      if (lati) tappe.push([x1, y1]);
+      var punti = [];
+      for (var k = 1; k < tappe.length; k++) {
+        var p = tappe[k - 1], q = tappe[k], d = Math.hypot(q[0] - p[0], q[1] - p[1]), n = Math.max(1, Math.round(d / 15));
+        for (var j = k === 1 ? 0 : 1; j <= n; j++) punti.push([p[0] + (q[0] - p[0]) * j / n, p[1] + (q[1] - p[1]) * j / n]);
+      }
+      var cerchi = punti.slice(0, -1).map(function (pt) {
+        var c = document.createElementNS(NS, 'circle');
+        c.setAttribute('cx', pt[0]); c.setAttribute('cy', pt[1]); c.setAttribute('r', 2);
+        svg.appendChild(c); return c;
+      });
+      var freccia = document.createElementNS(NS, 'path');
+      freccia.setAttribute('d', lati ? 'M' + (x1 - 8) + ',' + (y1 - 7) + 'l8,7l-8,7' : 'M' + (x1 - 7) + ',' + (y1 - 8) + 'l7,8l7,-8');
+      svg.appendChild(freccia);
+      tl.fromTo(cerchi, { autoAlpha: 0, attr: { r: 5 } }, { autoAlpha: 1, attr: { r: 2 }, duration: .25, ease: 'power1.out', stagger: 1.4 / cerchi.length });
+      tl.fromTo(freccia, { autoAlpha: 0, x: lati ? -10 : 0, y: lati ? 0 : -10 }, { autoAlpha: 1, x: 0, y: 0, duration: .3 }, '-=.2');
+    });
+    scia = { svg: svg, tl: tl };
+  }
+  if (gradini) {
+    var largo = innerWidth;
+    addEventListener('resize', function () {
+      clearTimeout(traccia.t);
+      traccia.t = setTimeout(function () { if (innerWidth !== largo) { largo = innerWidth; traccia(); ScrollTrigger.refresh(); } }, 200);
+    });
+  }
+
+  decoded().then(function () { return document.fonts ? document.fonts.ready : 0; }).then(function () {
+    if (gradini) traccia();
     ScrollTrigger.refresh();
     if (JUMP !== null) { scrollTo(0, +JUMP || 0); ScrollTrigger.update(); }
     ready();

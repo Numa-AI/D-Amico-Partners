@@ -234,9 +234,14 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .sec--notte .gradino p{ color:var(--notte-ink); }
 .sec--notte .tlink:hover{ color:var(--ottone); }
 .gradini .tlink{ grid-column:7 / -1; margin-top:3rem; justify-self:start; }
+.gradini{ position:relative; }
+.gradini > .gradino{ position:relative; z-index:1; }
+.gradini__scia{ position:absolute; left:0; top:0; overflow:visible; pointer-events:none; }
+.gradini__scia circle{ fill:var(--ottone); }
+.gradini__scia path{ fill:none; stroke:var(--ottone); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
 @media (max-width:899px){
   .gradino h3{ font-size:8.6vw; }
-  .gradino + .gradino{ margin-top:40px; }
+  .gradino + .gradino{ margin-top:80px; }
   .gradino:nth-of-type(2){ padding-left:6vw; } .gradino:nth-of-type(3){ padding-left:12vw; } .gradino:nth-of-type(4){ padding-left:18vw; }
   .gradini .tlink{ margin-left:18vw; }
 }
@@ -433,5 +438,5 @@ main{ position:relative; background:var(--carta); }
 @media (max-width:899px){ .footer__grid{ grid-template-columns:1fr 1fr; } .footer__studio,.footer .soc{ grid-column:1 / -1 !important; } .footer__grid > div:nth-child(2){ grid-column:1 / -1; } }
 
 /* entrate: il contenuto resta visibile se lo script non parte */
-.anim [data-in]{ opacity:0; }
+.anim [data-in], .anim .gradino{ opacity:0; }
 @media (prefers-reduced-motion:reduce){ *,*::before,*::after{ transition-duration:.01ms!important; animation-duration:.01ms!important; } }
