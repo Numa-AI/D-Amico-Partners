@@ -18,8 +18,9 @@
   <link rel="icon" href="favicon-light.png" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="favicon-dark.png" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="apple-touch-icon" href="favicon-light.png">
-  <link rel="preload" href="assets/fonts/libre-caslon-display.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/hanken-grotesk-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/imbue.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/albert-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('anim');setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('anim')},3000)}</script>
   <link rel="stylesheet" href="assets/css/style.css">
   <script type="application/ld+json">{
     "@context": "https://schema.org",
@@ -78,77 +79,165 @@
   </div>
 </div>
 <main id="main">
-  <div class="stack">
-    <section class="panel panel--hero" aria-labelledby="h1">
-      <div class="panel__media"><picture><source media="(max-width:700px)" srcset="assets/img/film/giorno-mobile.webp"><img src="assets/img/film/giorno-1448.webp" alt="Piazza della Vittoria a Brescia, con la torre e i portici" width="1448" height="1086" style="object-position:62% 50%" decoding="async" fetchpriority="high"></picture></div>
-      <div class="panel__shade"></div>
-      <div class="hero__text">
-        <h1 id="h1">D’Amico &amp; Partners</h1>
-        <p class="lead" style="max-width:40ch;margin-top:1rem">D’Amico &amp; Partners affianca le imprese nelle decisioni strategiche e nelle operazioni finanziarie e societarie complesse.</p>
-        <div class="btns"><a class="btn btn--bianco" href="#attivita">Le nostre attività</a><a class="btn btn--linea" href="contatti.html">Richiedi un incontro</a></div>
+  <section class="hero" aria-labelledby="h1">
+    <div class="hero__luce" aria-hidden="false">
+      <picture class="giorno"><source media="(max-width:700px)" srcset="assets/img/film/giorno-mobile.webp"><img src="assets/img/film/giorno-1448.webp" alt="Piazza della Vittoria a Brescia di giorno, con il Torrione e i portici" width="1448" height="1086" style="object-position:66% 50%" fetchpriority="high"></picture>
+      <picture class="sera alt"><source media="(max-width:700px)" srcset="assets/img/film/crepuscolo-mobile.webp"><img src="assets/img/film/crepuscolo-1448.webp" alt="I portici di Piazza della Vittoria illuminati al crepuscolo" width="1448" height="1086" style="object-position:50% 45%" decoding="async"></picture>
+    </div>
+    <div class="hero__testo">
+      <h1 id="h1" data-in>D’Amico <br>&amp; Partners</h1>
+      <p data-in>Affianchiamo le imprese nelle decisioni strategiche e nelle operazioni finanziarie e societarie complesse.</p>
+    </div>
+    <nav class="hero__schede" aria-label="Le due società">
+      <a class="scheda" href="advisory.html" data-in><div class="scheda__img"><img src="assets/img/film/arco-720.webp" alt="" width="720" height="1080" style="object-position:50% 35%"></div><span>Advisory</span></a>
+      <a class="scheda" href="consulting.html" data-in><div class="scheda__img"><img src="assets/img/film/targa-800.webp" alt="" width="800" height="1000" style="object-position:50% 50%"></div><span>Consulting</span></a>
+    </nav>
+  </section>
+
+  <section class="intro" aria-labelledby="chi-t">
+    <div class="wrap grid">
+      <div class="intro__testo">
+        <h2 id="chi-t" data-in>Chi siamo</h2>
+        <p data-in>Operiamo a fianco degli imprenditori con una visione d’insieme che integra analisi economico-finanziaria, competenze giuridiche e conoscenza delle dinamiche aziendali, per trasformare esigenze e obiettivi in progetti concretamente realizzabili.</p>
       </div>
-    </section>
-    <section class="panel" aria-labelledby="chi-t">
-      <div class="panel__media"><picture><source media="(max-width:700px)" srcset="assets/img/film/arco-720.webp"><img src="assets/img/film/arco-1024.webp" alt="La torre di Piazza della Vittoria vista sotto un arco dei portici" width="1024" height="1536" style="object-position:50% 38%" decoding="async" loading="lazy"></picture></div>
-      <div class="panel__shade"></div>
-      <div class="panel__card">
-        <h2 id="chi-t">Chi siamo</h2>
+      <figure class="intro__foto" data-in><img src="assets/img/film/arco-1024.webp" alt="Il Torrione di Piazza della Vittoria visto sotto un arco dei portici" width="1024" height="1536" style="object-position:50% 30%" loading="lazy" decoding="async"></figure>
+      <p class="intro__nota" data-in>Piazza della Vittoria 11<br>25121 Brescia</p>
+    </div>
+    <div class="wrap grid fatti">
+      <dl class="fatti__dati" data-in>
+        <div><dt>Dal</dt><dd>2004</dd></div>
+        <div><dt>Sede</dt><dd>Piazza della Vittoria 11, Brescia</dd></div>
+        <div><dt>Mediazione creditizia</dt><dd>OAM M640</dd></div>
+      </dl>
+      <div class="fatti__para" data-in>
         <p>Le nostre origini risalgono al 2004, quando il dott. Fulvio D’Amico, Dottore Commercialista e Revisore Legale, grazie all’esperienza maturata nel settore bancario e finanziario, fonda D’Amico &amp; Partners con l’obiettivo di supportare le piccole e medie imprese nella ricerca di risorse finanziarie e nella gestione dei rapporti con il sistema creditizio.</p>
-        <a class="tlink" href="chi-siamo.html">La nostra storia</a>
+        <a class="tlink" href="chi-siamo.html">Chi siamo</a>
       </div>
-    </section>
-    <section class="panel" id="attivita" aria-labelledby="att-t">
-      <div class="panel__media"><picture><source media="(max-width:700px)" srcset="assets/img/film/crepuscolo-mobile.webp"><img src="assets/img/film/crepuscolo-1448.webp" alt="I portici illuminati di Piazza della Vittoria al crepuscolo" width="1448" height="1086" style="object-position:50% 45%" decoding="async" loading="lazy"></picture></div>
-      <div class="panel__shade"></div>
-      <div class="panel__card">
-        <h2 id="att-t">Le nostre attività</h2>
-        <div class="aree">
-          <a href="advisory.html"><strong>D’Amico &amp; Partners Advisory</strong><span>Specializzata nella gestione della crisi d’impresa</span></a>
-          <a href="consulting.html"><strong>D’Amico &amp; Partners Consulting</strong><span>Dedicata alla ricerca di finanza ordinaria e straordinaria</span></a>
+      <p class="fatti__voce" data-in>Lo studio</p>
+      <div class="fatti__liste">
+        <div data-in>
+          <h3>Le persone</h3>
+          <ul>
+            <li><span>dott. Fulvio D’Amico</span><span>Fondatore</span></li>
+            <li><span>avv. Simone D’Amico</span><span>Advisory</span></li>
+            <li><span>dott. Giammaria D’Amico</span><span>Advisory</span></li>
+          </ul>
+        </div>
+        <div data-in>
+          <h3>Le società</h3>
+          <ul>
+            <li><span>D’Amico &amp; Partners S.r.l.</span><span>2006</span></li>
+            <li><span>D’Amico &amp; Partners Consulting S.r.l.</span><span>2024</span></li>
+          </ul>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
-  <section class="sec dichiarazione" aria-labelledby="app-t">
+  <section class="mosaico sec-gap" aria-labelledby="pens-t">
+    <div class="mosaico__frase">
+      <h2 id="pens-t" data-in>Pensare l’operazione</h2>
+      <blockquote data-in><p>«Siamo passati dal finanziare l’operazione al pensare l’operazione insieme all’impresa.»</p><cite>D’Amico &amp; Partners</cite></blockquote>
+    </div>
+    <div><img src="assets/img/torrione-portici-1100.webp" alt="Il Torrione INA sopra i portici di Piazza della Vittoria" width="1100" height="1650" style="object-position:50% 30%" loading="lazy" decoding="async" data-drift></div>
+    <div class="tile--ottone" data-in><p class="tile__num">2004</p><p class="tile__txt">L’anno in cui Fulvio D’Amico fonda lo studio</p></div>
+    <div class="tile--pietra" data-in><p class="tile__num">M640</p><p class="tile__txt">Iscrizione OAM di D’Amico &amp; Partners Consulting</p></div>
+    <div><img src="assets/img/film/crepuscolo-1000.webp" alt="Riflessi della piazza sul selciato bagnato al crepuscolo" width="1000" height="750" style="object-position:60% 50%" loading="lazy" decoding="async" data-drift></div>
+  </section>
+
+  <section class="attivita" id="attivita" aria-labelledby="att-t">
+    <div class="wrap grid attivita__testa"><h2 class="asse" id="att-t" data-in>Le nostre attività</h2></div>
     <div class="wrap">
-      <blockquote><p>«Siamo passati dal finanziare l’operazione al pensare l’operazione insieme all’impresa.»</p></blockquote>
-      <div class="due">
-        <h2 id="app-t">Il nostro approccio</h2>
-        <div class="prose">
-          <p>Ogni impresa presenta caratteristiche proprie: storia, struttura proprietaria, modello di business, equilibri economico-finanziari e obiettivi di sviluppo. Il nostro lavoro inizia dall’ascolto dell’imprenditore e dall’analisi del contesto aziendale, per comprendere le esigenze effettive, identificare i punti di criticità e individuare le opportunità percorribili.</p>
-          <a class="tlink" href="approccio.html">Come lavoriamo</a>
+      <article class="grid riga">
+        <p class="riga__gruppo" data-in>D’Amico &amp; Partners Advisory</p>
+        <div class="riga__testo" data-in>
+          <h3>Advisory finanziaria e operazioni straordinarie</h3>
+          <p>Assistiamo le imprese nell’analisi, nella progettazione e nella realizzazione di operazioni che incidono sulla struttura finanziaria, patrimoniale e societaria.</p>
+          <a class="tlink" href="advisory.html#advisory-finanziaria">D’Amico &amp; Partners Advisory</a>
         </div>
+        <div class="riga__icona" data-in><svg class="icona" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><rect x="10" y="14" width="28" height="22" pathLength="1"/><rect x="10" y="60" width="28" height="22" pathLength="1"/><path d="M38 25 H52 V48 H60 M38 71 H52 V48" pathLength="1"/><rect class="pieno" x="60" y="33" width="26" height="30"/><path d="M66 43 H80 M66 51 H76" pathLength="1"/></svg></div>
+      </article>
+      <article class="grid riga">
+        <div class="riga__testo" data-in>
+          <h3>Ristrutturazione del debito e gestione della crisi</h3>
+          <p>In situazioni di tensione finanziaria o di difficoltà aziendale, affianchiamo l’imprenditore nella ricostruzione delle cause della crisi e nell’individuazione delle soluzioni più adeguate.</p>
+          <a class="tlink" href="advisory.html#ristrutturazione-del-debito">D’Amico &amp; Partners Advisory</a>
+        </div>
+        <div class="riga__icona" data-in><svg class="icona" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><path d="M12 12 V84 H88" pathLength="1"/><rect x="20" y="34" width="9" height="50" pathLength="1"/><rect x="35" y="48" width="9" height="36" pathLength="1"/><rect x="50" y="60" width="9" height="24" pathLength="1"/><path d="M24 26 C36 44 46 62 56 62 S72 40 84 20" pathLength="1"/><path d="M74 20 H84 V30" pathLength="1"/><circle class="pieno" cx="56" cy="62" r="4.5"/></svg></div>
+      </article>
+      <article class="grid riga">
+        <div class="riga__testo" data-in>
+          <h3>Pianificazione e riorganizzazione societaria</h3>
+          <p>Supportiamo le imprese nella valutazione e strutturazione di interventi di riorganizzazione societaria e di ridefinizione degli assetti aziendali.</p>
+          <a class="tlink" href="advisory.html#riorganizzazione-societaria">D’Amico &amp; Partners Advisory</a>
+        </div>
+        <div class="riga__icona" data-in><svg class="icona" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><rect class="pieno" x="36" y="8" width="24" height="18"/><path d="M48 26 V40 M18 40 H78 M18 40 V52 M48 40 V52 M78 40 V52" pathLength="1"/><rect x="6" y="52" width="24" height="18" pathLength="1"/><rect x="36" y="52" width="24" height="18" pathLength="1"/><rect x="66" y="52" width="24" height="18" pathLength="1"/><path d="M48 70 V76" pathLength="1"/><rect class="tratto" x="36" y="76" width="24" height="14"/></svg></div>
+      </article>
+      <article class="grid riga">
+        <p class="riga__gruppo" data-in>D’Amico &amp; Partners Consulting</p>
+        <div class="riga__testo" data-in>
+          <h3>Accesso al credito e pianificazione finanziaria</h3>
+          <p>Una struttura di finanziamento proporzionata ai fabbisogni aziendali e coerente con i progetti di investimento e di sviluppo, con particolare attenzione alle soluzioni a medio e lungo termine.</p>
+          <a class="tlink" href="consulting.html">D’Amico &amp; Partners Consulting</a>
+        </div>
+        <div class="riga__icona" data-in><svg class="icona" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><path d="M8 32 L48 10 L88 32 Z" pathLength="1"/><path d="M14 38 H82 M22 44 V72 M38 44 V72 M58 44 V72 M74 44 V72 M12 78 H84 M6 86 H90" pathLength="1"/><circle class="pieno" cx="48" cy="24" r="4.5"/></svg></div>
+      </article>
+      <article class="grid riga">
+        <div class="riga__testo" data-in>
+          <h3>Redazione di Business Plan</h3>
+          <p>Predisponiamo business plan economici, patrimoniali e finanziari a supporto di operazioni di finanziamento, programmi di investimento, progetti di sviluppo e operazioni straordinarie.</p>
+          <a class="tlink" href="consulting.html">D’Amico &amp; Partners Consulting</a>
+        </div>
+        <div class="riga__icona" data-in><svg class="icona" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><path d="M12 8 H48 L60 20 V88 H12 Z" pathLength="1"/><path d="M48 8 V20 H60" pathLength="1"/><path d="M20 32 H44 M20 40 H36" pathLength="1"/><path d="M20 76 L30 66 L38 70 L50 52" pathLength="1"/><circle class="pieno" cx="50" cy="52" r="4"/><path d="M80 28 L88 36 L72 76 L63 81 L64 71 Z M64 71 L72 76" pathLength="1"/></svg></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="app-t">
+    <div class="wrap grid gradini">
+      <h2 id="app-t" data-in>Il nostro approccio</h2>
+      <div class="gradino" data-in><h3>L’ascolto.</h3><p>Il nostro lavoro inizia dall’ascolto dell’imprenditore e dall’analisi del contesto aziendale, per comprendere le esigenze effettive.</p></div>
+      <div class="gradino" data-in><h3>Percorsi su misura.</h3><p>Valutiamo le alternative disponibili, i relativi rischi, le ricadute sul piano finanziario e la sostenibilità delle soluzioni proposte.</p></div>
+      <div class="gradino" data-in><h3>I piani, la negoziazione.</h3><p>L’affiancamento prosegue dalla programmazione strategica alla predisposizione dei piani e alla negoziazione con le controparti.</p></div>
+      <div class="gradino" data-in><h3>L’operatività concreta.</h3><p>Privilegiamo il confronto diretto, la continuità della relazione professionale e la capacità di adattare la strategia all’evoluzione degli scenari.</p></div>
+      <a class="tlink" href="approccio.html" data-in>Il nostro approccio</a>
+    </div>
+  </section>
+
+  <section class="sec-fascia" aria-labelledby="vid-t">
+    <div class="wrap grid"><h2 class="fascia__testa" id="vid-t" data-in>Dal bilancio in perdita al ritorno alla crescita.</h2></div>
+    <div class="fascia" data-in>
+      <div><video muted loop playsinline preload="none" poster="assets/img/bilancio-crescita-poster.jpg" data-inview width="1280" height="720" aria-label="Un bilancio sulla scrivania: la curva torna a salire"><source src="assets/video/bilancio-crescita.mp4" type="video/mp4"></video></div>
+      <div><img src="assets/img/film/arco-720.webp" alt="Il Torrione visto dai portici" width="720" height="1080" style="object-position:50% 40%" loading="lazy" decoding="async"></div>
+      <div><img src="assets/img/film/crepuscolo-1000.webp" alt="I portici di Piazza della Vittoria la sera" width="1000" height="750" style="object-position:30% 50%" loading="lazy" decoding="async"></div>
+      <div><img src="assets/img/film/targa-800.webp" alt="La targa dello studio" width="800" height="1000" style="object-position:50% 50%" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="wrap"><p class="fascia__nota">Piazza della Vittoria, Brescia.</p></div>
+  </section>
+
+  <section class="sec competenze" aria-labelledby="comp-t">
+    <div class="wrap grid">
+      <h2 id="comp-t" data-in>Competenze integrate, soluzioni concrete</h2>
+      <figure class="competenze__foto" data-in><img src="assets/img/torrione-portici-1100.webp" alt="Il Torrione INA visto dalla piazza" width="1100" height="1650" style="object-position:50% 20%" loading="lazy" decoding="async"></figure>
+      <div class="competenze__corpo" data-in>
+        <p>Nelle operazioni più complesse, la validità di una scelta economica dipende anche dalla sua sostenibilità finanziaria, dalla fattibilità giuridica ed economica e dalla possibilità di tradurla in accordi efficaci.</p>
+        <p>Per questo lavoriamo con un approccio integrato, mettendo in relazione competenze differenti e mantenendo una visione unitaria degli obiettivi dell’impresa.</p>
+        <p>Il coordinamento tra competenze economico-finanziarie, legali e societarie consente di affrontare l’operazione nel suo complesso, evitando una lettura frammentata delle problematiche.</p>
       </div>
     </div>
   </section>
 
-  <section class="sec sec--pietra" aria-labelledby="vid-t">
-    <div class="wrap video">
-      <h2 id="vid-t">Dal bilancio in perdita al ritorno alla crescita.</h2>
-      <figure><video muted loop playsinline preload="none" poster="assets/img/bilancio-crescita-poster.jpg" data-inview width="1280" height="720" aria-label="Un bilancio sulla scrivania: la curva torna a salire"><source src="assets/video/bilancio-crescita.mp4" type="video/mp4"></video></figure>
-    </div>
-  </section>
-
-  <section class="sec sec--notte" aria-labelledby="comp-t">
-    <div class="wrap notte-grid">
-      <h2 id="comp-t">Competenze integrate, soluzioni concrete</h2>
-      <div class="prose">
-        <p class="muted">Nelle operazioni più complesse, la validità di una scelta economica dipende anche dalla sua sostenibilità finanziaria, dalla fattibilità giuridica ed economica e dalla possibilità di tradurla in accordi efficaci. Per questo lavoriamo con un approccio integrato, mettendo in relazione competenze differenti e mantenendo una visione unitaria degli obiettivi dell’impresa.</p>
-        <p>Il nostro impegno è affiancare l’imprenditore con metodo, concretezza e continuità: non limitandoci a individuare una soluzione sulla carta, ma contribuendo a costruire il percorso necessario per realizzarla.</p>
+  <section class="sec--pietra" aria-labelledby="inc-t">
+    <div class="wrap grid contatto">
+      <p class="contatto__frase" data-in>Il nostro impegno è affiancare l’imprenditore con metodo, concretezza e continuità.</p>
+      <figure class="contatto__foto" data-in><img src="assets/img/film/targa-800.webp" alt="La targa in ottone D’Amico &amp; Partners" width="800" height="1000" style="object-position:50% 50%" loading="lazy" decoding="async"></figure>
+      <div class="contatto__rec" data-in>
+        <h2 id="inc-t">Richiedi un incontro</h2>
+        <a class="tlink" href="tel:+390302403392">+39 030 240 3392</a>
+        <a class="tlink" href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a>
+        <p>Piazza della Vittoria 11, 25121 Brescia</p>
+        <a class="btn btn--notte" href="contatti.html">Scrivici</a>
       </div>
-    </div>
-  </section>
-
-  <section class="porta" aria-labelledby="porta-t">
-    <div class="porta__img"><picture><source media="(max-width:700px)" srcset="assets/img/film/targa-800.webp"><img src="assets/img/film/targa-1122.webp" alt="La targa in ottone all’ingresso dello studio" width="1122" height="1402" style="object-position:50% 50%" decoding="async" loading="lazy"></picture></div>
-    <div class="porta__card">
-      <h2 id="porta-t">Piazza della Vittoria 11, Brescia</h2>
-      <div class="rec">
-        <a href="tel:+390302403392">+39 030 240 3392</a>
-        <a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a>
-      </div>
-      <a class="btn btn--notte" href="contatti.html">Richiedi un incontro</a>
     </div>
   </section>
 </main>
@@ -156,7 +245,7 @@
   <div class="wrap">
     <div class="footer__grid">
       <div>
-        <a class="brand" href="index.html" aria-label="D’Amico &amp; Partners, pagina iniziale"><img src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96" loading="lazy"><span>D’Amico &amp; Partners</span></a>
+        <h2>Studio</h2>
         <address>Piazza della Vittoria 11<br>25121 Brescia (BS)</address>
       </div>
       <div>
@@ -164,6 +253,7 @@
         <ul>
           <li><a href="tel:+390302403392">+39 030 240 3392</a></li>
           <li><a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a></li>
+          <li><a href="contatti.html">Richiedi un incontro</a></li>
         </ul>
       </div>
       <div class="soc">
@@ -176,15 +266,19 @@
         <ul><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="approccio.html">Approccio</a></li><li><a href="advisory.html">Advisory</a></li><li><a href="consulting.html">Consulting</a></li><li><a href="contatti.html">Contatti</a></li></ul>
       </div>
     </div>
-    <div class="footer__bottom">
-      <p>© <span data-year>2026</span> D’Amico &amp; Partners S.r.l. e D’Amico &amp; Partners Consulting S.r.l.</p>
-      <ul><li><a href="privacy.html">Privacy</a></li><li><a href="cookie.html">Cookie</a></li><li><a href="note-legali.html">Note legali</a></li></ul>
+    <div class="footer__nome">
+      <svg viewBox="0 0 1000 96" role="img" aria-label="D’Amico &amp; Partners"><text x="0" y="88" textLength="1000" lengthAdjust="spacingAndGlyphs" font-size="122">D’Amico &amp; Partners</text></svg>
+      <div class="footer__bottom">
+        <p>© <span data-year>2026</span> D’Amico &amp; Partners S.r.l. e D’Amico &amp; Partners Consulting S.r.l.</p>
+        <ul><li><a href="privacy.html">Privacy</a></li><li><a href="cookie.html">Cookie</a></li><li><a href="note-legali.html">Note legali</a></li></ul>
+      </div>
+      <p class="footer__crediti">Foto del Torrione INA: Fred Romero, <a href="https://commons.wikimedia.org/wiki/File:Brescia_-_Torrione_INA_(48743785636).jpg">“Brescia - Torrione INA”</a> e <a href="https://commons.wikimedia.org/wiki/File:Brescia_-_Torrione_INA_(48743450828).jpg">“Brescia - Torrione INA”</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons.</p>
     </div>
   </div>
 </footer>
 <script src="assets/js/site.js" defer></script>
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="assets/js/home.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
 </body>
 </html>

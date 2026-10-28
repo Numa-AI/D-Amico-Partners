@@ -3,14 +3,17 @@
 Repo: questo clone (`main`, GitHub Pages root). Sorgenti (docx, PNG) nella cartella madre, MAI nel repo.
 
 ## Decisioni fisse
-- Versione 3 (rifatta da zero dopo due bocciature): pannelli foto sticky che scorrono uno sopra l'altro, schede bianche,
-  blu notte #16223B + pietra #E8E5DF, Libre Caslon Display + Hanken Grotesk. Niente maschere, niente dissolvenze lunghe.
-- Testi SOLO dal docx. Niente CDN esterne. Generatore fuori repo (scratchpad/gen/gen2.py).
+- Versione 4 (2026-10-28, rifatta con la skill design-taste-frontend, direzione «The printed annual», seed 2040287961):
+  impaginato come un bilancio stampato, asse fisso al 42% (colonna 6 di 12), campiture blu notte / pietra / ottone.
+  Scroll NATIVO, nessuna sezione bloccata (il cliente non voleva più i pannelli sticky). Solo entrate e lievi derive.
+- Testata home: foto della piazza secondo l'ora di Brescia (giorno 7–18, crepuscolo altrimenti); scorrendo dissolve nell'altra.
+- Servizi (home, advisory, consulting): ICONE SVG disegnate a mano, niente foto (richiesta del cliente). Tratto notte, dettaglio ottone.
+- Testi SOLO dal docx. Niente CDN esterne. Footer comune generato a mano (stesso blocco in tutte le pagine).
 
 ## Token
---bianco #FFFFFF · --pietra #EFEDE8 · --inchiostro #16213A · --inchiostro-2 #4A546A
---ottone #B8903A · --ottone-scuro #7E6124 · --azzurro #29ABE2 (solo logo/focus/hover) · --muro #D2CCC2 (parete della targa)
-Display: 'Bodoni Moda' (variabile, italic+normal, 400-900). Testo/UI: 'Archivo' (300-700). Self-hosted, latin.
+--carta #FFFFFF · --pietra #E5E4E1 · --notte #16223B · --inchiostro #141C2E · --soft #4D5669 · --ottone #B38A3E · --azzurro #29ABE2 (solo focus/logo)
+Display: Imbue (variabile, opsz) — h1 e marchio in maiuscolo. Testo: Albert Sans. Self-hosted in assets/fonts.
+Foto Commons (credito nel footer): img/torrione-portici-1100.webp, img/torrione-piazza-1600.webp — Fred Romero, CC BY 2.0.
 
 ## File immagine (assets/img/film)
 crepuscolo-1448/1000.webp + crepuscolo-mobile.webp (611×1086, 9:16) — cap. 1
@@ -25,5 +28,5 @@ Header/footer duplicati a mano (nessun build). Nav: Chi siamo · Approccio · Ad
 
 ## Verifica (skill sito-film, scripts già installati)
 Server: nohup python3 -m http.server 8765 & (mai in foreground). shot.js 1440×900 e 390×844 a 0/.25/.5/.75/1.
-verify.js jank max < 50ms. copy-gate.js *.html exit 0. detect.mjs di impeccable una volta a fine build.
+verify.js jank max < 50ms (CHROME_PATH=/usr/bin/chromium). inspect.mjs della skill taste: 0 FAIL sulla home. copy-gate.js *.html exit 0. detect.mjs di impeccable una volta a fine build.
 Contratto dev: ?jump=<y> + window.__ready.

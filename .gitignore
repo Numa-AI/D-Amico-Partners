@@ -13,3 +13,6 @@ desktop.ini
 
 # Log
 *.log
+
+# Lavoro della skill taste (direzione, screenshot)
+.taste-skill/
