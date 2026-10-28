@@ -203,8 +203,8 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .tile--carta{ color:var(--notte); }
 .tile--ottone,.tile--pietra{ display:flex; align-items:flex-end; padding:var(--g); }
 .tile--ottone,.tile--pietra{ flex-direction:column; align-items:flex-start; justify-content:flex-end; color:var(--notte); }
-.icona.tile__icona{ width:clamp(56px,5.6vw,88px); margin-bottom:auto; fill:currentColor; }
-.tile--ottone .tile__icona .tono{ fill:var(--notte); opacity:.2; }
+.icona.tile__icona{ width:clamp(56px,5.6vw,88px); margin-bottom:auto; stroke:currentColor; }
+.tile--ottone .tile__icona .o{ stroke:#fff; } .tile--ottone .tile__icona .f{ fill:#fff; }
 .tile__num{ font-family:var(--display); font-size:clamp(3rem,2rem + 4vw,7rem); line-height:.85; }
 .tile__txt{ font-size:var(--step-small); line-height:1.4; margin-top:.75rem; max-width:26ch; }
 @media (max-width:899px){
@@ -225,16 +225,19 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .servizi{ list-style:none; margin:0; padding:0 clamp(24px,2.6vw,36px); }
 .servizi li + li{ border-top:1px solid var(--pietra-2); }
 .servizi a{ display:grid; grid-template-columns:52px minmax(0,1fr); gap:18px; align-items:start; padding:1.5rem 0; color:inherit; text-decoration:none; }
-.servizi__icona{ display:block; padding:10px; background:var(--notte); }
+.servizi__icona{ display:block; padding:8px; background:var(--notte); }
 .servizi h4{ margin:0 0 .35rem; font-family:var(--display); font-weight:500; font-size:clamp(1.3rem,1.1rem + .5vw,1.6rem); line-height:1.15; color:var(--notte); transition:color .2s; }
 .servizi__testo > span{ display:block; font-size:var(--step-small); line-height:1.5; color:var(--soft); }
 .servizi a:hover h4{ color:var(--ottone); }
 @media (max-width:899px){ .aree2{ grid-template-columns:1fr; } }
 /* icone dei servizi: riquadro blu notte, tratto bianco, un dettaglio in ottone */
 .servizio__art{ background:var(--notte); aspect-ratio:1; padding:clamp(16px,1.6vw,24px); width:100%; max-width:150px; }
-/* icone Phosphor duotone (MIT, vedi assets/LICENSE-phosphor-icons.txt): contorno bianco, campitura ottone */
-.icona{ display:block; width:100%; height:auto; fill:#fff; }
-.icona .tono{ fill:var(--ottone); opacity:.85; }
+/* icone disegnate a tratto sottile: bianco, un solo dettaglio in ottone */
+.icona{ display:block; width:100%; height:auto; fill:none; stroke:#fff; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.icona .o{ stroke:var(--ottone); }
+.icona .f{ fill:var(--ottone); stroke:none; }
+/* nei riquadri piccoli il tratto si ispessisce, così non sparisce */
+.servizi__icona .icona,.tre__icona .icona,.aree__icona .icona,.competenze .tre__icona .icona{ stroke-width:2; }
 
 /* approccio: righe che scendono a gradini */
 .gradini h2{ grid-column:1 / -1; margin-bottom:clamp(3rem,6vw,5.5rem); }

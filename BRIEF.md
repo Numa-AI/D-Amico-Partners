@@ -7,6 +7,8 @@ Repo: questo clone (`main`, GitHub Pages root). Sorgenti (docx, PNG) nella carte
   impaginato come un bilancio stampato, asse fisso al 42% (colonna 6 di 12), campiture blu notte / pietra / ottone.
   Scroll NATIVO, nessuna sezione bloccata (il cliente non voleva più i pannelli sticky). Solo entrate e lievi derive.
 - Testata home: foto della piazza secondo l'ora di Brescia (giorno 7–18, crepuscolo altrimenti); scorrendo dissolve nell'altra.
+- Icone (2026-10-28): set disegnato a mano su griglia 48, tratto sottile bianco 1.5 (2 nei riquadri piccoli) con UN dettaglio
+  ottone (.o tratto, .f pieno). Phosphor duotone bocciate («non eleganti»).
 - Servizi (home, advisory, consulting): ICONE SVG FERME in riquadri blu notte (tratto bianco, dettaglio ottone), niente foto.
   Bocciate le icone che si disegnano allo scroll («sembrano tagliate»).
 - Bocciati (2026-10-28): colonna vuota a sinistra (asse al 42% lasciato vuoto), footer a tutto schermo col nome gigante,
