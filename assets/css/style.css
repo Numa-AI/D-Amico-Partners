@@ -184,13 +184,12 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .gente{ background:var(--pietra); padding:clamp(4.5rem,8vw,7rem) 0; }
 .gente__testa{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:1rem 2rem; margin-bottom:clamp(2rem,4vw,2.75rem); }
 .gente__lista{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--gap); }
-.gente__lista li{ display:flex; gap:20px; padding:20px; background:var(--carta); }
-.gente__sigla{ flex:none; width:clamp(88px,7.5vw,120px); aspect-ratio:4/5; display:flex; align-items:flex-end; padding:12px; background:var(--notte); color:var(--ottone); font-family:var(--display); font-size:clamp(1.8rem,1.4rem + .8vw,2.4rem); line-height:1; }
-.gente__lista li > div{ display:flex; flex-direction:column; justify-content:flex-end; gap:.35rem; }
-.gente__ruolo{ font-size:var(--step-small); font-weight:600; color:var(--ottone-2); }
-.gente__lista h3{ font-size:clamp(1.45rem,1.2rem + .6vw,1.8rem); line-height:1.1; color:var(--notte); }
-.gente__lista p:last-child{ font-size:var(--step-small); line-height:1.4; color:var(--soft); }
-@media (max-width:1099px){ .gente__lista{ grid-template-columns:1fr; max-width:640px; } .gente__lista li{ align-items:center; } }
+.gente__lista li{ padding:clamp(1.75rem,2.4vw,2.5rem) clamp(1.5rem,2vw,2.25rem) clamp(2rem,2.6vw,2.75rem); background:var(--carta); border-top:2px solid var(--ottone); }
+.gente__lista li > div{ display:flex; flex-direction:column; gap:.5rem; }
+.gente__ruolo{ font-size:var(--step-small); font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ottone-2); }
+.gente__lista h3{ font-size:clamp(1.6rem,1.3rem + .7vw,2rem); line-height:1.1; color:var(--notte); }
+.gente__lista p:last-child{ margin-top:.5rem; padding-top:1rem; border-top:1px solid var(--pietra-2); font-size:var(--step-small); line-height:1.45; color:var(--soft); }
+@media (max-width:1099px){ .gente__lista{ grid-template-columns:1fr; max-width:640px; } }
 
 /* la frase: pagina a colori con mosaico senza fughe */
 .mosaico{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); grid-template-rows:repeat(2,minmax(clamp(220px,24vw,360px),auto)); background:var(--notte); color:#fff; }
