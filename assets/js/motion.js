@@ -49,7 +49,7 @@
   }
 
   /* entrate: nelle pagine senza [data-in] scelgo io i pezzi di ogni sezione */
-  var AUTO = '.phero__card > *, .servizio__art, .servizio h2, .servizio .prose > *, .colonne .prose > *, .aree a, .citazione p, .chiudi > *, .rec-list > div, .form, .legal .narrow > *';
+  var AUTO = '.phero__card > *, .servizio__art, .servizio h2, .servizio .prose > *, .colonne .prose > *, .aree a, .citazione p, .chiudi__testo > *, .chiudi__rec, .rec-list > div, .form, .legal .narrow > *';
   document.querySelectorAll(AUTO).forEach(function (el) { el.setAttribute('data-in', ''); });
   var pezzi = [].filter.call(document.querySelectorAll('[data-in]'), function (el) {
     if (hero && hero.contains(el)) return false;
@@ -92,7 +92,7 @@
     svg.setAttribute('class', 'gradini__scia'); svg.setAttribute('aria-hidden', 'true');
     svg.setAttribute('width', box.width); svg.setAttribute('height', box.height);
     gradini.insertBefore(svg, gradini.firstChild);
-    var tl = gsap.timeline({ scrollTrigger: { trigger: gradini, start: 'top 70%', end: 'bottom 60%', scrub: 1.2 } });
+    var tl = gsap.timeline({ scrollTrigger: { trigger: gradini, start: 'top 90%', end: 'bottom 85%', scrub: 0.8 } });
     [].forEach.call(passi, function (g, i) {
       tl.fromTo(g, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 1, ease: 'power2.out' });
       var dopo = passi[i + 1];
