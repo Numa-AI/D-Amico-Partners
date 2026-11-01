@@ -476,3 +476,20 @@ main{ position:relative; background:var(--carta); }
 .anim [data-in], .anim .gradino, .anim .linea li > *{ opacity:0; }
 .anim .linea{ --corsa:0; }
 @media (prefers-reduced-motion:reduce){ *,*::before,*::after{ transition-duration:.01ms!important; animation-duration:.01ms!important; } }
+
+/* chiusura delle pagine servizio: invito e recapiti su pietra */
+.chiudi__in{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(2.5rem,6vw,7rem); align-items:center; }
+.chiudi__in::before{ content:""; grid-column:1 / -1; height:2px; margin-bottom:clamp(.5rem,2vw,1.5rem); background:var(--ottone); }
+.chiudi__eti{ margin-bottom:1.25rem; font-size:var(--step-small); font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ottone-2); }
+.chiudi h2{ color:var(--notte); max-width:16ch; }
+.chiudi .lead{ margin:1.5rem 0 2.25rem; max-width:40ch; color:var(--soft); }
+.chiudi__rec{ list-style:none; margin:0; padding:0; background:var(--carta); border-top:2px solid var(--ottone); }
+.chiudi__rec li{ display:flex; align-items:center; gap:1.25rem; padding:clamp(1.25rem,1.8vw,1.75rem) clamp(1.25rem,2vw,2rem); }
+.chiudi__rec li + li{ border-top:1px solid var(--pietra-2); }
+.chiudi__icona{ flex:none; width:58px; aspect-ratio:1; padding:14px; border:1px solid var(--ottone); border-radius:50%; }
+.chiudi__icona .icona{ stroke-width:1.4; }
+.chiudi__rec small{ display:block; margin-bottom:.15rem; font-size:var(--step-small); color:var(--soft); }
+.chiudi__rec li > span:last-child{ min-width:0; font-family:var(--display); font-size:clamp(1.2rem,1.05rem + .45vw,1.5rem); line-height:1.2; color:var(--notte); overflow-wrap:anywhere; }
+.chiudi__rec a{ text-decoration:none; transition:color .25s; }
+.chiudi__rec a:hover{ color:var(--ottone-2); }
+@media (max-width:899px){ .chiudi__in{ grid-template-columns:minmax(0,1fr); } .chiudi__icona{ width:50px; padding:12px; } }
