@@ -323,7 +323,7 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
   .porta__in{ grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); column-gap:clamp(4rem,7vw,8rem); max-width:1440px; }
   .porta__targa{ justify-self:end; }
 }
-@media (max-width:599px){ .porta__targa{ width:min(100%,420px); } }
+@media (max-width:599px){ .porta__targa{ width:88%; } }
 
 /* ===== PAGINE INTERNE ===== */
 /* testata: foto a tutta larghezza con il titolo sopra */
