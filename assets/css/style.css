@@ -290,14 +290,18 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .tre li::before{ content:""; position:absolute; top:calc(-2rem - 8px); left:0; width:18px; height:18px; border-radius:50%; background:var(--ottone); transform:scale(var(--acceso,1)); }
 .tre__icona{ flex:none; width:clamp(60px,5vw,72px); }
 .tre h3{ font-size:clamp(1.6rem,1.2rem + .9vw,2.2rem); color:var(--notte); }
-.competenze__chiusa{ margin-top:clamp(3rem,5vw,4.5rem); row-gap:1.5rem; align-items:start; }
-.competenze__chiusa p:first-child{ grid-column:1 / 6; color:var(--soft); max-width:44ch; }
-.competenze__frase{ grid-column:7 / -1; font-family:var(--display); font-style:italic; font-size:clamp(1.45rem,1.1rem + .9vw,2rem); line-height:1.3; color:var(--notte); max-width:40ch; }
+.competenze__chiusa{ margin:clamp(4rem,7vw,6.5rem) auto 0; max-width:60rem; display:grid; justify-items:center; text-align:center; }
+.competenze__chiusa p:first-child{ font-size:var(--step-lead); line-height:1.4; color:var(--soft); max-width:50ch; text-wrap:balance; }
+.competenze__frase{ margin-top:clamp(2rem,3.5vw,3rem); font-family:var(--display); font-style:italic; font-size:clamp(1.6rem,1.1rem + 1.4vw,2.75rem); line-height:1.25; color:var(--notte); max-width:38ch; text-wrap:balance; }
+.competenze__frase::before{ content:""; display:block; width:56px; height:2px; margin:0 auto clamp(2rem,3.5vw,3rem); background:var(--ottone); }
 @media (max-width:899px){
   .tre{ grid-template-columns:1fr; gap:12px; padding-left:24px; background-size:2px calc(var(--corsa,1) * 100%); }
   .tre li{ margin-top:0; gap:18px; padding:16px; }
   .tre li::before{ top:50%; left:-32px; margin-top:-9px; }
   .tre__icona{ width:56px; }
+  .competenze__chiusa{ justify-items:start; text-align:left; }
+  .competenze__frase{ text-wrap:pretty; }
+  .competenze__frase::before{ margin-left:0; }
 }
 
 /* chiusura: la targa a metà pagina, recapiti su pietra */
@@ -361,7 +365,7 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .servizio > div:first-child{ display:contents; }
 .servizio h2,.servizio h3{ grid-area:head; margin-bottom:1.75rem; }
 .servizio h2{ font-size:clamp(2rem,1.3rem + 2vw,3.25rem) !important; }
-.servizio .prose{ grid-area:body; max-width:66ch; }
+.servizio .prose{ grid-area:body; max-width:none; }
 .servizio .prose > p:first-child{ font-size:var(--step-lead); line-height:1.38; }
 .servizio__art{ grid-area:art; align-self:start; }
 @media (max-width:899px){
