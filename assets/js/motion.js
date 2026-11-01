@@ -52,7 +52,10 @@
   var AUTO = '.phero__card > *, .servizio__art, .servizio h2, .servizio .prose > *, .colonne .prose > *, .aree a, .citazione p, .chiudi > *, .rec-list > div, .form, .legal .narrow > *';
   document.querySelectorAll(AUTO).forEach(function (el) { el.setAttribute('data-in', ''); });
   var pezzi = [].filter.call(document.querySelectorAll('[data-in]'), function (el) {
-    return !(hero && hero.contains(el)) && !el.parentElement.closest('[data-in]');
+    if (hero && hero.contains(el)) return false;
+    // dentro un pezzo che entra già: niente seconda entrata, ma va tolto dal CSS che lo nasconde
+    if (el.parentElement.closest('[data-in]')) { el.removeAttribute('data-in'); return false; }
+    return true;
   });
   ScrollTrigger.batch(pezzi, {
     start: 'top 92%', once: true,
@@ -68,7 +71,7 @@
   /* linea del tempo: il filo d'ottone avanza con lo scroll; a ogni anno il pallino si accende e la data entra */
   document.querySelectorAll('.linea').forEach(function (linea) {
     var anni = linea.children;
-    var tl = gsap.timeline({ scrollTrigger: { trigger: linea, start: 'top 85%', end: 'bottom 45%', scrub: 1.2 } });
+    var tl = gsap.timeline({ scrollTrigger: { trigger: linea, start: 'top 95%', end: 'bottom 75%', scrub: 0.8 } });
     tl.fromTo(linea, { '--corsa': 0 }, { '--corsa': 1, duration: anni.length, ease: 'none' }, 0);
     [].forEach.call(anni, function (li, i) {
       tl.fromTo(li, { '--acceso': 0, '--pieno': 0 }, { '--acceso': 1, '--pieno': 1, duration: .45, ease: 'back.out(3)' }, i);
