@@ -287,7 +287,7 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .competenze__testa .lead{ grid-column:7 / -1; max-width:46ch; }
 .tre{ margin-top:clamp(3.5rem,6vw,5rem); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--gap); background:linear-gradient(var(--ottone),var(--ottone)) 0 0 / calc(var(--corsa,1) * 100%) 2px no-repeat; }
 .tre li{ position:relative; margin-top:2rem; display:flex; align-items:center; gap:clamp(16px,1.6vw,24px); padding:clamp(16px,1.6vw,24px); background:var(--carta); }
-.tre li::before{ content:""; position:absolute; top:calc(-2rem - 8px); left:50%; margin-left:-9px; width:18px; height:18px; border-radius:50%; background:var(--ottone); transform:scale(var(--acceso,1)); }
+.tre li::before{ content:""; position:absolute; top:calc(-2rem - 8px); left:0; width:18px; height:18px; border-radius:50%; background:var(--ottone); transform:scale(var(--acceso,1)); }
 .tre__icona{ flex:none; width:clamp(60px,5vw,72px); }
 .tre h3{ font-size:clamp(1.6rem,1.2rem + .9vw,2.2rem); color:var(--notte); }
 .competenze__chiusa{ margin:clamp(4rem,7vw,6.5rem) auto 0; max-width:60rem; display:grid; justify-items:center; text-align:center; }
@@ -297,25 +297,33 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 @media (max-width:899px){
   .tre{ grid-template-columns:1fr; gap:12px; padding-left:24px; background-size:2px calc(var(--corsa,1) * 100%); }
   .tre li{ margin-top:0; gap:18px; padding:16px; }
-  .tre li::before{ top:50%; left:-32px; margin-left:0; margin-top:-9px; }
+  .tre li::before{ top:50%; left:-32px; margin-top:-9px; }
   .tre__icona{ width:56px; }
   .competenze__chiusa{ justify-items:start; text-align:left; }
   .competenze__frase{ text-wrap:pretty; }
   .competenze__frase::before{ margin-left:0; }
 }
 
-/* chiusura: la targa a metà pagina, recapiti su pietra */
-.porta{ display:grid; background:var(--pietra); }
-@media (min-width:900px){ .porta{ grid-template-columns:1fr 1fr; min-height:min(90svh,820px); } }
-.porta__img{ position:relative; min-height:56svh; overflow:hidden; background:#D2CCC2; }
-.porta__img img{ position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover; }
-.porta__testo{ display:flex; flex-direction:column; justify-content:center; gap:clamp(2.5rem,5vw,4rem); padding:clamp(3rem,6vw,6rem) var(--g); }
-.porta__frase{ font-family:var(--display); font-style:italic; font-size:clamp(1.5rem,1.2rem + 1.4vw,2.25rem); line-height:1.12; max-width:24ch; }
-@media (max-width:899px){ .porta__frase{ max-width:none; } }
-.porta h2{ margin-bottom:1.25rem; }
-.porta__rec{ font-size:var(--step-lead); line-height:1.45; }
-.porta__rec a{ text-decoration:none; } .porta__rec a:hover{ color:var(--ottone); }
-.porta__ind{ margin:.75rem 0 2rem; color:var(--soft); }
+/* chiusura: la targa scontornata appesa sulla pietra, recapiti accanto */
+.porta{ background:var(--pietra); padding:clamp(4.5rem,9vw,8.5rem) 0; overflow:hidden; }
+.porta__in{ display:grid; gap:clamp(3.5rem,7vw,5rem); align-items:center; }
+.porta__targa{ margin:0; justify-self:center; width:min(100%,560px); }
+.porta__targa img{ display:block; width:100%; height:auto; box-shadow:0 1px 2px rgba(48,36,14,.28),0 10px 22px -8px rgba(48,36,14,.32),0 34px 70px -24px rgba(48,36,14,.38); }
+.porta__testo{ display:grid; gap:clamp(2.5rem,4.5vw,3.5rem); }
+.porta__frase{ font-family:var(--display); font-style:italic; font-size:clamp(1.5rem,1.15rem + 1.2vw,2.25rem); line-height:1.2; max-width:30ch; text-wrap:pretty; }
+.porta__incontro{ border-top:1px solid var(--ottone); padding-top:clamp(2rem,3.5vw,2.75rem); }
+.porta h2{ font-size:clamp(2rem,1.5rem + 1.4vw,2.875rem); margin-bottom:1.75rem; }
+.porta__rec{ display:grid; gap:1.25rem 2rem; margin:0 0 2.25rem; }
+.porta__rec dt{ font-size:var(--step-small); color:var(--soft); margin-bottom:.3rem; }
+.porta__rec dd{ margin:0; font-size:1.125rem; line-height:1.4; color:var(--inchiostro); }
+.porta__rec a{ text-decoration:none; border-bottom:1px solid transparent; transition:border-color .25s,color .25s; }
+.porta__rec a:hover{ color:var(--ottone-2); border-bottom-color:var(--ottone); }
+@media (min-width:600px){ .porta__rec{ grid-template-columns:auto auto 1fr; } }
+@media (min-width:1000px){
+  .porta__in{ grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); column-gap:clamp(4rem,7vw,8rem); max-width:1440px; }
+  .porta__targa{ justify-self:end; }
+}
+@media (max-width:599px){ .porta__targa{ width:min(100%,420px); } }
 
 /* ===== PAGINE INTERNE ===== */
 /* testata: foto a tutta larghezza con il titolo sopra */

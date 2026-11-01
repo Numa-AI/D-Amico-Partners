@@ -21,7 +21,7 @@
   <link rel="preload" href="assets/fonts/eb-garamond.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
   <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('anim');setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('anim')},3000)}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=20261101i">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261101j">
   <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -199,14 +199,19 @@
   </section>
 
   <section class="porta" aria-labelledby="inc-t">
-    <figure class="porta__img"><picture><source media="(max-width:700px)" srcset="assets/img/film/targa-800.webp"><img src="assets/img/film/targa-1122.webp" alt="La targa in ottone all’ingresso dello studio" width="1122" height="1402" style="object-position:50% 50%" loading="lazy" decoding="async"></picture></figure>
-    <div class="porta__testo">
-      <p class="porta__frase" data-in>Il nostro impegno è affiancare l’imprenditore con metodo, concretezza e continuità: non limitandoci a individuare una soluzione sulla carta, ma contribuendo a costruire il percorso necessario per realizzarla.</p>
-      <div data-in>
-        <h2 id="inc-t">Richiedi un incontro</h2>
-        <p class="porta__rec"><a href="tel:+390302403392">+39 030 240 3392</a><br><a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a></p>
-        <p class="porta__ind">Piazza della Vittoria 11, 25121 Brescia</p>
-        <a class="btn btn--notte" href="contatti.html">Richiedi un incontro</a>
+    <div class="wrap porta__in">
+      <figure class="porta__targa" data-in><picture><source type="image/webp" media="(max-width:700px)" srcset="assets/img/targa-640.webp"><source type="image/webp" srcset="assets/img/targa.webp"><img src="assets/img/targa.png" alt="La targa in ottone dello studio D’Amico &amp; Partners" width="964" height="669" loading="lazy" decoding="async"></picture></figure>
+      <div class="porta__testo">
+        <p class="porta__frase" data-in>Il nostro impegno è affiancare l’imprenditore con metodo, concretezza e continuità: non limitandoci a individuare una soluzione sulla carta, ma contribuendo a costruire il percorso necessario per realizzarla.</p>
+        <div class="porta__incontro" data-in>
+          <h2 id="inc-t">Richiedi un incontro</h2>
+          <dl class="porta__rec">
+            <div><dt>Telefono</dt><dd><a href="tel:+390302403392">+39 030 240 3392</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a></dd></div>
+            <div><dt>Studio</dt><dd>Piazza della Vittoria 11<br>25121 Brescia</dd></div>
+          </dl>
+          <a class="btn btn--notte" href="contatti.html">Richiedi un incontro</a>
+        </div>
       </div>
     </div>
   </section>
