@@ -1,7 +1,7 @@
 /* motion.js — il movimento del sito, su tutte le pagine. Scroll nativo, niente sezioni bloccate.
    - testata della home: la piazza con la luce dell'ora di Brescia; scorrendo, la luce passa all'altra foto
    - ogni sezione entra a pezzi (titolo, testo, foto) una volta sola
-   - le foto grandi si spostano piano rispetto alla pagina */
+   - le foto grandi si spostano piano rispetto alla pagina (non nella testata della home: lì foto e testo scorrono con la pagina) */
 (function () {
   'use strict';
   var root = document.documentElement;
@@ -39,11 +39,8 @@
   if (hero) {
     var luce = hero.querySelector('.hero__luce');
     gsap.fromTo(luce, { scale: 1.08 }, { scale: 1, duration: 2.6, ease: 'power2.out' });
-    var esce = { trigger: hero, start: 'top top', end: 'bottom top', scrub: 1 };
-    gsap.to(luce, { yPercent: 12, ease: 'none', scrollTrigger: esce });
     gsap.to(prima, { opacity: 0, ease: 'none', scrollTrigger: { trigger: hero, start: '15% top', end: '75% top', scrub: 1 } });
     gsap.to(dopo, { opacity: 1, ease: 'none', scrollTrigger: { trigger: hero, start: '15% top', end: '75% top', scrub: 1 } });
-    gsap.to(hero.querySelector('.hero__testo'), { yPercent: -18, ease: 'none', scrollTrigger: esce });
     var t = hero.querySelectorAll('[data-in]');
     gsap.fromTo(t, { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
   }
