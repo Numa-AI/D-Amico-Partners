@@ -6,7 +6,12 @@
 
   /* header trasparente sopra la prima immagine della home */
   if (header && header.hasAttribute('data-over')) {
-    var over = function () { header.classList.toggle('header--over', scrollY < innerHeight * 0.85); };
+    // la testata può essere bloccata per qualche schermata (prova-torre): conta anche lo spazio del blocco
+    var testata = document.querySelector('.hero');
+    var over = function () {
+      var box = testata && testata.parentElement.classList.contains('pin-spacer') ? testata.parentElement : testata;
+      header.classList.toggle('header--over', scrollY < (box ? box.offsetHeight : innerHeight) - innerHeight * 0.15);
+    };
     addEventListener('scroll', over, { passive: true }); addEventListener('resize', over); over();
   }
 

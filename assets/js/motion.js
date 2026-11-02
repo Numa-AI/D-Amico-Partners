@@ -10,7 +10,7 @@
   if (JUMP !== null) history.scrollRestoration = 'manual';
 
   /* luce dell'ora: di giorno la piazza al sole, dalle 18 alle 7 i portici illuminati */
-  var hero = document.querySelector('.hero');
+  var hero = document.querySelector('.hero:not(.torre)'), torre = document.querySelector('.torre');
   if (hero) {
     var ora = +new Intl.DateTimeFormat('it-IT', { hour: 'numeric', hour12: false, timeZone: 'Europe/Rome' }).format(new Date());
     var giorno = hero.querySelector('.giorno'), sera = hero.querySelector('.sera');
@@ -41,11 +41,32 @@
     gsap.fromTo(t, { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
   }
 
+  /* prova: la camera parte dalla cima del Torrione e scende ai portici; il titolo sta nel cielo e sale con lui */
+  if (torre) {
+    var foto = torre.querySelector('.torre__img'), testo = torre.querySelector('.hero__testo'), schede = torre.querySelector('.hero__schede');
+    var misura = function () {
+      var vw = torre.clientWidth, vh = torre.clientHeight, largo = vw >= 900;
+      var h = vh * (largo ? 2 : 1.25), w = h * 1448 / 1086;
+      if (w < vw) { w = vw; h = w * 1086 / 1448; }
+      var x = Math.min(0, Math.max(vw - w, vw * (largo ? .62 : .55) - w * (largo ? .635 : .66)));
+      foto.style.cssText = 'width:' + w + 'px;height:' + h + 'px;left:' + x + 'px;top:0;max-width:none';
+    };
+    misura();
+    ScrollTrigger.addEventListener('refreshInit', function () { gsap.set(foto, { y: 0 }); misura(); });
+    gsap.fromTo(torre.querySelectorAll('[data-in]'), { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
+    var corsa = function () { return torre.clientHeight - foto.offsetHeight; };
+    gsap.timeline({ scrollTrigger: { trigger: torre, start: 'top top', end: '+=150%', pin: true, scrub: 1, invalidateOnRefresh: true } })
+      .to(foto, { y: corsa, ease: 'power1.inOut', duration: 1 }, 0)
+      .to(testo, { y: function () { return corsa() * .35; }, ease: 'power1.inOut', duration: 1 }, 0)
+      .to(testo, { autoAlpha: 0, ease: 'none', duration: .25 }, .2)
+      .fromTo(schede, { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, ease: 'power2.out', duration: .25 }, .72);
+  }
+
   /* entrate: nelle pagine senza [data-in] scelgo io i pezzi di ogni sezione */
   var AUTO = '.phero__card > *, .servizio__art, .servizio h2, .servizio .prose > *, .colonne .prose > *, .aree a, .citazione p, .chiudi__testo > *, .chiudi__rec, .rec-list > div, .form, .legal .narrow > *';
   document.querySelectorAll(AUTO).forEach(function (el) { el.setAttribute('data-in', ''); });
   var pezzi = [].filter.call(document.querySelectorAll('[data-in]'), function (el) {
-    if (hero && hero.contains(el)) return false;
+    if (el.closest('.hero')) return false;
     // dentro un pezzo che entra già: niente seconda entrata, ma va tolto dal CSS che lo nasconde
     if (el.parentElement.closest('[data-in]')) { el.removeAttribute('data-in'); return false; }
     return true;
