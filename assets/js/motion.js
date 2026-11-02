@@ -42,17 +42,21 @@
   }
 
   /* prova: si parte dal cielo col titolo e la cima del Torrione in basso; scendendo il titolo si dissolve
-     e la camera scende lungo la torre fino alla piazza. La foto ha il cielo allungato sopra: la cima è al 41,6% */
+     e la camera scende lungo la torre fino alla piazza. Due foto: stretta e alta sul telefono (cima al 32,8%),
+     larga col cielo allungato sopra su desktop (cima al 41,6%) */
   if (torre) {
     var foto = torre.querySelector('.torre__img'), testo = torre.querySelector('.hero__testo'), schede = torre.querySelector('.hero__schede');
-    var CIMA = 0.416, alto = 0, basso = 0;
+    var alto = 0, basso = 0;
     var misura = function () {
-      var vw = torre.clientWidth, vh = torre.clientHeight;
-      var w = vw * (vw < 700 ? 1.5 : 1), h = w * 2500 / 1195;
-      if (h < vh * 1.2) { h = vh * 1.2; w = h * 1195 / 2500; }
-      alto = Math.min(0, vh * (vw < 900 ? .56 : .62) - h * CIMA);
+      var vw = torre.clientWidth, vh = torre.clientHeight, stretta = /torre-mobile/.test(foto.currentSrc);
+      var r = stretta ? 1600 / 573 : 2500 / 1195, cima = stretta ? .328 : .416;
+      var w = vw * (stretta ? 1.15 : 1), h = w * r;
+      if (h < vh * 1.2) { h = vh * 1.2; w = h / r; }
+      alto = Math.min(0, vh * (vw < 900 ? .56 : .64) - h * cima);
       basso = vh - h;
       foto.style.cssText = 'width:' + w + 'px;height:' + h + 'px;left:' + (vw - w) / 2 + 'px;top:0;max-width:none';
+      // il blocco dura quanto la discesa della foto: al dito 1:1, con la rotella la camera va un po' più svelta
+      torre.parentElement.style.height = vh + (alto - basso) * (ScrollTrigger.isTouch ? 1 : .6) + 'px';
     };
     misura();
     ScrollTrigger.addEventListener('refreshInit', misura);
