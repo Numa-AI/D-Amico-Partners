@@ -351,7 +351,7 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .phero--testo{ display:flex; align-items:flex-end; justify-content:space-between; gap:var(--g); padding:calc(var(--hh) + clamp(4rem,9vw,8rem)) max(var(--g),calc((100% - 1760px)/2 + var(--g))) clamp(3rem,6vw,5rem); color:#fff; }
 .phero--testo .phero__card{ position:static; padding:0; margin:0; max-width:none; width:auto; }
 .phero__icona{ flex:none; width:clamp(120px,13vw,210px); }
-@media (max-width:899px){ .phero--testo{ flex-direction:column-reverse; align-items:flex-start; } .phero__icona{ width:96px; } }
+@media (max-width:899px){ .phero--testo{ align-items:flex-start; gap:1.25rem; } .phero__icona{ width:76px; } }
 
 /* nella colonna sinistra delle pagine interne: le fasi o i dati, non una foto */
 .fasi{ grid-column:1 / 6; list-style:none; margin:0; padding:0; display:grid; border-top:2px solid var(--notte); }
