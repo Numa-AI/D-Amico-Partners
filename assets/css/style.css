@@ -131,10 +131,12 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .torre__cielo{ position:absolute; inset:0; overflow:hidden; background:#123488; }
 .torre__img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:66% 50%; }
 @media (max-width:899px){
-  .torre__img{ object-position:50% 60%; }
+  /* foto stretta larga il 115%, cima della torre (al 48,8% di una foto alta 2100/573 × 1,15 = 4,215 larghezze) a metà schermo:
+     è già il primo fotogramma, anche senza animazioni (Riduci movimento, GSAP lento). In movimento il JS la riposiziona */
+  .torre__img{ inset:auto; left:-7.5%; top:calc(50% - 205.7vw); width:115%; height:auto; max-width:none; object-fit:fill; }
   .anim .torre-corsa{ height:250vh; /* taste-skill-ignore: ripiego per browser senza svh */ height:250svh; }
   .anim .torre{ position:sticky; top:0; }
-  .anim .torre__img{ inset:auto; object-fit:fill; will-change:transform; }
+  .anim .torre__img{ will-change:transform; }
   .torre::before{ content:none; }
   .torre .hero__testo{ top:calc(var(--hh) + 2.5rem); transform:none; text-align:center; }
   .torre .hero__testo p{ margin-inline:auto; }
