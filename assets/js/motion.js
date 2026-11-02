@@ -41,31 +41,35 @@
     gsap.fromTo(t, { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
   }
 
-  /* prova: si parte dal cielo col titolo e la cima del Torrione in basso; scendendo il titolo si dissolve
-     e la camera scende lungo la torre fino alla piazza. Due foto: stretta e alta sul telefono (cima al 32,8%),
-     larga col cielo allungato sopra su desktop (cima al 41,6%) */
+  /* prova: si parte dal cielo col titolo e la cima del Torrione in basso. Sul telefono, scendendo, il titolo si dissolve
+     e la camera scende lungo la torre fino alla piazza; su desktop la testata resta ferma su quel primo fotogramma.
+     Due foto: stretta e alta sul telefono (cima al 32,8%), larga col cielo allungato sopra su desktop (cima al 41,6%) */
   if (torre) {
     var foto = torre.querySelector('.torre__img'), testo = torre.querySelector('.hero__testo'), schede = torre.querySelector('.hero__schede');
-    var alto = 0, basso = 0;
+    var STRETTO = '(max-width: 899px)', alto = 0, basso = 0;
     var misura = function () {
-      var vw = torre.clientWidth, vh = torre.clientHeight, stretta = /torre-mobile/.test(foto.currentSrc);
+      var vw = torre.clientWidth, vh = torre.clientHeight, stretta = /torre-mobile/.test(foto.currentSrc), scorre = matchMedia(STRETTO).matches;
       var r = stretta ? 1600 / 573 : 2500 / 1195, cima = stretta ? .328 : .416;
       var w = vw * (stretta ? 1.15 : 1), h = w * r;
       if (h < vh * 1.2) { h = vh * 1.2; w = h / r; }
-      alto = Math.min(0, vh * (vw < 900 ? .56 : .64) - h * cima);
+      alto = Math.min(0, vh * (scorre ? .56 : .52) - h * cima);
       basso = vh - h;
       foto.style.cssText = 'width:' + w + 'px;height:' + h + 'px;left:' + (vw - w) / 2 + 'px;top:0;max-width:none';
-      // il blocco dura quanto la discesa della foto: al dito 1:1, con la rotella la camera va un po' più svelta
-      torre.parentElement.style.height = vh + (alto - basso) * (ScrollTrigger.isTouch ? 1 : .6) + 'px';
+      // il blocco dura quanto la discesa della foto, così la foto segue il dito 1:1
+      torre.parentElement.style.height = scorre ? vh + alto - basso + 'px' : '';
+      if (!scorre) gsap.set(foto, { y: alto });
     };
     misura();
     ScrollTrigger.addEventListener('refreshInit', misura);
     gsap.fromTo(torre.querySelectorAll('[data-in]'), { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
     // blocco fisso fatto col CSS (sticky), non con il pin di GSAP: sul telefono non salta; al dito niente smorzamento
-    gsap.timeline({ scrollTrigger: { trigger: torre.parentElement, start: 'top top', end: 'bottom bottom', scrub: ScrollTrigger.isTouch ? true : 1, invalidateOnRefresh: true } })
-      .fromTo(foto, { y: function () { return alto; } }, { y: function () { return basso; }, ease: 'power1.inOut', duration: 1 }, 0)
-      .to(testo, { y: function () { return (basso - alto) * .3; }, autoAlpha: 0, ease: 'power1.in', duration: .4 }, 0)
-      .fromTo(schede, { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, ease: 'power2.out', duration: .25 }, .72);
+    gsap.matchMedia().add(STRETTO, function () {
+      gsap.timeline({ scrollTrigger: { trigger: torre.parentElement, start: 'top top', end: 'bottom bottom', scrub: ScrollTrigger.isTouch ? true : 1, invalidateOnRefresh: true } })
+        .fromTo(foto, { y: function () { return alto; } }, { y: function () { return basso; }, ease: 'power1.inOut', duration: 1 }, 0)
+        .to(testo, { y: function () { return (basso - alto) * .3; }, autoAlpha: 0, ease: 'power1.in', duration: .4 }, 0)
+        .fromTo(schede, { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, ease: 'power2.out', duration: .25 }, .72);
+      return function () { misura(); };
+    });
   }
 
   /* entrate: nelle pagine senza [data-in] scelgo io i pezzi di ogni sezione */
