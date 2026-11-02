@@ -6,12 +6,9 @@
 
   /* header trasparente sopra la prima immagine della home */
   if (header && header.hasAttribute('data-over')) {
-    // la testata può essere bloccata per qualche schermata (prova-torre): conta anche lo spazio del blocco
-    var testata = document.querySelector('.hero');
-    var over = function () {
-      var box = testata && testata.parentElement.classList.contains('pin-spacer') ? testata.parentElement : testata;
-      header.classList.toggle('header--over', scrollY < (box ? box.offsetHeight : innerHeight) - innerHeight * 0.15);
-    };
+    // la testata può restare ferma per qualche schermata (prova-torre): conta tutta la sua corsa
+    var testata = document.querySelector('.torre-corsa, .hero');
+    var over = function () { header.classList.toggle('header--over', scrollY < (testata ? testata.offsetHeight : innerHeight) - innerHeight * 0.15); };
     addEventListener('scroll', over, { passive: true }); addEventListener('resize', over); over();
   }
 

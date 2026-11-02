@@ -55,7 +55,8 @@
     ScrollTrigger.addEventListener('refreshInit', function () { gsap.set(foto, { y: 0 }); misura(); });
     gsap.fromTo(torre.querySelectorAll('[data-in]'), { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
     var corsa = function () { return torre.clientHeight - foto.offsetHeight; };
-    gsap.timeline({ scrollTrigger: { trigger: torre, start: 'top top', end: '+=150%', pin: true, scrub: 1, invalidateOnRefresh: true } })
+    // blocco fisso fatto col CSS (sticky), non con il pin di GSAP: sul telefono non salta; al dito niente smorzamento
+    gsap.timeline({ scrollTrigger: { trigger: torre.parentElement, start: 'top top', end: 'bottom bottom', scrub: ScrollTrigger.isTouch ? true : 1, invalidateOnRefresh: true } })
       .to(foto, { y: corsa, ease: 'power1.inOut', duration: 1 }, 0)
       .to(testo, { y: function () { return corsa() * .35; }, ease: 'power1.inOut', duration: 1 }, 0)
       .to(testo, { autoAlpha: 0, ease: 'none', duration: .25 }, .2)
