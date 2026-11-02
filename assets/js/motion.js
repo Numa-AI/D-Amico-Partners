@@ -42,17 +42,17 @@
   }
 
   /* prova: sotto i 900 px si parte dal cielo col titolo e la cima del Torrione in basso; scendendo il titolo si dissolve
-     e la camera scende lungo la torre fino alla piazza (foto stretta e alta, cima al 32,8%).
+     e la camera scende lungo la torre fino alla piazza (foto stretta e alta col cielo allungato sopra, cima al 48,8%).
      Su desktop la testata è quella della home, ferma, con la piazza di tre quarti: ci pensa il CSS */
   if (torre) {
     var foto = torre.querySelector('.torre__img'), testo = torre.querySelector('.hero__testo'), schede = torre.querySelector('.hero__schede');
     var STRETTO = '(max-width: 899px)', alto = 0, basso = 0;
     var misura = function () {
       if (!matchMedia(STRETTO).matches) { foto.style.cssText = ''; torre.parentElement.style.height = ''; return; }
-      var vw = torre.clientWidth, vh = torre.clientHeight, r = 1600 / 573;
+      var vw = torre.clientWidth, vh = torre.clientHeight, r = 2100 / 573;
       var w = vw * 1.15, h = w * r;
       if (h < vh * 1.2) { h = vh * 1.2; w = h / r; }
-      alto = Math.min(0, vh * .56 - h * .328);
+      alto = Math.min(0, vh * .66 - h * .488);
       basso = vh - h;
       foto.style.cssText = 'width:' + w + 'px;height:' + h + 'px;left:' + (vw - w) / 2 + 'px;top:0;max-width:none';
       // il blocco dura quanto la discesa della foto, così la foto segue il dito 1:1
