@@ -52,7 +52,7 @@
       var vw = torre.clientWidth, vh = torre.clientHeight, r = 2100 / 573;
       var w = vw * 1.15, h = w * r;
       if (h < vh * 1.2) { h = vh * 1.2; w = h / r; }
-      alto = Math.min(0, vh * .66 - h * .488);
+      alto = Math.min(0, vh * .5 - h * .488);
       basso = vh - h;
       foto.style.cssText = 'width:' + w + 'px;height:' + h + 'px;left:' + (vw - w) / 2 + 'px;top:0;max-width:none';
       // il blocco dura quanto la discesa della foto, così la foto segue il dito 1:1
