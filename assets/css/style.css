@@ -126,18 +126,15 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .scheda:hover{ background:var(--notte-2); }
 .scheda:hover .scheda__icona{ border-color:#fff; }
 .scheda:hover b{ color:var(--ottone); }
-/* prova: testata col Torrione, la camera scende dalla cima ai portici (prova-torre.html) */
-.torre__cielo{ position:absolute; inset:0; overflow:hidden; background:#2f6fd0; }
-.torre__img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:64% 100%; }
+/* prova: testata col Torrione di fronte; si parte dal cielo e la camera scende fino alla piazza (prova-torre.html) */
+.torre__cielo{ position:absolute; inset:0; overflow:hidden; background:#123488; }
+.torre__img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 70%; }
 .anim .torre-corsa{ height:250vh; /* taste-skill-ignore: ripiego per browser senza svh */ height:250svh; }
 .anim .torre{ position:sticky; top:0; }
 .anim .torre__img{ inset:auto; object-fit:fill; will-change:transform; }
-.torre .hero__testo{ top:clamp(7rem,22vh,14rem); transform:none; }
-.torre::before{ background:linear-gradient(90deg,rgba(8,13,26,.55),rgba(8,13,26,.25) 55%,rgba(8,13,26,0)); } /* taste-skill-ignore: scrim neutra sotto il testo sulla foto */
-@media (max-width:899px){
-  .torre::before{ background:linear-gradient(rgba(8,13,26,.78),rgba(8,13,26,.5) 45%,rgba(8,13,26,.1) 75%,rgba(8,13,26,.3)); } /* taste-skill-ignore: scrim neutra sotto il testo sulla foto */
-  .torre .hero__testo{ top:calc(var(--hh) + 2rem); }
-}
+.torre::before{ content:none; }
+.torre .hero__testo{ top:clamp(7rem,20vh,12rem); transform:none; }
+@media (max-width:899px){ .torre .hero__testo{ top:calc(var(--hh) + 1.5rem); } }
 @media (max-width:899px){
   .hero::before{ inset:0; background:linear-gradient(rgba(8,13,26,0) 20%,rgba(8,13,26,.55) 50%,rgba(8,13,26,.3)); } /* taste-skill-ignore: scrim neutra sotto il testo sulla foto */
   .hero__testo{ top:40%; right:var(--g); max-width:none; }

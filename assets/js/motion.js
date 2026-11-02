@@ -41,25 +41,26 @@
     gsap.fromTo(t, { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
   }
 
-  /* prova: la camera parte dalla cima del Torrione e scende ai portici; il titolo sta nel cielo e sale con lui */
+  /* prova: si parte dal cielo col titolo e la cima del Torrione in basso; scendendo il titolo si dissolve
+     e la camera scende lungo la torre fino alla piazza. La foto ha il cielo allungato sopra: la cima è al 41,6% */
   if (torre) {
     var foto = torre.querySelector('.torre__img'), testo = torre.querySelector('.hero__testo'), schede = torre.querySelector('.hero__schede');
+    var CIMA = 0.416, alto = 0, basso = 0;
     var misura = function () {
-      var vw = torre.clientWidth, vh = torre.clientHeight, largo = vw >= 900;
-      var h = vh * (largo ? 2 : 1.25), w = h * 1448 / 1086;
-      if (w < vw) { w = vw; h = w * 1086 / 1448; }
-      var x = Math.min(0, Math.max(vw - w, vw * (largo ? .62 : .55) - w * (largo ? .635 : .66)));
-      foto.style.cssText = 'width:' + w + 'px;height:' + h + 'px;left:' + x + 'px;top:0;max-width:none';
+      var vw = torre.clientWidth, vh = torre.clientHeight;
+      var w = vw * (vw < 700 ? 1.5 : 1), h = w * 2500 / 1195;
+      if (h < vh * 1.2) { h = vh * 1.2; w = h * 1195 / 2500; }
+      alto = Math.min(0, vh * (vw < 900 ? .56 : .62) - h * CIMA);
+      basso = vh - h;
+      foto.style.cssText = 'width:' + w + 'px;height:' + h + 'px;left:' + (vw - w) / 2 + 'px;top:0;max-width:none';
     };
     misura();
-    ScrollTrigger.addEventListener('refreshInit', function () { gsap.set(foto, { y: 0 }); misura(); });
+    ScrollTrigger.addEventListener('refreshInit', misura);
     gsap.fromTo(torre.querySelectorAll('[data-in]'), { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
-    var corsa = function () { return torre.clientHeight - foto.offsetHeight; };
     // blocco fisso fatto col CSS (sticky), non con il pin di GSAP: sul telefono non salta; al dito niente smorzamento
     gsap.timeline({ scrollTrigger: { trigger: torre.parentElement, start: 'top top', end: 'bottom bottom', scrub: ScrollTrigger.isTouch ? true : 1, invalidateOnRefresh: true } })
-      .to(foto, { y: corsa, ease: 'power1.inOut', duration: 1 }, 0)
-      .to(testo, { y: function () { return corsa() * .35; }, ease: 'power1.inOut', duration: 1 }, 0)
-      .to(testo, { autoAlpha: 0, ease: 'none', duration: .25 }, .2)
+      .fromTo(foto, { y: function () { return alto; } }, { y: function () { return basso; }, ease: 'power1.inOut', duration: 1 }, 0)
+      .to(testo, { y: function () { return (basso - alto) * .3; }, autoAlpha: 0, ease: 'power1.in', duration: .4 }, 0)
       .fromTo(schede, { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, ease: 'power2.out', duration: .25 }, .72);
   }
 
