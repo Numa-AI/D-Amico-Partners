@@ -41,23 +41,22 @@
     gsap.fromTo(t, { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
   }
 
-  /* prova: si parte dal cielo col titolo e la cima del Torrione in basso. Sul telefono, scendendo, il titolo si dissolve
-     e la camera scende lungo la torre fino alla piazza; su desktop la testata resta ferma su quel primo fotogramma.
-     Due foto: stretta e alta sul telefono (cima al 32,8%), larga col cielo allungato sopra su desktop (cima al 41,6%) */
+  /* prova: sotto i 900 px si parte dal cielo col titolo e la cima del Torrione in basso; scendendo il titolo si dissolve
+     e la camera scende lungo la torre fino alla piazza (foto stretta e alta, cima al 32,8%).
+     Su desktop la testata è quella della home, ferma, con la piazza di tre quarti: ci pensa il CSS */
   if (torre) {
     var foto = torre.querySelector('.torre__img'), testo = torre.querySelector('.hero__testo'), schede = torre.querySelector('.hero__schede');
     var STRETTO = '(max-width: 899px)', alto = 0, basso = 0;
     var misura = function () {
-      var vw = torre.clientWidth, vh = torre.clientHeight, stretta = /torre-mobile/.test(foto.currentSrc), scorre = matchMedia(STRETTO).matches;
-      var r = stretta ? 1600 / 573 : 2500 / 1195, cima = stretta ? .328 : .416;
-      var w = vw * (stretta ? 1.15 : 1), h = w * r;
+      if (!matchMedia(STRETTO).matches) { foto.style.cssText = ''; torre.parentElement.style.height = ''; return; }
+      var vw = torre.clientWidth, vh = torre.clientHeight, r = 1600 / 573;
+      var w = vw * 1.15, h = w * r;
       if (h < vh * 1.2) { h = vh * 1.2; w = h / r; }
-      alto = Math.min(0, vh * (scorre ? .56 : .52) - h * cima);
+      alto = Math.min(0, vh * .56 - h * .328);
       basso = vh - h;
       foto.style.cssText = 'width:' + w + 'px;height:' + h + 'px;left:' + (vw - w) / 2 + 'px;top:0;max-width:none';
       // il blocco dura quanto la discesa della foto, così la foto segue il dito 1:1
-      torre.parentElement.style.height = scorre ? vh + alto - basso + 'px' : '';
-      if (!scorre) gsap.set(foto, { y: alto });
+      torre.parentElement.style.height = vh + alto - basso + 'px';
     };
     misura();
     ScrollTrigger.addEventListener('refreshInit', misura);
