@@ -41,14 +41,8 @@
     gsap.fromTo(t, { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
   }
 
-  /* prova: la testata col Torrione scorre con la pagina (CSS); qui solo l'entrata del titolo e, sul telefono,
-     il titolo che si dissolve mentre si scende */
-  if (torre) {
-    gsap.fromTo(torre.querySelectorAll('[data-in]'), { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
-    gsap.matchMedia().add('(max-width: 899px)', function () {
-      gsap.to(torre.querySelector('.hero__testo'), { opacity: 0, ease: 'none', scrollTrigger: { trigger: torre, start: 'top top', end: '+=45%', scrub: true } });
-    });
-  }
+  /* prova: la testata col Torrione scorre con la pagina (CSS) e il titolo si dissolve da site.js; qui solo l'entrata */
+  if (torre) gsap.fromTo(torre.querySelectorAll('[data-in]'), { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
 
   /* entrate: nelle pagine senza [data-in] scelgo io i pezzi di ogni sezione */
   var AUTO = '.phero__card > *, .servizio__art, .servizio h2, .servizio .prose > *, .colonne .prose > *, .aree a, .citazione p, .chiudi__testo > *, .chiudi__rec, .rec-list > div, .form, .legal .narrow > *';

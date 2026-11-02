@@ -12,6 +12,19 @@
     addEventListener('scroll', over, { passive: true }); addEventListener('resize', over); over();
   }
 
+  /* prova-torre, sul telefono: il titolo nel cielo si dissolve mentre si scende lungo la torre.
+     Cambia solo la trasparenza, niente movimento: vale anche con Riduci movimento */
+  var titolo = document.querySelector('.torre .hero__testo');
+  if (titolo) {
+    var stretto = matchMedia('(max-width: 899px)'), attesa = 0;
+    var sfuma = function () {
+      attesa = 0;
+      titolo.style.opacity = stretto.matches ? Math.max(0, 1 - scrollY / (innerHeight * 0.2)).toFixed(3) : '';
+    };
+    addEventListener('scroll', function () { if (!attesa) attesa = requestAnimationFrame(sfuma); }, { passive: true });
+    addEventListener('resize', sfuma); sfuma();
+  }
+
   /* menu */
   var menu = document.getElementById('menu'), open = document.querySelector('.burger'), close = document.querySelector('.menu__close');
   if (menu && open && close) {
