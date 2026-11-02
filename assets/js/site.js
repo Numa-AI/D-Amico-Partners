@@ -6,8 +6,8 @@
 
   /* header trasparente sopra la prima immagine della home */
   if (header && header.hasAttribute('data-over')) {
-    // la testata può restare ferma per qualche schermata (prova-torre): conta tutta la sua corsa
-    var testata = document.querySelector('.torre-corsa, .hero');
+    // la testata può essere più alta dello schermo (prova-torre): conta tutta la sua altezza
+    var testata = document.querySelector('.hero');
     var over = function () { header.classList.toggle('header--over', scrollY < (testata ? testata.offsetHeight : innerHeight) - innerHeight * 0.15); };
     addEventListener('scroll', over, { passive: true }); addEventListener('resize', over); over();
   }

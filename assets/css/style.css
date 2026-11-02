@@ -127,16 +127,15 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .scheda:hover .scheda__icona{ border-color:#fff; }
 .scheda:hover b{ color:var(--ottone); }
 /* prova (prova-torre.html): su desktop la testata della home, ferma, con la piazza di tre quarti;
-   sotto i 900 px il Torrione di fronte: si parte dal cielo e la camera scende fino alla piazza */
+   sotto i 900 px il Torrione di fronte: si parte dal cielo e scorrendo si scende lungo la torre fino alla piazza.
+   Niente blocco fisso né animazione: è la pagina che scorre su una foto alta, quindi va anche con Riduci movimento */
 .torre__cielo{ position:absolute; inset:0; overflow:hidden; background:#123488; }
 .torre__img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:66% 50%; }
 @media (max-width:899px){
-  /* foto stretta larga il 115%, cima della torre (al 48,8% di una foto alta 2100/573 × 1,15 = 4,215 larghezze) a metà schermo:
-     è già il primo fotogramma, anche senza animazioni (Riduci movimento, GSAP lento). In movimento il JS la riposiziona */
-  .torre__img{ inset:auto; left:-7.5%; top:calc(50% - 205.7vw); width:115%; height:auto; max-width:none; object-fit:fill; }
-  .anim .torre-corsa{ height:250vh; /* taste-skill-ignore: ripiego per browser senza svh */ height:250svh; }
-  .anim .torre{ position:sticky; top:0; }
-  .anim .torre__img{ will-change:transform; }
+  /* foto stretta larga il 115% e alta 2100/573 × 1,15 = 421,5vw; la cima (al 48,8%, cioè a 205,7vw) parte a metà schermo
+     e la testata finisce dove finisce la foto: 50svh + (421,5 - 205,7)vw */
+  .torre{ height:calc(50vh + 215.8vw); /* taste-skill-ignore: ripiego per browser senza svh */ height:calc(50svh + 215.8vw); min-height:0; }
+  .torre__img{ inset:auto; left:-7.5%; bottom:0; width:115%; height:auto; max-width:none; object-fit:fill; }
   .torre::before{ content:none; }
   .torre .hero__testo{ top:calc(var(--hh) + 2.5rem); transform:none; text-align:center; }
   .torre .hero__testo p{ margin-inline:auto; }

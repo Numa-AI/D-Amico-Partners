@@ -41,33 +41,12 @@
     gsap.fromTo(t, { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
   }
 
-  /* prova: sotto i 900 px si parte dal cielo col titolo e la cima del Torrione in basso; scendendo il titolo si dissolve
-     e la camera scende lungo la torre fino alla piazza (foto stretta e alta col cielo allungato sopra, cima al 48,8%).
-     Su desktop la testata è quella della home, ferma, con la piazza di tre quarti: ci pensa il CSS */
+  /* prova: la testata col Torrione scorre con la pagina (CSS); qui solo l'entrata del titolo e, sul telefono,
+     il titolo che si dissolve mentre si scende */
   if (torre) {
-    var foto = torre.querySelector('.torre__img'), testo = torre.querySelector('.hero__testo'), schede = torre.querySelector('.hero__schede');
-    var STRETTO = '(max-width: 899px)', alto = 0, basso = 0;
-    var misura = function () {
-      if (!matchMedia(STRETTO).matches) { foto.style.cssText = ''; torre.parentElement.style.height = ''; return; }
-      var vw = torre.clientWidth, vh = torre.clientHeight, r = 2100 / 573;
-      var w = vw * 1.15, h = w * r;
-      if (h < vh * 1.2) { h = vh * 1.2; w = h / r; }
-      alto = Math.min(0, vh * .5 - h * .488);
-      basso = vh - h;
-      foto.style.cssText = 'width:' + w + 'px;height:' + h + 'px;left:' + (vw - w) / 2 + 'px;top:0;max-width:none';
-      // il blocco dura quanto la discesa della foto, così la foto segue il dito 1:1
-      torre.parentElement.style.height = vh + alto - basso + 'px';
-    };
-    misura();
-    ScrollTrigger.addEventListener('refreshInit', misura);
     gsap.fromTo(torre.querySelectorAll('[data-in]'), { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE, stagger: 0.09, delay: 0.2 });
-    // blocco fisso fatto col CSS (sticky), non con il pin di GSAP: sul telefono non salta; al dito niente smorzamento
-    gsap.matchMedia().add(STRETTO, function () {
-      gsap.timeline({ scrollTrigger: { trigger: torre.parentElement, start: 'top top', end: 'bottom bottom', scrub: ScrollTrigger.isTouch ? true : 1, invalidateOnRefresh: true } })
-        .fromTo(foto, { y: function () { return alto; } }, { y: function () { return basso; }, ease: 'power1.inOut', duration: 1 }, 0)
-        .to(testo, { y: function () { return (basso - alto) * .3; }, autoAlpha: 0, ease: 'power1.in', duration: .4 }, 0)
-        .fromTo(schede, { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, ease: 'power2.out', duration: .25 }, .72);
-      return function () { misura(); };
+    gsap.matchMedia().add('(max-width: 899px)', function () {
+      gsap.to(torre.querySelector('.hero__testo'), { opacity: 0, ease: 'none', scrollTrigger: { trigger: torre, start: 'top top', end: '+=45%', scrub: true } });
     });
   }
 
