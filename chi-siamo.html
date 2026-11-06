@@ -21,7 +21,7 @@
   <link rel="preload" href="assets/fonts/eb-garamond.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
   <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('anim');setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('anim')},3000)}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=20261102l">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261106a">
 </head>
 <body>
 <a class="skip" href="#main">Salta al contenuto</a>
@@ -87,13 +87,20 @@
     </div>
   </section>
 
-  <section class="gente" aria-labelledby="pers-t">
+  <section class="gente" id="team" aria-labelledby="pers-t">
     <div class="wrap">
-      <div class="gente__testa"><h2 id="pers-t" data-in>Le persone</h2></div>
+      <div class="gente__testa"><h2 id="pers-t" data-in>Il team</h2></div>
       <ul class="gente__lista">
         <li data-in><div><p class="gente__ruolo">Fondatore</p><h3>dott. Fulvio D’Amico</h3><p>Dottore commercialista e revisore legale</p></div></li>
         <li data-in><div><p class="gente__ruolo">Advisory</p><h3>avv. Simone D’Amico</h3><p>Avvocato, cofondatore di D’Amico &amp; Partners Advisory</p></div></li>
         <li data-in><div><p class="gente__ruolo">Advisory</p><h3>dott. Giammaria D’Amico</h3><p>Dottore commercialista e revisore legale, cofondatore di D’Amico &amp; Partners Advisory</p></div></li>
+      </ul>
+      <ul class="gente__staff">
+        <li data-in><h3>dott.ssa Letizia Micheli</h3><p>Dottore commercialista e revisore legale</p></li>
+        <li data-in><h3>dott.ssa Sharon Locatelli</h3></li>
+        <li data-in><h3>dott.ssa Elisa Legrenzi</h3></li>
+        <li data-in><h3>dott.ssa Alessandra Zeni</h3></li>
+        <li data-in><h3>dott.ssa Camilla Paletti</h3></li>
       </ul>
     </div>
   </section>
@@ -114,6 +121,19 @@
           <a href="consulting.html"><span class="aree__icona" aria-hidden="true"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="13"/><path d="M29.5 29.5 41 41"/><path class="o" d="M24.5 15.5a6 6 0 1 0 0 9M13.5 18.5h7M13.5 21.5h7"/></svg></span><span><strong>D’Amico &amp; Partners Consulting</strong><span>Dedicata alla ricerca di finanza ordinaria e straordinaria</span></span></a>
         </div>
       </div>
+    </div>
+  </section>
+  <section class="sec stampa" id="dicono-di-noi" aria-labelledby="stampa-t">
+    <div class="wrap">
+      <h2 id="stampa-t" data-in>Dicono di noi</h2>
+      <ul class="stampa__lista">
+        <li data-in><p class="stampa__fonte">Milano Finanza</p><h3>“Advisory: la consulenza finanziaria che migliora il business aziendale”</h3><p>Un’opportunità per le PMI per gestire i rischi di impresa e guardare al futuro con fiducia…</p><a class="tlink" href="assets/doc/stampa-milano-finanza.pdf" target="_blank" rel="noopener">Leggi il documento (PDF)</a></li>
+        <li data-in><p class="stampa__fonte">Giornale di Brescia</p><h3>“D’Amico &amp; Partners, «medici delle piccole e medie imprese»”</h3><p>Non per tutti la crisi ha soltanto risvolti pesanti, a conferma che nulla è negativo in assoluto…</p><a class="tlink" href="assets/doc/stampa-giornale-di-brescia.pdf" target="_blank" rel="noopener">Leggi il documento (PDF)</a></li>
+        <li data-in><p class="stampa__fonte">Brescia UP</p><h3>“D’Amico &amp; Partners, i professionisti del pronto soccorso alle aziende”</h3><p>Visto il notevole interesse sollevato dall’articolo recentemente dedicato alla D’Amico &amp; Partners abbiamo deciso di approfondire l’argomento, così da soddisfare le curiosità e le domande che ci sono giunte da numerosi lettori…</p><a class="tlink" href="assets/doc/stampa-brescia-up-pronto-soccorso.pdf" target="_blank" rel="noopener">Leggi il documento (PDF)</a></li>
+        <li data-in><p class="stampa__fonte">Brescia UP</p><h3>“D’Amico &amp; Partners una nuova risorsa al servizio delle aziende”</h3><p>A Brescia si sta segnalando sempre di più un servizio del tutto nuovo. Un’assistenza tanto qualificata quanto innovativa che rappresenta a buon diritto…</p><a class="tlink" href="assets/doc/stampa-brescia-up-nuova-risorsa.pdf" target="_blank" rel="noopener">Leggi il documento (PDF)</a></li>
+        <li data-in><p class="stampa__fonte">Marzo 2013 · Unione Giovani Dottori Commercialisti Brescia</p><h3>“Accesso al credito, finanza operativa e strategica per l’impresa e tutela dell’imprenditore”</h3><p>Convegno organizzato in collaborazione con Mediolanum Private Banking.</p><a class="tlink" href="assets/doc/convegno-ugdc-brescia-2013.pdf" target="_blank" rel="noopener">Leggi il documento (PDF)</a></li>
+        <li data-in><p class="stampa__fonte">Marzo 2013 · Corriere della Sera</p><h3>“Convegno: Banca Mediolanum incontra i commercialisti”</h3><p>Imprese, nuovi strumenti per l’accesso al credito…</p><a class="tlink" href="assets/doc/stampa-corriere-della-sera.pdf" target="_blank" rel="noopener">Leggi il documento (PDF)</a></li>
+      </ul>
     </div>
   </section>
   <section class="sec sec--notte citazione">
@@ -144,9 +164,9 @@
     </div>
   </div>
 </footer>
-<script src="assets/js/site.js?v=20261102l" defer></script>
+<script src="assets/js/site.js?v=20261106a" defer></script>
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="assets/js/motion.js?v=20261102l" defer></script>
+<script src="assets/js/motion.js?v=20261106a" defer></script>
 </body>
 </html>

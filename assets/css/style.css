@@ -204,6 +204,23 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .gente__lista h3{ font-size:clamp(1.6rem,1.3rem + .7vw,2rem); line-height:1.1; color:var(--notte); }
 .gente__lista p:last-child{ margin-top:.5rem; padding-top:1rem; border-top:1px solid var(--pietra-2); font-size:var(--step-small); line-height:1.45; color:var(--soft); }
 @media (max-width:1099px){ .gente__lista{ grid-template-columns:1fr; max-width:640px; } }
+.gente__staff{ margin-top:var(--gap); display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:var(--gap); }
+.gente__staff li{ padding:1.4rem clamp(1.1rem,1.4vw,1.5rem) 1.6rem; background:var(--carta); border-top:1px solid var(--ottone); display:flex; flex-direction:column; gap:.45rem; }
+.gente__staff h3{ font-size:clamp(1.2rem,1.05rem + .35vw,1.4rem); line-height:1.15; color:var(--notte); }
+.gente__staff p{ font-size:var(--step-small); line-height:1.4; color:var(--soft); }
+@media (max-width:1099px){ .gente__staff{ grid-template-columns:repeat(2,minmax(0,1fr)); max-width:640px; } }
+@media (max-width:520px){ .gente__staff{ grid-template-columns:1fr; } }
+
+/* dicono di noi: articoli e convegni, ognuno col suo PDF */
+.stampa h2{ margin-bottom:clamp(2rem,4vw,2.75rem); }
+.stampa__lista{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(2rem,3vw,3rem) var(--gap); }
+.stampa__lista li{ display:flex; flex-direction:column; gap:.6rem; padding-top:1.25rem; border-top:1px solid var(--pietra-2); }
+.stampa__fonte{ font-size:var(--step-small); font-weight:600; color:var(--ottone-2); }
+.stampa__lista h3{ font-size:clamp(1.3rem,1.1rem + .45vw,1.6rem); line-height:1.2; color:var(--notte); }
+.stampa__lista p:not(.stampa__fonte){ font-size:var(--step-small); line-height:1.5; color:var(--soft); }
+.stampa__lista .tlink{ margin-top:auto; padding-top:.5rem; align-self:flex-start; font-size:var(--step-small); }
+@media (max-width:1099px){ .stampa__lista{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:640px){ .stampa__lista{ grid-template-columns:1fr; } }
 
 /* la frase: pagina a colori con mosaico senza fughe */
 .mosaico{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); grid-template-rows:repeat(2,minmax(clamp(220px,24vw,360px),auto)); background:var(--notte); color:#fff; }

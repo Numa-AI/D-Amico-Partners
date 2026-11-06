@@ -43,10 +43,10 @@
 
   /* video: parte quando è in vista */
   document.querySelectorAll('video[data-inview]').forEach(function (v) {
-    if (reduce || !('IntersectionObserver' in window)) { v.controls = true; return; }
+    if (reduce || !('IntersectionObserver' in window)) return; /* resta il fotogramma fermo, senza barra dei controlli */
     new IntersectionObserver(function (es) {
       es.forEach(function (e) {
-        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () { v.controls = true; }); }
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
         else v.pause();
       });
     }, { threshold: 0.4 }).observe(v);
