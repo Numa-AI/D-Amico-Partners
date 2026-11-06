@@ -231,6 +231,11 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .mosaico__frase > div > p{ margin-top:1.5rem; max-width:40ch; font-size:var(--step-lead); line-height:1.4; color:var(--notte-ink); }
 .mosaico__frase blockquote{ margin-top:auto; padding-top:2rem; border-top:1px solid rgba(255,255,255,.18); }
 .mosaico__frase blockquote p{ font-family:var(--display); font-style:italic; font-size:clamp(1.5rem,1rem + 1.4vw,2.25rem); line-height:1.15; max-width:34ch; }
+/* senza le quattro tessere: un'unica fascia notte, testo a sinistra e citazione a destra */
+.mosaico{ grid-template-columns:1fr; grid-template-rows:auto; }
+.mosaico__frase{ grid-column:1 / -1; grid-row:auto; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:end; gap:2rem var(--gap); }
+.mosaico__frase blockquote{ margin-top:0; }
+@media (max-width:899px){ .mosaico__frase{ grid-template-columns:1fr; } }
 .mosaico__frase cite{ display:block; margin-top:1.25rem; font-style:normal; font-size:var(--step-small); color:var(--notte-ink); }
 .tile--ottone{ background:var(--ottone); }
 .tile--pietra{ background:var(--pietra); }
@@ -246,7 +251,7 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .tile__num{ font-family:var(--display); font-size:clamp(3rem,2rem + 4vw,7rem); line-height:.85; }
 .tile__txt{ font-size:var(--step-small); line-height:1.4; margin-top:.75rem; max-width:26ch; }
 @media (max-width:899px){
-  .mosaico{ grid-template-columns:1fr 1fr; grid-template-rows:auto repeat(2,minmax(56vw,auto)); }
+  .mosaico{ grid-template-columns:1fr; grid-template-rows:auto; }
   .mosaico__frase{ grid-column:1 / -1; grid-row:auto; }
 }
 
