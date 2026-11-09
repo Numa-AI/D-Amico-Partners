@@ -183,7 +183,7 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .anni__testo .lead{ font-family:var(--display); font-size:clamp(1.4rem,1.1rem + .6vw,1.75rem); line-height:1.32; max-width:48ch; }
 .anni__testo .tlink{ margin-top:1.75rem; }
 /* il filo è uno sfondo lungo var(--corsa) e i pallini si accendono con --acceso e --pieno: motion.js li fa crescere allo scroll */
-.linea{ margin-top:clamp(4rem,7vw,6rem); display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--gap); padding-top:2px; background:linear-gradient(var(--ottone),var(--ottone)) 0 0 / calc(var(--corsa,1) * 100%) 2px no-repeat; }
+.linea{ margin-top:clamp(4rem,7vw,6rem); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--gap); padding-top:2px; background:linear-gradient(var(--ottone),var(--ottone)) 0 0 / calc(var(--corsa,1) * 100%) 2px no-repeat; }
 .linea li{ position:relative; padding-top:2rem; display:grid; gap:.45rem; align-content:start; color:var(--soft); line-height:1.4; }
 .linea li::before{ content:""; position:absolute; top:-8px; left:0; width:14px; height:14px; border-radius:50%; background:var(--carta); box-shadow:inset 0 0 0 calc(2px + var(--pieno,0) * 5px) var(--ottone); transform:scale(var(--acceso,1)); }
 .linea li:first-child::before{ top:-10px; width:18px; height:18px; background:var(--ottone); box-shadow:none; }
