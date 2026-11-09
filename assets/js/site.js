@@ -66,7 +66,7 @@
       });
       if (bad.length) {
         say('err', 'Compila i campi obbligatori: ' + bad.map(function (f) {
-          var l = form.querySelector('label[for="' + f.id + '"]'); return l ? l.textContent.replace('*', '').trim() : 'consenso privacy';
+          var l = form.querySelector('label[for="' + f.id + '"]'); return l ? l.textContent.replace('*', '').trim() : 'presa visione dell’informativa privacy';
         }).join(', ') + '.');
         bad[0].focus(); return;
       }
@@ -81,4 +81,10 @@
         .then(function () { btn.disabled = false; });
     });
   }
+})();
+
+// legali: su schermi stretti l'indice parte chiuso
+(function () {
+  var d = document.querySelector('.indice details');
+  if (d && matchMedia('(max-width: 1023px)').matches) d.open = false;
 })();
