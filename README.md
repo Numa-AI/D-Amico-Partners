@@ -66,7 +66,7 @@ campi ripuliti e tagliati, due trappole per bot.
 
 - I link interni puntano agli indirizzi definitivi senza `.html` (`chi-siamo`, `./` per la home), come canonical e sitemap.
 - Ogni pagina principale ha in testa un blocco `application/ld+json` (schema.org). In home c'è la scheda completa:
-  lo studio (`#studio`, dal 2004) e le due società (`#advisory` costituita il 05/10/2006, `#consulting` il 18/10/2024,
+  lo studio (`#studio`, dal 2004) e le due società (`#advisory`, `#consulting` costituita il 18/10/2024,
   con OAM M640), con P.IVA, sede, coordinate e servizi. Chi siamo ha le persone, Advisory e Consulting i servizi.
   **Se cambiano dati societari, persone o servizi vanno aggiornati anche lì** (e in `llms.txt`).
   Si controlla con <https://validator.schema.org> e <https://search.google.com/test/rich-results>.
