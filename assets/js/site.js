@@ -53,10 +53,10 @@
   });
   if (reduce) document.querySelectorAll('svg').forEach(function (s) { if (s.pauseAnimations) s.pauseAnimations(); });
 
-  /* modulo contatti (Web3Forms) */
+  /* modulo contatti: lo riceve functions/api/contatto.js (Cloudflare Pages) e lo inoltra via Brevo */
   var form = document.querySelector('form[data-form]');
   if (form) {
-    var st = form.querySelector('.status'), btn = form.querySelector('[type="submit"]'), key = form.querySelector('[name="access_key"]');
+    var st = form.querySelector('.status'), btn = form.querySelector('[type="submit"]');
     var say = function (k, t) { st.className = 'status' + (k ? ' status--' + k : ''); st.textContent = t; };
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -70,13 +70,10 @@
         }).join(', ') + '.');
         bad[0].focus(); return;
       }
-      if (!key.value || key.value === 'WEB3FORMS_ACCESS_KEY') {
-        say('err', 'Il modulo non è ancora attivo. Scrivici a info@damicoandpartners.it o chiama lo 030 240 3392.'); return;
-      }
       btn.disabled = true; say('', 'Invio in corso…');
       fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
-        .then(function (r) { return r.json(); })
-        .then(function (d) { if (d && d.success) { say('ok', 'Richiesta inviata. Ti ricontattiamo al più presto.'); form.reset(); } else say('err', 'Invio non riuscito. Riprova o scrivici a info@damicoandpartners.it.'); })
+        .then(function (r) { return r.json().catch(function () { return null; }); })
+        .then(function (d) { if (d && d.ok) { say('ok', 'Richiesta inviata. Ti ricontattiamo al più presto.'); form.reset(); } else say('err', 'Invio non riuscito. Riprova o scrivici a info@damicoandpartners.it.'); })
         .catch(function () { say('err', 'Connessione non riuscita. Riprova o scrivici a info@damicoandpartners.it.'); })
         .then(function () { btn.disabled = false; });
     });

@@ -1,7 +1,7 @@
 # Sito D'Amico & Partners
 
 Sito statico di **D'Amico & Partners** (Brescia): HTML, CSS e JavaScript senza build step né dipendenze da installare.
-Pubblicato con GitHub Pages dal branch `main` (cartella root, `.nojekyll` presente).
+Pubblicato con Cloudflare Pages dal branch `main` (nessun build, cartella root). Il modulo contatti è gestito da `functions/api/contatto.js` (Pages Function) che invia via Brevo.
 
 ## Pagine
 
@@ -32,8 +32,8 @@ assets/
 └── video/            bilancio-crescita.mp4
 ```
 
-Nessuna risorsa viene caricata da domini esterni: coerente con la cookie policy pubblicata. L'unico servizio esterno
-è Web3Forms, contattato solo all'invio del modulo.
+Nessuna risorsa viene caricata da domini esterni: coerente con la cookie policy pubblicata. Il modulo parla solo con
+`/api/contatto` (stesso dominio); è la funzione lato server a chiamare Brevo.
 
 ## Anteprima locale
 
@@ -45,10 +45,14 @@ Poi aprire <http://localhost:8765/>.
 
 ## Da fare per attivare il modulo contatti
 
-In `contatti.html` sostituire il valore `WEB3FORMS_ACCESS_KEY` del campo nascosto `access_key` con la chiave
-della dashboard di web3forms.com. Finché resta il segnaposto, il modulo mostra un messaggio con telefono ed email.
+Variabili in Cloudflare (Pages → Settings → Variables and Secrets): `BREVO_API_KEY` (secret), `MAIL_FROM`
+(mittente verificato su Brevo), `MAIL_TO` (casella che riceve). Senza variabili la funzione risponde 503 e il
+modulo mostra telefono ed email. Su Cloudflare lasciare spenti Bot Fight Mode e Web Analytics: metterebbero
+cookie o script che la cookie policy dichiara assenti. In Brevo disattivare il blocco per IP delle chiavi API
+(Security → Authorised IPs), perché Cloudflare chiama da IP variabili.
 
 ## Dominio
 
-Per `damicoandpartners.it`: aggiungere un file `CNAME` con il dominio (o impostarlo da Settings → Pages) e
-puntare il DNS a GitHub Pages. `canonical`, `sitemap.xml` e `robots.txt` usano già `https://www.damicoandpartners.it/`.
+Per `damicoandpartners.it`: Pages → Custom domains, aggiungere `www.damicoandpartners.it` e
+`damicoandpartners.it`. Prima di spostare i nameserver su Cloudflare copiare TUTTI i record DNS esistenti
+(soprattutto MX, SPF, DKIM della posta dello studio). `canonical`, `sitemap.xml` e `robots.txt` usano già `https://www.damicoandpartners.it/`.
