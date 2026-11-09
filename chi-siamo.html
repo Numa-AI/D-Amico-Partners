@@ -22,41 +22,156 @@
   <link rel="preload" href="assets/fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
   <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('anim');setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('anim')},3000)}</script>
   <link rel="stylesheet" href="assets/css/style.css?v=20261109">
+  <script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "AboutPage",
+   "@id": "https://www.damicoandpartners.it/chi-siamo#pagina",
+   "url": "https://www.damicoandpartners.it/chi-siamo",
+   "name": "Chi siamo",
+   "inLanguage": "it-IT",
+   "isPartOf": {
+    "@id": "https://www.damicoandpartners.it/#sito"
+   },
+   "about": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   },
+   "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.damicoandpartners.it/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Chi siamo",
+      "item": "https://www.damicoandpartners.it/chi-siamo"
+     }
+    ]
+   },
+   "mainEntity": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   }
+  },
+  {
+   "@type": "Person",
+   "@id": "https://www.damicoandpartners.it/chi-siamo#fulvio-damico",
+   "name": "Fulvio D'Amico",
+   "honorificPrefix": "dott.",
+   "jobTitle": "Dottore commercialista e revisore legale",
+   "worksFor": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   }
+  },
+  {
+   "@type": "Person",
+   "@id": "https://www.damicoandpartners.it/chi-siamo#simone-damico",
+   "name": "Simone D'Amico",
+   "honorificPrefix": "avv.",
+   "jobTitle": "Avvocato",
+   "worksFor": {
+    "@id": "https://www.damicoandpartners.it/#advisory"
+   }
+  },
+  {
+   "@type": "Person",
+   "@id": "https://www.damicoandpartners.it/chi-siamo#giammaria-damico",
+   "name": "Giammaria D'Amico",
+   "honorificPrefix": "dott.",
+   "jobTitle": "Dottore commercialista e revisore legale",
+   "worksFor": {
+    "@id": "https://www.damicoandpartners.it/#advisory"
+   }
+  },
+  {
+   "@type": "Person",
+   "name": "Letizia Micheli",
+   "honorificPrefix": "dott.ssa",
+   "worksFor": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   },
+   "jobTitle": "Dottore commercialista e revisore legale"
+  },
+  {
+   "@type": "Person",
+   "name": "Sharon Locatelli",
+   "honorificPrefix": "dott.ssa",
+   "worksFor": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   }
+  },
+  {
+   "@type": "Person",
+   "name": "Elisa Legrenzi",
+   "honorificPrefix": "dott.ssa",
+   "worksFor": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   }
+  },
+  {
+   "@type": "Person",
+   "name": "Alessandra Zeni",
+   "honorificPrefix": "dott.ssa",
+   "worksFor": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   }
+  },
+  {
+   "@type": "Person",
+   "name": "Camilla Paletti",
+   "honorificPrefix": "dott.ssa",
+   "worksFor": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   }
+  },
+  {
+   "@id": "https://www.damicoandpartners.it/#studio",
+   "@type": "ProfessionalService",
+   "name": "D'Amico & Partners",
+   "url": "https://www.damicoandpartners.it/"
+  }
+ ]
+}</script>
 </head>
 <body>
 <a class="skip" href="#main">Salta al contenuto</a>
 <header class="header">
   <div class="wrap header__in">
-    <a class="brand" href="index.html" aria-label="D’Amico &amp; Partners, pagina iniziale">
+    <a class="brand" href="./" aria-label="D’Amico &amp; Partners, pagina iniziale">
       <img class="d" src="assets/img/logo-dp-96.png" alt="" width="179" height="96">
       <img class="w" src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96">
       <span>D’Amico &amp; Partners</span>
     </a>
     <nav class="nav" aria-label="Principale">
-      <a href="chi-siamo.html" aria-current="page">Chi siamo</a>
-      <a href="approccio.html">Approccio</a>
-      <a href="advisory.html">Advisory</a>
-      <a href="consulting.html">Consulting</a>
-      <a href="contatti.html">Contatti</a>
+      <a href="chi-siamo" aria-current="page">Chi siamo</a>
+      <a href="approccio">Approccio</a>
+      <a href="advisory">Advisory</a>
+      <a href="consulting">Consulting</a>
+      <a href="contatti">Contatti</a>
     </nav>
-    <a class="btn btn--notte" href="contatti.html">Richiedi un incontro</a>
+    <a class="btn btn--notte" href="contatti">Richiedi un incontro</a>
     <button class="burger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><i></i></button>
   </div>
 </header>
 <div class="menu" id="menu" hidden>
   <div class="menu__top">
-    <a class="brand" href="index.html" aria-label="D’Amico &amp; Partners, pagina iniziale"><img src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96"><span>D’Amico &amp; Partners</span></a>
+    <a class="brand" href="./" aria-label="D’Amico &amp; Partners, pagina iniziale"><img src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96"><span>D’Amico &amp; Partners</span></a>
     <button class="menu__close" type="button" aria-label="Chiudi il menu">×</button>
   </div>
   <nav aria-label="Menu">
-    <a href="chi-siamo.html" aria-current="page">Chi siamo</a>
-    <a href="approccio.html">Approccio</a>
-    <a href="advisory.html">Advisory</a>
-    <a href="consulting.html">Consulting</a>
-    <a href="contatti.html">Contatti</a>
+    <a href="chi-siamo" aria-current="page">Chi siamo</a>
+    <a href="approccio">Approccio</a>
+    <a href="advisory">Advisory</a>
+    <a href="consulting">Consulting</a>
+    <a href="contatti">Contatti</a>
   </nav>
   <div class="menu__foot">
-    <a class="btn btn--bianco" href="contatti.html">Richiedi un incontro</a>
+    <a class="btn btn--bianco" href="contatti">Richiedi un incontro</a>
     <a href="tel:+390302403392">+39 030 240 3392</a>
     <a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a>
   </div>
@@ -116,8 +231,8 @@
         <p>Nel tempo, le necessità delle imprese sono diventate più articolate. Un’operazione non si esaurisce nel reperimento delle risorse: richiede la valutazione dei suoi effetti finanziari, societari e giuridici, la definizione di una struttura sostenibile e il confronto con una pluralità di interlocutori.</p>
         <p>La nostra attività si è evoluta per rispondere a questa complessità, passando dal supporto al finanziamento alla progettazione e all’attuazione delle scelte strategiche dell’impresa, strutturandosi in due macro-aree:</p>
         <div class="aree aree--icone">
-          <a href="advisory.html"><span class="aree__icona" aria-hidden="true"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 6 39 11.5v11c0 9.5-6.4 16.4-15 19.5C15.4 38.9 9 32 9 22.5v-11z"/><path class="o" d="M15.5 21l5 6.5 4.5-3.5 7.5-8.5M28 15.5h4.5V20"/></svg></span><span><strong>D’Amico &amp; Partners Advisory</strong><span>Specializzata nella gestione della crisi d’impresa</span></span></a>
-          <a href="consulting.html"><span class="aree__icona" aria-hidden="true"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="13"/><path d="M29.5 29.5 41 41"/><path class="o" d="M24.5 15.5a6 6 0 1 0 0 9M13.5 18.5h7M13.5 21.5h7"/></svg></span><span><strong>D’Amico &amp; Partners Consulting</strong><span>Dedicata alla ricerca di finanza ordinaria e straordinaria</span></span></a>
+          <a href="advisory"><span class="aree__icona" aria-hidden="true"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 6 39 11.5v11c0 9.5-6.4 16.4-15 19.5C15.4 38.9 9 32 9 22.5v-11z"/><path class="o" d="M15.5 21l5 6.5 4.5-3.5 7.5-8.5M28 15.5h4.5V20"/></svg></span><span><strong>D’Amico &amp; Partners Advisory</strong><span>Specializzata nella gestione della crisi d’impresa</span></span></a>
+          <a href="consulting"><span class="aree__icona" aria-hidden="true"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="13"/><path d="M29.5 29.5 41 41"/><path class="o" d="M24.5 15.5a6 6 0 1 0 0 9M13.5 18.5h7M13.5 21.5h7"/></svg></span><span><strong>D’Amico &amp; Partners Consulting</strong><span>Dedicata alla ricerca di finanza ordinaria e straordinaria</span></span></a>
         </div>
       </div>
     </div>
@@ -143,13 +258,13 @@
   <div class="wrap">
     <div class="footer__grid">
       <div class="footer__studio">
-        <a class="brand" href="index.html" aria-label="D’Amico &amp; Partners, pagina iniziale"><img src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96" loading="lazy"><span>D’Amico &amp; Partners</span></a>
+        <a class="brand" href="./" aria-label="D’Amico &amp; Partners, pagina iniziale"><img src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96" loading="lazy"><span>D’Amico &amp; Partners</span></a>
         <address>Piazza della Vittoria 11<br>25121 Brescia (BS)</address>
         <p><a href="tel:+390302403392">+39 030 240 3392</a><br><a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a></p>
       </div>
       <div>
         <h2>Pagine</h2>
-        <ul><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="approccio.html">Approccio</a></li><li><a href="advisory.html">Advisory</a></li><li><a href="consulting.html">Consulting</a></li><li><a href="contatti.html">Contatti</a></li></ul>
+        <ul><li><a href="chi-siamo">Chi siamo</a></li><li><a href="approccio">Approccio</a></li><li><a href="advisory">Advisory</a></li><li><a href="consulting">Consulting</a></li><li><a href="contatti">Contatti</a></li></ul>
       </div>
       <div class="soc">
         <h2>Società</h2>
@@ -159,7 +274,7 @@
     </div>
     <div class="footer__bottom">
       <p>© <span data-year>2026</span> D’Amico &amp; Partners Advisory S.r.l. e D’Amico &amp; Partners Consulting S.r.l.</p>
-      <ul><li><a href="privacy.html">Privacy</a></li><li><a href="cookie.html">Cookie</a></li><li><a href="note-legali.html">Note legali</a></li></ul>
+      <ul><li><a href="privacy">Privacy</a></li><li><a href="cookie">Cookie</a></li><li><a href="note-legali">Note legali</a></li></ul>
     </div>
   </div>
 </footer>

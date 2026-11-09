@@ -62,11 +62,25 @@ campi ripuliti e tagliati, due trappole per bot.
   studio compaia nelle risposte degli assistenti AI (scelta da confermare col cliente).
 - Dopo il primo deploy controllare le intestazioni su <https://securityheaders.com> e che `/README.md` rimandi alla home.
 
+## SEO e dati strutturati
+
+- I link interni puntano agli indirizzi definitivi senza `.html` (`chi-siamo`, `./` per la home), come canonical e sitemap.
+- Ogni pagina principale ha in testa un blocco `application/ld+json` (schema.org). In home c'è la scheda completa:
+  lo studio (`#studio`, dal 2004) e le due società (`#advisory` costituita il 05/10/2006, `#consulting` il 18/10/2024,
+  con OAM M640), con P.IVA, sede, coordinate e servizi. Chi siamo ha le persone, Advisory e Consulting i servizi.
+  **Se cambiano dati societari, persone o servizi vanno aggiornati anche lì** (e in `llms.txt`).
+  Si controlla con <https://validator.schema.org> e <https://search.google.com/test/rich-results>.
+- `sitemap.xml`: aggiornare `lastmod` quando cambia il contenuto di una pagina.
+- Dopo la pubblicazione: Google Search Console e Bing Webmaster Tools (sitemap), scheda Google Business Profile,
+  stessi nome/indirizzo/telefono su LinkedIn ed elenchi; i profili ufficiali vanno poi aggiunti come `sameAs` in `#studio`.
+
 ## Anteprima locale
 
 ```bash
-python3 -m http.server 8765
+npx serve -l 8765 .
 ```
+
+(`serve` apre `/chi-siamo` come `chi-siamo.html`, come fa Cloudflare; con `python3 -m http.server` i link tra le pagine non funzionano.)
 
 Poi aprire <http://localhost:8765/>.
 

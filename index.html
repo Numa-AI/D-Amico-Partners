@@ -23,57 +23,301 @@
   <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('anim');setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('anim')},3000)}</script>
   <link rel="stylesheet" href="assets/css/style.css?v=20261109">
   <script type="application/ld+json">{
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "D'Amico & Partners",
-    "alternateName": "D'Amico & Partners Consulting S.r.l.",
-    "url": "https://www.damicoandpartners.it/",
-    "logo": "https://www.damicoandpartners.it/assets/img/logo-dp.png",
-    "image": "https://www.damicoandpartners.it/assets/img/og.jpg",
-    "description": "Advisory finanziaria, gestione della crisi d'impresa, riorganizzazione societaria, accesso al credito e business plan. Mediazione creditizia OAM M640. Brescia.",
-    "telephone": "+39-030-2403392",
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://www.damicoandpartners.it/#sito",
+   "url": "https://www.damicoandpartners.it/",
+   "name": "D'Amico & Partners",
+   "inLanguage": "it-IT",
+   "publisher": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   }
+  },
+  {
+   "@type": "ProfessionalService",
+   "@id": "https://www.damicoandpartners.it/#studio",
+   "name": "D'Amico & Partners",
+   "url": "https://www.damicoandpartners.it/",
+   "logo": "https://www.damicoandpartners.it/assets/img/logo-dp.png",
+   "image": "https://www.damicoandpartners.it/assets/img/og.jpg",
+   "description": "Studio di consulenza che affianca le imprese nelle decisioni strategiche e nelle operazioni finanziarie e societarie complesse: advisory, gestione della crisi d'impresa, riorganizzazione societaria, accesso al credito e business plan. Brescia, dal 2004.",
+   "telephone": "+39 030 240 3392",
+   "email": "info@damicoandpartners.it",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Piazza della Vittoria 11",
+    "addressLocality": "Brescia",
+    "postalCode": "25121",
+    "addressRegion": "BS",
+    "addressCountry": "IT"
+   },
+   "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.5383,
+    "longitude": 10.2196
+   },
+   "hasMap": "https://www.openstreetmap.org/?mlat=45.5383&mlon=10.2196#map=18/45.5383/10.2196",
+   "areaServed": [
+    {
+     "@type": "AdministrativeArea",
+     "name": "Provincia di Brescia"
+    },
+    {
+     "@type": "Country",
+     "name": "Italia"
+    }
+   ],
+   "foundingDate": "2004",
+   "foundingLocation": {
+    "@type": "Place",
+    "name": "Brescia"
+   },
+   "founder": {
+    "@id": "https://www.damicoandpartners.it/chi-siamo#fulvio-damico"
+   },
+   "knowsAbout": [
+    "Crisi d'impresa",
+    "Composizione negoziata della crisi",
+    "Ristrutturazione del debito",
+    "Operazioni straordinarie",
+    "Riorganizzazione societaria",
+    "Accesso al credito",
+    "Mediazione creditizia",
+    "Business plan",
+    "Centrale dei rischi"
+   ],
+   "subOrganization": [
+    {
+     "@id": "https://www.damicoandpartners.it/#advisory"
+    },
+    {
+     "@id": "https://www.damicoandpartners.it/#consulting"
+    }
+   ],
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+39 030 240 3392",
     "email": "info@damicoandpartners.it",
-    "address": { "@type": "PostalAddress", "streetAddress": "Piazza della Vittoria 11", "addressLocality": "Brescia", "postalCode": "25121", "addressRegion": "BS", "addressCountry": "IT" },
-    "areaServed": "IT",
-    "founder": { "@type": "Person", "name": "Fulvio D'Amico" },
-    "foundingDate": "2006-10-05",
-    "vatID": "IT02808450981"
-  }</script>
+    "availableLanguage": "it",
+    "url": "https://www.damicoandpartners.it/contatti"
+   }
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://www.damicoandpartners.it/#advisory",
+   "name": "D'Amico & Partners Advisory",
+   "legalName": "D'Amico & Partners Advisory S.r.l.",
+   "url": "https://www.damicoandpartners.it/advisory",
+   "parentOrganization": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   },
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Piazza della Vittoria 11",
+    "addressLocality": "Brescia",
+    "postalCode": "25121",
+    "addressRegion": "BS",
+    "addressCountry": "IT"
+   },
+   "vatID": "IT02808450981",
+   "taxID": "02808450981",
+   "foundingDate": "2006-10-05",
+   "founder": [
+    {
+     "@id": "https://www.damicoandpartners.it/chi-siamo#simone-damico"
+    },
+    {
+     "@id": "https://www.damicoandpartners.it/chi-siamo#giammaria-damico"
+    }
+   ],
+   "email": "damicoadvisory@pec.it",
+   "description": "Società specializzata nella gestione della crisi d'impresa, nelle operazioni straordinarie e nella riorganizzazione societaria.",
+   "makesOffer": [
+    {
+     "@type": "Offer",
+     "itemOffered": {
+      "@type": "Service",
+      "name": "Advisory finanziaria e operazioni straordinarie",
+      "description": "Analisi, progettazione e realizzazione di operazioni che incidono sulla struttura finanziaria, patrimoniale e societaria dell'impresa, fino al perfezionamento dell'operazione.",
+      "url": "https://www.damicoandpartners.it/advisory#advisory-finanziaria",
+      "provider": {
+       "@id": "https://www.damicoandpartners.it/#advisory"
+      },
+      "areaServed": {
+       "@type": "Country",
+       "name": "Italia"
+      },
+      "serviceType": "Advisory finanziaria e operazioni straordinarie"
+     }
+    },
+    {
+     "@type": "Offer",
+     "itemOffered": {
+      "@type": "Service",
+      "name": "Ristrutturazione del debito e gestione della crisi",
+      "description": "Ricostruzione delle cause della crisi, piani industriali ed economico-finanziari, negoziazione con gli stakeholders e assistenza negli strumenti di regolazione della crisi e dell'insolvenza.",
+      "url": "https://www.damicoandpartners.it/advisory#ristrutturazione-del-debito",
+      "provider": {
+       "@id": "https://www.damicoandpartners.it/#advisory"
+      },
+      "areaServed": {
+       "@type": "Country",
+       "name": "Italia"
+      },
+      "serviceType": "Ristrutturazione del debito e gestione della crisi"
+     }
+    },
+    {
+     "@type": "Offer",
+     "itemOffered": {
+      "@type": "Service",
+      "name": "Pianificazione e riorganizzazione societaria",
+      "description": "Valutazione e strutturazione di interventi di riorganizzazione societaria e di ridefinizione degli assetti aziendali.",
+      "url": "https://www.damicoandpartners.it/advisory#riorganizzazione-societaria",
+      "provider": {
+       "@id": "https://www.damicoandpartners.it/#advisory"
+      },
+      "areaServed": {
+       "@type": "Country",
+       "name": "Italia"
+      },
+      "serviceType": "Pianificazione e riorganizzazione societaria"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://www.damicoandpartners.it/#consulting",
+   "name": "D'Amico & Partners Consulting",
+   "legalName": "D'Amico & Partners Consulting S.r.l.",
+   "url": "https://www.damicoandpartners.it/consulting",
+   "parentOrganization": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   },
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Piazza della Vittoria 11",
+    "addressLocality": "Brescia",
+    "postalCode": "25121",
+    "addressRegion": "BS",
+    "addressCountry": "IT"
+   },
+   "vatID": "IT04622630988",
+   "taxID": "04622630988",
+   "foundingDate": "2024-10-18",
+   "email": "damicofinance@legalmail.it",
+   "description": "Società dedicata alla ricerca di finanza ordinaria e straordinaria per le imprese. Iscritta all'Elenco dei Mediatori Creditizi OAM con il numero M640.",
+   "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "name": "Iscrizione all'Elenco dei Mediatori Creditizi OAM n. M640",
+    "credentialCategory": "Iscrizione ad albo",
+    "recognizedBy": {
+     "@type": "Organization",
+     "name": "OAM - Organismo Agenti e Mediatori",
+     "url": "https://www.organismo-am.it/"
+    }
+   },
+   "makesOffer": [
+    {
+     "@type": "Offer",
+     "itemOffered": {
+      "@type": "Service",
+      "name": "Accesso al credito e pianificazione finanziaria",
+      "description": "Una struttura di finanziamento proporzionata ai fabbisogni aziendali e coerente con i progetti di investimento e di sviluppo, con attenzione alle soluzioni a medio e lungo termine. Mediazione creditizia OAM M640.",
+      "url": "https://www.damicoandpartners.it/consulting",
+      "provider": {
+       "@id": "https://www.damicoandpartners.it/#consulting"
+      },
+      "areaServed": {
+       "@type": "Country",
+       "name": "Italia"
+      },
+      "serviceType": "Accesso al credito e pianificazione finanziaria"
+     }
+    },
+    {
+     "@type": "Offer",
+     "itemOffered": {
+      "@type": "Service",
+      "name": "Redazione di business plan",
+      "description": "Business plan economici, patrimoniali e finanziari a supporto di finanziamenti, investimenti, progetti di sviluppo e operazioni straordinarie; information memorandum, esame della Centrale dei rischi e degli indicatori di merito creditizio.",
+      "url": "https://www.damicoandpartners.it/consulting",
+      "provider": {
+       "@id": "https://www.damicoandpartners.it/#consulting"
+      },
+      "areaServed": {
+       "@type": "Country",
+       "name": "Italia"
+      },
+      "serviceType": "Redazione di business plan"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://www.damicoandpartners.it/chi-siamo#fulvio-damico",
+   "name": "Fulvio D'Amico",
+   "honorificPrefix": "dott.",
+   "jobTitle": "Dottore commercialista e revisore legale",
+   "worksFor": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.damicoandpartners.it/#pagina",
+   "url": "https://www.damicoandpartners.it/",
+   "name": "D'Amico & Partners",
+   "inLanguage": "it-IT",
+   "isPartOf": {
+    "@id": "https://www.damicoandpartners.it/#sito"
+   },
+   "about": {
+    "@id": "https://www.damicoandpartners.it/#studio"
+   }
+  }
+ ]
+}</script>
 </head>
 <body>
 <a class="skip" href="#main">Salta al contenuto</a>
 <header class="header" data-over>
   <div class="wrap header__in">
-    <a class="brand" href="index.html" aria-label="D’Amico &amp; Partners, pagina iniziale">
+    <a class="brand" href="./" aria-label="D’Amico &amp; Partners, pagina iniziale">
       <img class="d" src="assets/img/logo-dp-96.png" alt="" width="179" height="96">
       <img class="w" src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96">
       <span>D’Amico &amp; Partners</span>
     </a>
     <nav class="nav" aria-label="Principale">
-      <a href="chi-siamo.html">Chi siamo</a>
-      <a href="approccio.html">Approccio</a>
-      <a href="advisory.html">Advisory</a>
-      <a href="consulting.html">Consulting</a>
-      <a href="contatti.html">Contatti</a>
+      <a href="chi-siamo">Chi siamo</a>
+      <a href="approccio">Approccio</a>
+      <a href="advisory">Advisory</a>
+      <a href="consulting">Consulting</a>
+      <a href="contatti">Contatti</a>
     </nav>
-    <a class="btn btn--notte" href="contatti.html">Richiedi un incontro</a>
+    <a class="btn btn--notte" href="contatti">Richiedi un incontro</a>
     <button class="burger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><i></i></button>
   </div>
 </header>
 <div class="menu" id="menu" hidden>
   <div class="menu__top">
-    <a class="brand" href="index.html" aria-label="D’Amico &amp; Partners, pagina iniziale"><img src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96"><span>D’Amico &amp; Partners</span></a>
+    <a class="brand" href="./" aria-label="D’Amico &amp; Partners, pagina iniziale"><img src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96"><span>D’Amico &amp; Partners</span></a>
     <button class="menu__close" type="button" aria-label="Chiudi il menu">×</button>
   </div>
   <nav aria-label="Menu">
-    <a href="chi-siamo.html">Chi siamo</a>
-    <a href="approccio.html">Approccio</a>
-    <a href="advisory.html">Advisory</a>
-    <a href="consulting.html">Consulting</a>
-    <a href="contatti.html">Contatti</a>
+    <a href="chi-siamo">Chi siamo</a>
+    <a href="approccio">Approccio</a>
+    <a href="advisory">Advisory</a>
+    <a href="consulting">Consulting</a>
+    <a href="contatti">Contatti</a>
   </nav>
   <div class="menu__foot">
-    <a class="btn btn--bianco" href="contatti.html">Richiedi un incontro</a>
+    <a class="btn btn--bianco" href="contatti">Richiedi un incontro</a>
     <a href="tel:+390302403392">+39 030 240 3392</a>
     <a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a>
   </div>
@@ -89,8 +333,8 @@
       <p data-in>Affianchiamo le imprese nelle decisioni strategiche e nelle operazioni finanziarie e societarie complesse.</p>
     </div>
     <nav class="hero__schede" aria-label="Le due società">
-      <a class="scheda" href="advisory.html" data-in><span class="scheda__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 6 39 11.5v11c0 9.5-6.4 16.4-15 19.5C15.4 38.9 9 32 9 22.5v-11z"/><path class="o" d="M15.5 21l5 6.5 4.5-3.5 7.5-8.5M28 15.5h4.5V20"/></svg></span><span class="scheda__testo"><b>Advisory</b><small>Crisi d’impresa e riorganizzazione</small></span></a>
-      <a class="scheda" href="consulting.html" data-in><span class="scheda__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="13"/><path d="M29.5 29.5 41 41"/><path class="o" d="M24.5 15.5a6 6 0 1 0 0 9M13.5 18.5h7M13.5 21.5h7"/></svg></span><span class="scheda__testo"><b>Consulting</b><small>Finanza ordinaria e straordinaria</small></span></a>
+      <a class="scheda" href="advisory" data-in><span class="scheda__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 6 39 11.5v11c0 9.5-6.4 16.4-15 19.5C15.4 38.9 9 32 9 22.5v-11z"/><path class="o" d="M15.5 21l5 6.5 4.5-3.5 7.5-8.5M28 15.5h4.5V20"/></svg></span><span class="scheda__testo"><b>Advisory</b><small>Crisi d’impresa e riorganizzazione</small></span></a>
+      <a class="scheda" href="consulting" data-in><span class="scheda__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="13"/><path d="M29.5 29.5 41 41"/><path class="o" d="M24.5 15.5a6 6 0 1 0 0 9M13.5 18.5h7M13.5 21.5h7"/></svg></span><span class="scheda__testo"><b>Consulting</b><small>Finanza ordinaria e straordinaria</small></span></a>
     </nav>
   </section>
 
@@ -106,7 +350,7 @@
       <div class="anni__anno" data-in><p class="anni__num">2004</p><p class="anni__cap">Nasce lo studio</p></div>
       <div class="anni__testo" data-in>
         <p class="lead">Le nostre origini risalgono al 2004, quando il dott. Fulvio D’Amico, Dottore Commercialista e Revisore Legale, grazie all’esperienza maturata nel settore bancario e finanziario, fonda D’Amico &amp; Partners con l’obiettivo di supportare le piccole e medie imprese nella ricerca di risorse finanziarie e nella gestione dei rapporti con il sistema creditizio.</p>
-        <a class="tlink" href="chi-siamo.html">La nostra storia</a>
+        <a class="tlink" href="chi-siamo">La nostra storia</a>
       </div>
     </div>
     <div class="wrap">
@@ -120,7 +364,7 @@
 
   <section class="gente" aria-labelledby="pers-t">
     <div class="wrap">
-      <div class="gente__testa"><h2 id="pers-t" data-in>Il team</h2> <a class="tlink" href="chi-siamo.html" data-in>La nostra storia</a></div>
+      <div class="gente__testa"><h2 id="pers-t" data-in>Il team</h2> <a class="tlink" href="chi-siamo" data-in>La nostra storia</a></div>
       <ul class="gente__lista">
         <li data-in><div><p class="gente__ruolo">Fondatore</p><h3>dott. Fulvio D’Amico</h3><p>Dottore commercialista e revisore legale</p></div></li>
         <li data-in><div><p class="gente__ruolo">Advisory</p><h3>avv. Simone D’Amico</h3><p>Avvocato</p></div></li>
@@ -148,18 +392,18 @@
     <div class="wrap attivita__testa"><h2 id="att-t" data-in>Le nostre attività</h2></div>
     <div class="wrap aree2">
       <div class="area" data-in>
-        <a class="area__testa" href="advisory.html"><h3>D’Amico &amp; Partners Advisory</h3><p>Specializzata nella gestione della crisi d’impresa</p></a>
+        <a class="area__testa" href="advisory"><h3>D’Amico &amp; Partners Advisory</h3><p>Specializzata nella gestione della crisi d’impresa</p></a>
         <ul class="servizi">
-          <li><a href="advisory.html#advisory-finanziaria"><span class="servizi__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="19" cy="24" r="11"/><circle cx="29" cy="24" r="11"/><path class="o" d="M24 14.2a11 11 0 0 1 0 19.6a11 11 0 0 1 0-19.6z"/></svg></span><span class="servizi__testo"><h4>Advisory finanziaria e operazioni straordinarie</h4><span>Assistiamo le imprese nell’analisi, nella progettazione e nella realizzazione di operazioni che incidono sulla struttura finanziaria, patrimoniale e societaria.</span></span></a></li>
-          <li><a href="advisory.html#ristrutturazione-del-debito"><span class="servizi__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M7 7v34h34"/><path d="M12.5 13l7 13 6-4.5"/><path class="o" d="M25.5 21.5 37 9.5M31 9.5h6v6"/></svg></span><span class="servizi__testo"><h4>Ristrutturazione del debito e gestione della crisi</h4><span>In situazioni di tensione finanziaria o di difficoltà aziendale, affianchiamo l’imprenditore nella ricostruzione delle cause della crisi e nell’individuazione delle soluzioni più adeguate.</span></span></a></li>
-          <li><a href="advisory.html#riorganizzazione-societaria"><span class="servizi__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect class="o" x="19.5" y="7" width="9" height="9" rx=".5"/><path d="M24 16v7M11.5 23h25M11.5 23v6M24 23v6M36.5 23v6"/><rect x="7" y="29" width="9" height="9" rx=".5"/><rect x="19.5" y="29" width="9" height="9" rx=".5"/><rect x="32" y="29" width="9" height="9" rx=".5"/></svg></span><span class="servizi__testo"><h4>Pianificazione e riorganizzazione societaria</h4><span>Supportiamo le imprese nella valutazione e strutturazione di interventi di riorganizzazione societaria e di ridefinizione degli assetti aziendali.</span></span></a></li>
+          <li><a href="advisory#advisory-finanziaria"><span class="servizi__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="19" cy="24" r="11"/><circle cx="29" cy="24" r="11"/><path class="o" d="M24 14.2a11 11 0 0 1 0 19.6a11 11 0 0 1 0-19.6z"/></svg></span><span class="servizi__testo"><h4>Advisory finanziaria e operazioni straordinarie</h4><span>Assistiamo le imprese nell’analisi, nella progettazione e nella realizzazione di operazioni che incidono sulla struttura finanziaria, patrimoniale e societaria.</span></span></a></li>
+          <li><a href="advisory#ristrutturazione-del-debito"><span class="servizi__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M7 7v34h34"/><path d="M12.5 13l7 13 6-4.5"/><path class="o" d="M25.5 21.5 37 9.5M31 9.5h6v6"/></svg></span><span class="servizi__testo"><h4>Ristrutturazione del debito e gestione della crisi</h4><span>In situazioni di tensione finanziaria o di difficoltà aziendale, affianchiamo l’imprenditore nella ricostruzione delle cause della crisi e nell’individuazione delle soluzioni più adeguate.</span></span></a></li>
+          <li><a href="advisory#riorganizzazione-societaria"><span class="servizi__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect class="o" x="19.5" y="7" width="9" height="9" rx=".5"/><path d="M24 16v7M11.5 23h25M11.5 23v6M24 23v6M36.5 23v6"/><rect x="7" y="29" width="9" height="9" rx=".5"/><rect x="19.5" y="29" width="9" height="9" rx=".5"/><rect x="32" y="29" width="9" height="9" rx=".5"/></svg></span><span class="servizi__testo"><h4>Pianificazione e riorganizzazione societaria</h4><span>Supportiamo le imprese nella valutazione e strutturazione di interventi di riorganizzazione societaria e di ridefinizione degli assetti aziendali.</span></span></a></li>
         </ul>
       </div>
       <div class="area" data-in>
-        <a class="area__testa" href="consulting.html"><h3>D’Amico &amp; Partners Consulting</h3><p>Dedicata alla ricerca di finanza ordinaria e straordinaria</p></a>
+        <a class="area__testa" href="consulting"><h3>D’Amico &amp; Partners Consulting</h3><p>Dedicata alla ricerca di finanza ordinaria e straordinaria</p></a>
         <ul class="servizi">
-          <li><a href="consulting.html"><span class="servizi__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><ellipse cx="18" cy="16" rx="10" ry="3.5"/><path d="M8 16v19M28 16v19M8 22a10 3.5 0 0 0 20 0M8 28.5a10 3.5 0 0 0 20 0M8 35a10 3.5 0 0 0 20 0"/><path class="o" d="M37 39V11M32 16l5-5 5 5"/></svg></span><span class="servizi__testo"><h4>Accesso al credito e pianificazione finanziaria</h4><span>Una struttura di finanziamento proporzionata ai fabbisogni aziendali e coerente con i progetti di investimento e di sviluppo, con particolare attenzione alle soluzioni a medio e lungo termine.</span></span></a></li>
-          <li><a href="consulting.html"><span class="servizi__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M12 6.5h17l7 7v28H12z"/><path d="M29 6.5v7h7M17 15h7M17 20h12"/><path class="o" d="M17 35l5.5-5.5 4 3.5 6-8"/></svg></span><span class="servizi__testo"><h4>Redazione di Business Plan</h4><span>Predisponiamo business plan economici, patrimoniali e finanziari a supporto di operazioni di finanziamento, programmi di investimento, progetti di sviluppo e operazioni straordinarie.</span></span></a></li>
+          <li><a href="consulting"><span class="servizi__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><ellipse cx="18" cy="16" rx="10" ry="3.5"/><path d="M8 16v19M28 16v19M8 22a10 3.5 0 0 0 20 0M8 28.5a10 3.5 0 0 0 20 0M8 35a10 3.5 0 0 0 20 0"/><path class="o" d="M37 39V11M32 16l5-5 5 5"/></svg></span><span class="servizi__testo"><h4>Accesso al credito e pianificazione finanziaria</h4><span>Una struttura di finanziamento proporzionata ai fabbisogni aziendali e coerente con i progetti di investimento e di sviluppo, con particolare attenzione alle soluzioni a medio e lungo termine.</span></span></a></li>
+          <li><a href="consulting"><span class="servizi__icona"><svg class="icona" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M12 6.5h17l7 7v28H12z"/><path d="M29 6.5v7h7M17 15h7M17 20h12"/><path class="o" d="M17 35l5.5-5.5 4 3.5 6-8"/></svg></span><span class="servizi__testo"><h4>Redazione di Business Plan</h4><span>Predisponiamo business plan economici, patrimoniali e finanziari a supporto di operazioni di finanziamento, programmi di investimento, progetti di sviluppo e operazioni straordinarie.</span></span></a></li>
         </ul>
       </div>
     </div>
@@ -172,7 +416,7 @@
       <div class="gradino"><h3>Percorsi su misura.</h3><p>Valutiamo le alternative disponibili, i relativi rischi, le ricadute sul piano finanziario e la sostenibilità delle soluzioni proposte.</p></div>
       <div class="gradino"><h3>I piani, la negoziazione.</h3><p>L’affiancamento prosegue dalla programmazione strategica alla predisposizione dei piani e alla negoziazione con le controparti.</p></div>
       <div class="gradino"><h3>L’operatività concreta.</h3><p>Privilegiamo il confronto diretto, la continuità della relazione professionale e la capacità di adattare la strategia all’evoluzione degli scenari.</p></div>
-      <a class="tlink" href="approccio.html" data-in>Il nostro approccio</a>
+      <a class="tlink" href="approccio" data-in>Il nostro approccio</a>
     </div>
   </section>
 
@@ -212,7 +456,7 @@
             <div><dt>Email</dt><dd><a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a></dd></div>
             <div><dt>Studio</dt><dd>Piazza della Vittoria 11<br>25121 Brescia</dd></div>
           </dl>
-          <a class="btn btn--notte" href="contatti.html">Richiedi un incontro</a>
+          <a class="btn btn--notte" href="contatti">Richiedi un incontro</a>
         </div>
       </div>
     </div>
@@ -222,13 +466,13 @@
   <div class="wrap">
     <div class="footer__grid">
       <div class="footer__studio">
-        <a class="brand" href="index.html" aria-label="D’Amico &amp; Partners, pagina iniziale"><img src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96" loading="lazy"><span>D’Amico &amp; Partners</span></a>
+        <a class="brand" href="./" aria-label="D’Amico &amp; Partners, pagina iniziale"><img src="assets/img/logo-dp-bianco-96.png" alt="" width="179" height="96" loading="lazy"><span>D’Amico &amp; Partners</span></a>
         <address>Piazza della Vittoria 11<br>25121 Brescia (BS)</address>
         <p><a href="tel:+390302403392">+39 030 240 3392</a><br><a href="mailto:info@damicoandpartners.it">info@damicoandpartners.it</a></p>
       </div>
       <div>
         <h2>Pagine</h2>
-        <ul><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="approccio.html">Approccio</a></li><li><a href="advisory.html">Advisory</a></li><li><a href="consulting.html">Consulting</a></li><li><a href="contatti.html">Contatti</a></li></ul>
+        <ul><li><a href="chi-siamo">Chi siamo</a></li><li><a href="approccio">Approccio</a></li><li><a href="advisory">Advisory</a></li><li><a href="consulting">Consulting</a></li><li><a href="contatti">Contatti</a></li></ul>
       </div>
       <div class="soc">
         <h2>Società</h2>
@@ -238,7 +482,7 @@
     </div>
     <div class="footer__bottom">
       <p>© <span data-year>2026</span> D’Amico &amp; Partners Advisory S.r.l. e D’Amico &amp; Partners Consulting S.r.l.</p>
-      <ul><li><a href="privacy.html">Privacy</a></li><li><a href="cookie.html">Cookie</a></li><li><a href="note-legali.html">Note legali</a></li></ul>
+      <ul><li><a href="privacy">Privacy</a></li><li><a href="cookie">Cookie</a></li><li><a href="note-legali">Note legali</a></li></ul>
     </div>
   </div>
 </footer>
