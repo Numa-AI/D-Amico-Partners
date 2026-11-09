@@ -1,0 +1,38 @@
+# Cloudflare Pages: intestazioni HTTP. Le regole si sommano su tutti i percorsi che corrispondono.
+#
+# Content-Security-Policy: il browser carica e contatta SOLO questo dominio (niente CDN, font,
+# mappe o analytics esterni, come dichiarato nella cookie policy). Il modulo parla con /api/contatto,
+# che è "noi"; è la funzione lato server a chiamare Brevo.
+# L'unico script inline (quello che attiva le animazioni, identico in tutte le pagine) è ammesso
+# con il suo hash: se lo si modifica anche di un carattere va ricalcolato, altrimenti le animazioni
+# si spengono (il sito resta leggibile). Comando:
+#   sed -n 's/.*<script>\(.*\)<\/script>.*/\1/p' index.html | head -1 | tr -d '\n' | openssl dgst -sha256 -binary | openssl base64
+# Gli style="" negli HTML richiedono 'unsafe-inline' sugli stili (rischio basso: niente script).
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-ox4aCvp7rtv/Q99R/NyWxp5lH6pYL93WfMpnG7SZGEQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
+  Cross-Origin-Opener-Policy: same-origin
+
+# I PDF della rassegna stampa: la CSP dà fastidio ad alcuni lettori PDF dei browser.
+/assets/doc/*
+  ! Content-Security-Policy
+
+# Immagini, video, script e stili: un'ora senza chiedere, poi un giorno in cui il browser usa la
+# copia che ha e intanto la rinfresca. I nomi non cambiano col contenuto, quindi niente "immutable".
+# (Una sola regola: se due regole mettono Cache-Control sullo stesso file, Cloudflare unisce i valori.)
+/assets/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# Gli indirizzi di servizio *.pages.dev (produzione e anteprime) non devono finire su Google
+# come doppione del dominio vero.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+/prova-torre*
+  X-Robots-Tag: noindex

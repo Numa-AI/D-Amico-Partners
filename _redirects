@@ -1,0 +1,8 @@
+# Cloudflare Pages. Le pagine /nome.html le porta già Cloudflare a /nome (308).
+/index-piazza.html  /  301
+/index-piazza       /  301
+/security.txt       /.well-known/security.txt  301
+# file del repo che non devono essere pubblici
+/README.md          /  301
+/BRIEF.md           /  301
+/functions/*        /  301

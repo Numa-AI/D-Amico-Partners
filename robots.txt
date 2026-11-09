@@ -1,6 +1,12 @@
+# D'Amico & Partners — www.damicoandpartners.it
+# Tutto il sito è pubblico e indicizzabile, compresi i crawler dei motori AI
+# (GPTBot, ClaudeBot, PerplexityBot, Google-Extended...): servono a comparire
+# nelle risposte degli assistenti. Le pagine da non indicizzare (404, prova-torre)
+# lo dicono con <meta name="robots" content="noindex">: per leggerlo il crawler
+# deve poterle scaricare, quindi NON vanno vietate qui.
+
 User-agent: *
 Allow: /
-Disallow: /404.html
-Disallow: /index-piazza.html
+Disallow: /api/
 
 Sitemap: https://www.damicoandpartners.it/sitemap.xml

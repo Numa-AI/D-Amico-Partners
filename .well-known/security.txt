@@ -1,0 +1,5 @@
+Contact: mailto:andrea@numa-ai.it
+Contact: mailto:info@damicoandpartners.it
+Expires: 2027-10-31T23:00:00.000Z
+Preferred-Languages: it, en
+Canonical: https://www.damicoandpartners.it/.well-known/security.txt
