@@ -116,7 +116,7 @@ ${riga('Società', d.company ? esc(d.company) : '<span style="color:#7A7F8C">non
 </table></td></tr>
 <tr><td style="padding:28px 32px 0">
 <p style="margin:0 0 10px;font:600 12px/1 Arial,Helvetica,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#7A7F8C">Messaggio</p>
-<div style="background:#F4F3F0;border-left:3px solid #B38A3E;padding:18px 20px;font:16px/1.6 Arial,Helvetica,sans-serif;color:#141C2E">${esc(d.message).replace(/\r?\n/g, '<br>')}</div>
+<div style="font:16px/1.65 Arial,Helvetica,sans-serif;color:#141C2E">${esc(d.message).replace(/\r?\n/g, '<br>')}</div>
 </td></tr>
 <tr><td style="padding:28px 32px 32px">
 <a href="mailto:${esc(d.email)}?subject=${oggetto}" style="display:inline-block;background:#16223B;color:#FFFFFF;text-decoration:none;font:600 15px/1 Arial,Helvetica,sans-serif;padding:15px 24px">Rispondi a ${esc(nome1)}</a>
