@@ -2,7 +2,8 @@
 // Variabili da impostare in Cloudflare (Pages > Settings > Variables and Secrets):
 //   BREVO_API_KEY  (segreta)  chiave API di Brevo
 //   MAIL_FROM                 mittente verificato su Brevo, es. sito@damicoandpartners.it
-//   MAIL_TO                   casella che riceve le richieste, es. info@damicoandpartners.it
+//   MAIL_TO                   casella/e che ricevono le richieste, separate da virgola,
+//                             es. info@damicoandpartners.it, segreteria@damicoandpartners.it
 // Nessun dato viene salvato: il messaggio passa da qui a Brevo e basta.
 
 const LIMITI = { name: 120, company: 160, email: 200, phone: 40, message: 5000 };
@@ -52,7 +53,7 @@ export async function onRequestPost({ request, env }) {
     headers: { 'api-key': env.BREVO_API_KEY, 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify({
       sender: { name: 'Sito D’Amico & Partners', email: env.MAIL_FROM },
-      to: [{ email: env.MAIL_TO }],
+      to: env.MAIL_TO.split(',').map((e) => e.trim()).filter(Boolean).map((email) => ({ email })),
       replyTo: { email: d.email, name: d.name },
       subject: `Richiesta di incontro dal sito: ${d.name}`,
       htmlContent: html,
