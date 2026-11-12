@@ -254,7 +254,7 @@ html.sera .hero__luce .giorno, html:not(.sera) .hero__luce .sera{ display:none; 
 /* senza le quattro tessere: un'unica fascia notte, testo a sinistra e citazione a destra */
 .mosaico{ grid-template-columns:1fr; grid-template-rows:auto; }
 .mosaico__frase{ grid-column:1 / -1; grid-row:auto; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:end; gap:2rem var(--gap); }
-.mosaico__frase blockquote{ margin-top:0; }
+.mosaico__frase blockquote{ margin-top:0; padding:0 0 0 clamp(1.25rem,2vw,2rem); border-top:0; border-left:2px solid var(--ottone); } /* affiancata al testo: filo a sinistra, non un filo sospeso sopra */
 @media (max-width:899px){ .mosaico__frase{ grid-template-columns:1fr; } }
 .mosaico__frase cite{ display:block; margin-top:1.25rem; font-style:normal; font-size:var(--step-small); color:var(--notte-ink); }
 .tile--ottone{ background:var(--ottone); }
@@ -393,6 +393,7 @@ html.sera .hero__luce .giorno, html:not(.sera) .hero__luce .sera{ display:none; 
 .phero__card .lead{ margin-top:1.5rem; max-width:52ch; }
 @media (max-width:899px){ .phero__img{ height:70svh; } .phero__card .lead{ font-size:1.125rem; } }
 .pbody{ padding:var(--sec) 0 clamp(3rem,6vw,5rem); }
+.pbody:has(.servizio:last-child:nth-child(even)){ padding-bottom:0; } /* se l'ultima fascia è grigia, niente striscia bianca sotto */
 .phero--testo{ display:flex; align-items:flex-end; justify-content:space-between; gap:var(--g); padding:calc(var(--hh) + clamp(4rem,9vw,8rem)) max(var(--g),calc((100% - 1760px)/2 + var(--g))) clamp(3rem,6vw,5rem); color:#fff; }
 .phero--testo .phero__card{ position:static; padding:0; margin:0; max-width:none; width:auto; }
 .phero__icona{ flex:none; width:clamp(120px,13vw,210px); }
@@ -573,7 +574,7 @@ main{ position:relative; background:var(--carta); }
 @media (prefers-reduced-motion:reduce){ *,*::before,*::after{ transition-duration:.01ms!important; animation-duration:.01ms!important; } }
 
 /* chiusura delle pagine servizio: invito e recapiti su pietra */
-.chiudi__in{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(2.5rem,6vw,7rem); align-items:center; }
+.chiudi__in{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:1.25rem clamp(2.5rem,6vw,7rem); align-items:center; } /* righe strette: la linea sta sopra il blocco, non a metà del vuoto */
 .chiudi__in::before{ content:""; grid-column:1 / -1; height:2px; margin-bottom:clamp(.5rem,2vw,1.5rem); background:var(--ottone); }
 .chiudi__eti{ margin-bottom:1.25rem; font-size:var(--step-small); font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ottone-2); }
 .chiudi h2{ color:var(--notte); max-width:16ch; }
@@ -587,4 +588,4 @@ main{ position:relative; background:var(--carta); }
 .chiudi__rec li > span:last-child{ min-width:0; font-family:var(--display); font-size:clamp(1.2rem,1.05rem + .45vw,1.5rem); line-height:1.2; color:var(--notte); overflow-wrap:anywhere; }
 .chiudi__rec a{ text-decoration:none; transition:color .25s; }
 .chiudi__rec a:hover{ color:var(--ottone-2); }
-@media (max-width:899px){ .chiudi__in{ grid-template-columns:minmax(0,1fr); } .chiudi__icona{ width:50px; padding:12px; } }
+@media (max-width:899px){ .chiudi__in{ grid-template-columns:minmax(0,1fr); row-gap:clamp(2rem,6vw,2.5rem); } .chiudi__in::before{ margin-bottom:-.75rem; } .chiudi__icona{ width:50px; padding:12px; } }
