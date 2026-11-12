@@ -12,12 +12,10 @@
   /* luce dell'ora: di giorno la piazza al sole, dalle 18 alle 7 i portici illuminati */
   var hero = document.querySelector('.hero:not(.torre)'), torre = document.querySelector('.torre');
   if (hero) {
-    var ora = +new Intl.DateTimeFormat('it-IT', { hour: 'numeric', hour12: false, timeZone: 'Europe/Rome' }).format(new Date());
-    var giorno = hero.querySelector('.giorno'), sera = hero.querySelector('.sera');
-    var notte = ora >= 18 || ora < 7;
-    var prima = notte ? sera : giorno;
-    prima.classList.remove('alt');
-    (notte ? giorno : sera).remove();
+    // l'ora la decide lo script in testa (classe html.sera), così la foto giusta è già scelta al primo disegno
+    var notte = root.classList.contains('sera');
+    var via = hero.querySelector(notte ? '.giorno' : '.sera');
+    if (via) via.remove();
   }
 
   function decoded() {

@@ -9,7 +9,7 @@
 #   sed -n 's/.*<script>\(.*\)<\/script>.*/\1/p' index.html | head -1 | tr -d '\n' | openssl dgst -sha256 -binary | openssl base64
 # Gli style="" negli HTML richiedono 'unsafe-inline' sugli stili (rischio basso: niente script).
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-ox4aCvp7rtv/Q99R/NyWxp5lH6pYL93WfMpnG7SZGEQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-BDM5hwE8eFgmy3nNtCzY6cL/OBHnOSVlZ+fosYRj3u4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
   Strict-Transport-Security: max-age=31536000
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY

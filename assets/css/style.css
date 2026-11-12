@@ -112,6 +112,11 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .hero__luce{ position:absolute; inset:0; }
 .hero__luce img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 .hero__luce .alt{ opacity:0; }
+/* foto dell'ora scelta in testa (html.sera) prima del primo disegno: si scarica solo quella;
+   finché arriva, sotto c'è il suo colore medio invece del blu notte */
+.hero:not(.torre){ background:#6E86A9; }
+html.sera .hero:not(.torre){ background:#857776; }
+html.sera .hero__luce .giorno, html:not(.sera) .hero__luce .sera{ display:none; }
 .hero::before{ content:""; position:absolute; inset:0 35% 0 0; z-index:1; background:linear-gradient(90deg,rgba(8,13,26,.7),rgba(8,13,26,.45) 55%,rgba(8,13,26,0)); pointer-events:none; } /* taste-skill-ignore: scrim neutra sotto il testo sulla foto */
 .hero::after{ content:""; position:absolute; inset:0 0 auto; height:30%; z-index:1; background:linear-gradient(rgba(8,13,26,.45),rgba(8,13,26,0)); pointer-events:none; } /* taste-skill-ignore: scrim neutra sotto il testo sulla foto */
 .hero__testo{ position:absolute; z-index:2; left:var(--g); top:50%; transform:translateY(-42%); max-width:min(900px,62vw); }
