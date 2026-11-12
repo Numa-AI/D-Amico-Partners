@@ -148,7 +148,7 @@ html.sera .hero__luce .giorno, html:not(.sera) .hero__luce .sera{ display:none; 
 }
 @media (max-width:899px){
   .hero::before{ inset:0; background:linear-gradient(rgba(8,13,26,0) 20%,rgba(8,13,26,.55) 50%,rgba(8,13,26,.3)); } /* taste-skill-ignore: scrim neutra sotto il testo sulla foto */
-  .hero__testo{ top:40%; right:var(--g); max-width:none; }
+  .hero__testo{ top:46%; right:var(--g); max-width:none; }
   .hero__testo h1{ font-size:clamp(3.2rem,15vw,6rem); }
   .hero__testo p{ font-size:1.125rem; margin-top:1.1rem; }
   .hero__schede{ left:var(--g); }
