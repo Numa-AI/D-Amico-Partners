@@ -215,6 +215,21 @@ html.sera .hero__luce .giorno, html:not(.sera) .hero__luce .sera{ display:none; 
 .gente__staff p{ font-size:var(--step-small); line-height:1.4; color:var(--soft); }
 @media (max-width:1099px){ .gente__staff{ grid-template-columns:repeat(2,minmax(0,1fr)); max-width:640px; } }
 @media (max-width:520px){ .gente__staff{ grid-template-columns:1fr; } }
+/* team da mobile: un pannello per i soci e uno per lo studio, righe divise da un filo, titoli (dott., avv.) in tono minore */
+@media (max-width:700px){
+  .gente__lista, .gente__staff{ display:block; max-width:none; background:var(--carta); border-top:2px solid var(--ottone); }
+  .gente__staff{ margin-top:12px; border-top-width:1px; }
+  .gente__lista li, .gente__staff li{ margin:0 1.25rem; padding:1.35rem 0 1.45rem; background:none; border-top:0; }
+  .gente__lista li + li, .gente__staff li + li{ border-top:1px solid var(--pietra-2); }
+  .gente__lista li > div{ gap:.3rem; }
+  .gente__ruolo{ font-size:.8125rem; }
+  .gente__lista h3{ font-size:1.75rem; }
+  .gente__lista p:last-child{ margin:0; padding:0; border:0; font-size:1rem; }
+  .gente__staff li{ padding:1rem 0 1.05rem; gap:.15rem; }
+  .gente__staff h3{ font-size:1.3rem; }
+  .gente__staff p{ font-size:1rem; }
+  .gente .tit{ font-size:.72em; letter-spacing:.02em; color:var(--soft); }
+}
 
 /* dicono di noi: articoli e convegni, ognuno col suo PDF */
 .stampa h2{ margin-bottom:clamp(2rem,4vw,2.75rem); }
