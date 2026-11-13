@@ -83,10 +83,10 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 @media (min-width:1024px){ .brand img{ height:38px; } .brand span{ font-size:1.7rem; } }
 @media (max-width:359px){ .brand span{ display:none; } }
 .nav{ display:none; gap:2rem; }
-.nav a{ text-decoration:underline; text-decoration-color:transparent; text-decoration-thickness:1.5px; text-underline-offset:.45em; font-size:1rem; font-weight:500; padding:.35rem 0; transition:text-decoration-color .3s,text-underline-offset .3s var(--ease); }
+.nav a{ text-decoration:underline; text-decoration-color:transparent; text-decoration-thickness:1.5px; text-underline-offset:.45em; font-size:1rem; font-weight:500; white-space:nowrap; padding:.35rem 0; transition:text-decoration-color .3s,text-underline-offset .3s var(--ease); }
 .nav a:hover,.nav a[aria-current="page"]{ text-decoration-color:currentColor; text-underline-offset:.3em; }
 .header .btn{ display:none; padding:.85rem 1.2rem; }
-@media (min-width:1080px){ .nav{ display:flex; } .header .btn{ display:inline-flex; } }
+@media (min-width:1200px){ .nav{ display:flex; } .header .btn{ display:inline-flex; } }
 .header--over{ background:transparent; color:#fff; }
 .header--over .brand .d{ display:none; } .header--over .brand .w{ display:block; }
 .header--over .btn--notte{ background:#fff; color:var(--notte); }
@@ -94,7 +94,7 @@ h3{ font-size:clamp(1.75rem,1.2rem + 1.8vw,3rem); line-height:1; }
 .burger i{ position:relative; display:block; width:24px; height:2px; background:currentColor; }
 .burger i::before,.burger i::after{ content:""; position:absolute; left:0; width:24px; height:2px; background:currentColor; }
 .burger i::before{ top:-7px; } .burger i::after{ top:7px; }
-@media (min-width:1080px){ .burger{ display:none; } }
+@media (min-width:1200px){ .burger{ display:none; } }
 .menu{ position:fixed; inset:0; z-index:60; background:var(--notte); color:#fff; display:flex; flex-direction:column; padding:0 var(--g) 2rem; overflow-y:auto; }
 .menu[hidden]{ display:none; }
 .menu__top{ display:flex; justify-content:space-between; align-items:center; min-height:var(--hh); }
