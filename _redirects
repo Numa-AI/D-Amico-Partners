@@ -4,6 +4,9 @@
 /security.txt       /.well-known/security.txt  301
 # vecchi indirizzi del sito Wix ancora su Google
 /privacy-policy      /privacy  301
+/dicono-di-noi       /  301
+/finanziaria-ed-aziendale  /consulting  301
+/finanziaria-e-aziendale   /consulting  301
 
 # file del repo che non devono essere pubblici
 /README.md          /  301
